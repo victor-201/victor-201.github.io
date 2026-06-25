@@ -1,68 +1,52 @@
 "use client";
 import { useDevToolsOpen } from "@/hooks/use-devtools-open";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import SkyElements from "./sky-elements";
-import { AnimatePresence } from "framer-motion";
+import { useLocale } from "@/locales/use-locale";
+
+const EASTER_EGG_NAMES = ["naresh", "Naresh", "NARESH", "Thắng", "thắng", "Victor", "victor", "VICTOR"];
+const S1 = "color: #FFD700; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:20px";
+const S2 = "color: #00FF00; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:20px";
+const S3 = "color: #FF4500; font-size: 18px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:10px";
+const S4 = "color: #FF69B4; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;";
 
 const EasterEggs = () => {
   const { isDevToolsOpen } = useDevToolsOpen();
+  const { t } = useLocale();
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
   useEffect(() => {
     if (!isDevToolsOpen) return;
-    // console.log(
-    //   "%cWhoa, look at you! 🕵️‍♂️\n\n" +
-    //     "Peeking under the hood, eh? Just be careful, " +
-    //     "you might find some 🐛 bugs that even I didn't know about! 😅\n\n" +
-    //     "By the way, did you know the console is a portal to another dimension? 🌌 " +
-    //     "Just kidding... or am I? 👽\n\n" +
-    //     "Keep exploring, brave soul! 🛠️",
-    //   "color: #00FF00; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;"
-    // );
-    if (typeof console !== "undefined") {
-      console.clear();
-      console.log(
-        "%cWhoa, look at you! 🕵️‍♂️\n" +
-          "You seem to have discovered the secret console! 🔍\n" +
-          "Want to see some magic? ✨\n" +
-          "Just type %cmy first name%c and hit enter! 🎩🐇",
-        //   "Just press the %c'n'%c key and watch the magic happen! 🪄",
-        "color: #FFD700; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:20px",
-        "color: #00FF00; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:20px",
-        "color: #FFD700; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;"
-      );
+    if (typeof console === "undefined") return;
+    if ((window as any).__easterEggShown) return;
+    (window as any).__easterEggShown = true;
 
-      ["naresh", "Naresh", "NARESH"].forEach((name) => {
-        // @ts-ignore
-        if (Object.hasOwn(window, name)) return;
-        Object.defineProperty(window, name, {
-          get() {
-            console.log(
-              "%c✨ Abra Kadabra! ✨\n\n" +
-                "You just summoned the magic of Naresh! 🧙‍♂️\n" +
-                "What??? youre not impressed? Fine, but remember: With great power comes great responsibility! 💻⚡",
+    console.clear();
+    console.log(t("common", "easterEgg.intro")!, S1, S2, S1);
 
-              "color: #FF4500; font-size: 18px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:10px"
-            );
+    EASTER_EGG_NAMES.forEach((name) => {
+      if ((window as any).__easterEggInstalled?.has(name)) return;
+      if (!(window as any).__easterEggInstalled) (window as any).__easterEggInstalled = new Set();
+      (window as any).__easterEggInstalled.add(name);
 
-            const timer = setTimeout(() => {
-              console.log(
-                "%cPssttt! 🤫\n\n" +
-                  "Press 'n' on viewport and see what happens! 🌠☁️",
-                "color: #FF69B4; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;"
-              );
-              clearTimeout(timer);
-            }, 7000);
-            return "";
-          },
-        });
+      Object.defineProperty(window, name, {
+        get() {
+          console.log(t("common", "easterEgg.summon")!, S3);
+          const timer = setTimeout(() => console.log(t("common", "easterEgg.hint")!, S4), 7000);
+          timersRef.current.push(timer);
+          return "";
+        },
+        configurable: true,
       });
-    }
-  }, [isDevToolsOpen]);
+    });
 
-  return (
-    <>
-      <SkyElements />
-    </>
-  );
+    return () => {
+      timersRef.current.forEach(clearTimeout);
+      timersRef.current = [];
+    };
+  }, [isDevToolsOpen, t]);
+
+  return <SkyElements />;
 };
 
 export default EasterEggs;

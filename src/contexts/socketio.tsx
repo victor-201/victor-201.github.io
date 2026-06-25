@@ -67,9 +67,17 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
         // Vite: use import.meta.env.VITE_WS_URL instead of process.env.NEXT_PUBLIC_WS_URL
         const wsUrl = import.meta.env.VITE_WS_URL;
         if (!wsUrl) return;
+
+        let storedSessionId = null;
+        try {
+            storedSessionId = localStorage.getItem(SESSION_ID_KEY);
+        } catch (e) {
+            console.warn("Failed to get session ID from localStorage:", e);
+        }
+
         const socket = io(wsUrl, {
             auth: {
-                sessionId: localStorage.getItem(SESSION_ID_KEY), // send on reconnect to restore session
+                sessionId: storedSessionId, // send on reconnect to restore session
             },
         });
         setSocket(socket);
@@ -78,7 +86,11 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
             setMsgs(msgs);
         });
         socket.on("session", ({ sessionId }) => {
-            localStorage.setItem(SESSION_ID_KEY, sessionId);
+            try {
+                localStorage.setItem(SESSION_ID_KEY, sessionId);
+            } catch (e) {
+                console.warn("Failed to save session ID to localStorage:", e);
+            }
         });
 
         socket.on("msg-receive", (msgs) => {

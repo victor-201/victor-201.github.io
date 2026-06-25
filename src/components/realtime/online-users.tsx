@@ -93,9 +93,13 @@ const OnlineUsers = () => {
       avatar,
       color
     });
-    localStorage.setItem("username", name);
-    localStorage.setItem("avatar", avatar);
-    if (color) localStorage.setItem("color", color);
+    try {
+      localStorage.setItem("username", name);
+      localStorage.setItem("avatar", avatar);
+      if (color) localStorage.setItem("color", color);
+    } catch (e) {
+      console.warn("Failed to save profile to localStorage:", e);
+    }
   };
 
   const isSingleUser = users.length <= 1;
