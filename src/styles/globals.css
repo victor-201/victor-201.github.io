@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* TailwindCSS v4 theme: register custom design tokens so utilities like
    bg-background, text-foreground, border-border etc. are recognised. */
 @theme {

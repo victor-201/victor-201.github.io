@@ -22,7 +22,7 @@ const HeroSection = () => {
   const { isLoading } = usePreloader();
 
   return (
-    <SectionWrapper id="about" className={cn("w-full h-screen py-0!")}>
+    <SectionWrapper id="home" className={cn("w-full h-screen py-0!")}>
       <div className="grid md:grid-cols-2">
         <div
           className={cn(
@@ -52,7 +52,7 @@ const HeroSection = () => {
                     <TooltipTrigger asChild>
                       <h1
                         className={cn(
-                          "-ml-1.5 leading-none font-thin text-transparent text-left",
+                          "-ml-1.5 leading-none font-thin text-slate-900 dark:text-white text-left",
                           "font-thin text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
                           "cursor-default text-edge-outline font-display ",
                         )}
@@ -64,7 +64,7 @@ const HeroSection = () => {
                       side="top"
                       className="dark:bg-white dark:text-black"
                     >
-                      theres something waiting for you in devtools
+                      {t("common", "easterEgg.tooltip")}
                     </TooltipContent>
                   </Tooltip>
                 </BlurIn>
@@ -95,21 +95,19 @@ const HeroSection = () => {
                   </BoxReveal>
                 </Link>
                 <div className="md:self-start flex gap-3">
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <Link to={"#contact"}>
-                        <Button
-                          variant={"outline"}
-                          className="block w-full overflow-hidden"
-                        >
-                          {t("common", "hero.hireMe")}
-                        </Button>
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      <p>pls 🥹 🙏</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  <Button
+                    variant={"outline"}
+                    className="block w-full overflow-hidden"
+                    onClick={() => {
+                      const el = document.getElementById("contact");
+                      if (el) {
+                        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+                        window.scrollTo({ top: y, behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    {t("common", "hero.hireMe")}
+                  </Button>
                   <div className="flex items-center h-full gap-2">
                     <Link to={config.social.facebook} target="_blank">
                       <Button variant={"outline"}>

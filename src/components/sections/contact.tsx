@@ -16,7 +16,7 @@ import SectionWrapper from "../ui/section-wrapper";
 const ContactSection = () => {
   const { t } = useLocale();
   return (
-    <SectionWrapper id="contact" className="pb-0!">
+    <SectionWrapper id="contact" className="pb-0! scroll-mt-[80px]">
       <SectionHeader id='contact' title={
         t("common", "contact.letsWork")
       } />
