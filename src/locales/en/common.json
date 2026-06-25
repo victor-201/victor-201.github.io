@@ -66,8 +66,10 @@
       "Good choice. Somewhere out there, a pair of overworked eyeballs just breathed a sigh of relief."
     ]
   },
-  "about": {
-    "pageTitle": "About Me",
-    "content": "Full Stack Developer with expertise in building modern web applications, AI-powered tools, and scalable infrastructure systems."
+  "easterEgg": {
+    "tooltip": "there's something waiting for you in devtools",
+    "intro": "%cOh, there you are!\nLooks like you found the secret console.\nWanna see what I can do?\nJust type %cmy name%c and hit enter.",
+    "summon": "%cYou called?\n\nI'm Thang, nice to meet you!\nThanks for visiting my website.",
+    "hint": "%cDid you know?\n\nPress 'n' on the viewport to see something cool."
   }
 }

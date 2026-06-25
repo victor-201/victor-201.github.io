@@ -66,8 +66,10 @@
       "Lựa chọn tốt. Ở đâu đó ngoài kia, một cặp mắt làm việc quá sức vừa thở phào nhẹ nhõm."
     ]
   },
-  "about": {
-    "pageTitle": "Về tôi",
-    "content": "Lập trình viên Full Stack với chuyên môn xây dựng ứng dụng web hiện đại, công cụ AI và hệ thống hạ tầng mở rộng."
+  "easterEgg": {
+    "tooltip": "có gì đó đang đợi bạn trong devtools",
+    "intro": "%cĐù, ngầu đấy!\nBạn vừa khám phá ra console bí mật này à?\nMuốn xem tôi làm được gì không?\nGõ %ctên tôi%c và nhấn Enter đi!",
+    "summon": "%cẢO THUẬT ĐẬM CHẤT LƯỜI\n\nBạn vừa triệu hồi thành công chủ tịch!\nKhông ấn tượng hả? Kệ, người ta bảo: Càng ngầu càng vô dụng mà!",
+    "hint": "%cSuỵt!\n\nNhấn 'n' trên màn hình coi có gì hay ho!"
   }
 }

@@ -11,15 +11,17 @@ import enSkills from "./en/skills.json";
 import enExperience from "./en/experience.json";
 import enProjects from "./en/projects.json";
 import enSeo from "./en/seo.json";
+import enAbout from "./en/about.json";
 import viCommon from "./vi/common.json";
 import viSkills from "./vi/skills.json";
 import viExperience from "./vi/experience.json";
 import viProjects from "./vi/projects.json";
 import viSeo from "./vi/seo.json";
+import viAbout from "./vi/about.json";
 
 const translations = {
-  en: { common: enCommon, skills: enSkills, experience: enExperience, projects: enProjects, seo: enSeo },
-  vi: { common: viCommon, skills: viSkills, experience: viExperience, projects: viProjects, seo: viSeo },
+  en: { common: enCommon, skills: enSkills, experience: enExperience, projects: enProjects, seo: enSeo, about: enAbout },
+  vi: { common: viCommon, skills: viSkills, experience: viExperience, projects: viProjects, seo: viSeo, about: viAbout },
 };
 
 type Namespace = keyof (typeof translations)["en"];
@@ -40,13 +42,21 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState("en");
 
   useEffect(() => {
-    const stored = localStorage.getItem("locale");
-    if (stored === "vi" || stored === "en") setLocaleState(stored);
+    try {
+      const stored = localStorage.getItem("locale");
+      if (stored === "vi" || stored === "en") setLocaleState(stored);
+    } catch (e) {
+      console.warn("Failed to read locale from localStorage:", e);
+    }
   }, []);
 
   const setLocale = useCallback((l: string) => {
     setLocaleState(l);
-    localStorage.setItem("locale", l);
+    try {
+      localStorage.setItem("locale", l);
+    } catch (e) {
+      console.warn("Failed to save locale to localStorage:", e);
+    }
   }, []);
 
   const t = useCallback(
