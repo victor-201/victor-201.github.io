@@ -15,19 +15,19 @@ export const STATES = {
   },
   about: {
     desktop: {
-      scale: { x: 0.4, y: 0.4, z: 0.4 },
-      position: { x: 0, y: -40, z: 0 },
+      scale: { x: 0.225, y: 0.225, z: 0.225 },
+      position: { x: 400, y: -1000, z: 0 },
       rotation: {
-        x: 0,
-        y: Math.PI / 12,
-        z: 0,
+        x: 0.1, // Stand up tilted forward
+        y: 1.075,   // Angled toward the left
+        z: 0.6,  // Dynamic slant
       },
     },
     mobile: {
-      scale: { x: 0.4, y: 0.4, z: 0.4 },
-      position: { x: 0, y: -40, z: 0 },
+      scale: { x: 0.35, y: 0.35, z: 0.35 },
+      position: { x: 0, y: -80, z: 0 },
       rotation: {
-        x: 0,
+        x: -Math.PI / 4,
         y: Math.PI / 6,
         z: 0,
       },
@@ -36,7 +36,7 @@ export const STATES = {
   experience: {
     desktop: {
       scale: { x: 0.25, y: 0.25, z: 0.25 },
-      position: { x: 0, y: -40, z: 0 },
+      position: { x: 0, y: -100, z: 0 },
       rotation: {
         x: Math.PI / 12, // Slight tilt forward
         y: -Math.PI / 4, // Rotate opposite to skills
