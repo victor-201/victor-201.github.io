@@ -99,11 +99,10 @@ const HeroSection = () => {
                     variant={"outline"}
                     className="block w-full overflow-hidden"
                     onClick={() => {
-                      const el = document.getElementById("contact");
-                      if (el) {
-                        const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                        window.scrollTo({ top: y, behavior: "smooth" });
-                      }
+                      window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: "smooth"
+                      });
                     }}
                   >
                     {t("common", "hero.hireMe")}

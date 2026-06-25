@@ -41,7 +41,7 @@ const WebGLFallback = ({ theme }: { theme?: string }) => {
       {/* Space gradient */}
       <div className={cn(
         "absolute inset-0 transition-opacity duration-500",
-        isDark 
+        isDark
           ? "bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]"
           : "bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0%,transparent_70%)]"
       )} />
@@ -53,7 +53,7 @@ const WebGLFallback = ({ theme }: { theme?: string }) => {
         "absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full blur-[120px] transition-all duration-500",
         isDark ? "bg-blue-950/15" : "bg-blue-200/30"
       )} />
-      
+
       {/* Subtle pulsing stars / particles */}
       <div className="absolute inset-0 opacity-40">
         <div className={cn("absolute top-[15%] left-[20%] w-1.5 h-1.5 rounded-full animate-pulse", isDark ? "bg-white" : "bg-blue-400")} style={{ animationDuration: '3s' }} />
@@ -463,20 +463,9 @@ const AnimatedBackground = () => {
   // We rely on Spline's native initialization, SplineErrorBoundary, and the timeout fallback
   // instead of an upfront canvas WebGL check, to prevent dummy context creation failures on some browsers.
 
-  // WebGL Spline loading timeout fallback
-  useEffect(() => {
-    if (!isWebGLAvailable) return;
-
-    const timer = setTimeout(() => {
-      if (!splineApp) {
-        console.warn("Spline background loading timed out after 15 seconds. Falling back.");
-        setIsWebGLAvailable(false);
-        bypassLoading();
-      }
-    }, 15000);
-
-    return () => clearTimeout(timer);
-  }, [splineApp, isWebGLAvailable]);
+  // We don't use an artificial timeout fallback for loading, because the Spline scene is large (21.2MB).
+  // A timeout would prematurely cancel the download in browsers with a cold cache or slower connections,
+  // preventing it from ever loading or caching.
 
   // Initialize GSAP and Spline interactions
   useEffect(() => {
