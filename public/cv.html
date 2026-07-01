@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Nguyen Van Thang — Full-Stack Developer CV. Proficient in React, Next.js, Node.js, TypeScript, PostgreSQL, Docker, and Kubernetes."/>
+<title>Nguyen Van Thang — Full-Stack Developer CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root {
+    --navy:     #0f172a;
+    --navy-mid: #1e3a5f;
+    --blue:     #2563eb;
+    --blue-lt:  rgba(37,99,235,0.1);
+    --blue-ltr: rgba(37,99,235,0.05);
+    --sky:      #38bdf8;
+    --text:     #1e293b;
+    --sub:      #334155;
+    --muted:    #64748b;
+    --rule:     #e2e8f0;
+    --bg:       #ffffff;
+    --sidebar:  #f8fafc;
+    --green:    #16a34a;
+    --green-lt: rgba(22,163,74,0.1);
+    --purple:   #7c3aed;
+    --purple-lt:rgba(124,58,237,0.1);
+    --amber:    #d97706;
+    --amber-lt: rgba(217,119,6,0.1);
+    --red:      #dc2626;
+    --red-lt:   rgba(220,38,38,0.1);
+    --teal:     #0d9488;
+    --teal-lt:  rgba(13,148,136,0.1);
+  }
+
+  html {
+    /* 14.6px base = ~10.95pt print — balanced readability on A4 */
+    font-size: 14.6px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    display: flex;
+    justify-content: center;
+    padding: 28px 20px;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ─── A4 PAGE ─── */
+  .page {
+    /* Exact A4: 210mm × 297mm — FIXED, not min-height */
+    width:  210mm;
+    height: 297mm;
+    max-width:  210mm;
+    max-height: 297mm;
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,.15), 0 0 10px rgba(0,0,0,.02);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    /* ~11mm top, ~17mm left/right, ~9mm bottom — standard CV header margins */
+    padding: 14px 22px 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    border-bottom: 3px solid var(--blue);
+  }
+
+  .avatar {
+    width: 80px;
+    height: 106px; /* Perfect 3:4 aspect ratio */
+    border-radius: 6px;
+    flex-shrink: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.30);
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .avatar:hover img {
+    transform: scale(1.1);
+  }
+
+  .h-info {
+    flex: 1;
+  }
+
+  .h-name {
+    /* H1 of CV — largest element. ~21pt equivalent */
+    font-family: 'Sora', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #ffffff, #e0e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+  }
+
+  .h-role {
+    /* H2 subtitle — role tag */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-top: 6px;
+  }
+
+  .h-loc {
+    font-size: .72rem;
+    color: rgba(255,255,255,.6);
+    margin-top: 4px;
+  }
+
+  .h-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 14px;
+    margin-top: 7px;
+  }
+
+  .c-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: .72rem;
+    color: rgba(255,255,255,.82);
+    text-decoration: none;
+    transition: color .15s, transform .15s;
+  }
+
+  .c-item:hover {
+    color: #38bdf8;
+    transform: translateX(2px);
+  }
+
+  .c-item svg {
+    flex-shrink: 0;
+    opacity: .75;
+  }
+
+  /* ─── BODY ─── */
+  .body {
+    display: flex;
+    flex: 1;
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background: var(--sidebar);
+    border-right: 1px solid var(--rule);
+    /* ~11mm top/bottom, ~11mm left/right — standard side margin */
+    padding: 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .s-label {
+    /* Sidebar section heading — H3 level */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid var(--blue-lt);
+    margin-bottom: 8px;
+  }
+
+  .sg-title {
+    font-size: .63rem;
+    font-weight: 600;
+    color: var(--sub);
+    margin-bottom: 4px;
+    margin-top: 7px;
+  }
+
+  .sg-title:first-of-type {
+    margin-top: 0;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .57rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    border: 1px solid rgba(0,0,0,0.04);
+    letter-spacing: 0.1px;
+  }
+
+  .t-lang  { background: var(--purple-lt); color: var(--purple); }
+  .t-front { background: var(--blue-lt);   color: var(--navy-mid); }
+  .t-back  { background: var(--green-lt);  color: var(--green); }
+  .t-infra { background: var(--red-lt);    color: var(--red); }
+  .t-db    { background: var(--amber-lt);  color: var(--amber); }
+  .t-tool  { background: #f1f5f9;          color: var(--sub); }
+
+  /* Education */
+  .edu-name {
+    /* H4 level */
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .edu-degree {
+    font-size: .65rem;
+    color: var(--sub);
+    margin: 2px 0 1px;
+  }
+
+  .edu-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .6rem;
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  /* Bullet list items (sidebar) */
+  .act-item {
+    font-size: .64rem;
+    color: var(--sub);
+    padding-left: 10px;
+    position: relative;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .act-item:last-child { margin-bottom: 0; }
+
+  .act-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .act-item b { color: var(--text); }
+
+  /* ─── MAIN ─── */
+  .main {
+    flex: 1;
+    /* ~11mm top/bottom, ~14mm left/right — standard CV content margins */
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .m-label {
+    /* H2 section heading in main column */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Sora', sans-serif;
+    font-size: .85rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+    color: var(--navy-mid);
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--blue-lt);
+    margin-bottom: 6px;
+  }
+
+  .m-label svg { color: var(--blue); flex-shrink: 0; }
+
+  /* Summary */
+  .summary {
+    font-size: .75rem;
+    color: var(--sub);
+    line-height: 1.65;
+    border-left: 3px solid var(--blue);
+    padding-left: 10px;
+  }
+
+  .summary strong { color: var(--text); font-weight: 600; }
+
+  /* Experience / Project card */
+  .proj {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 3px;
+    background: #ffffff;
+    transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .proj:last-child { margin-bottom: 0; }
+
+  .proj:hover {
+    border-color: rgba(37,99,235,0.3);
+    box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+    transform: translateY(-1px);
+  }
+
+  .proj-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 3px;
+  }
+
+  .proj-name {
+    font-family: 'Sora', sans-serif;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--navy-mid);
+    line-height: 1.2;
+  }
+
+  .proj-meta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .55rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: .04em;
+    background: var(--blue-lt);
+    color: var(--blue);
+    border: 1px solid rgba(37,99,235,.18);
+  }
+
+  .badge-commits {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .58rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .proj-desc {
+    font-size: .69rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .proj-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .6rem;
+    color: var(--blue);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    transition: color .15s;
+  }
+
+  .proj-url:hover { text-decoration: underline; }
+
+  .bullets {
+    margin: 3px 0 4px;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bullets li {
+    font-size: .67rem;
+    color: var(--sub);
+    position: relative;
+    line-height: 1.45;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: -11px;
+    color: var(--blue);
+    font-size: .55rem;
+    top: 2px;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 5px;
+  }
+
+  .stag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .55rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: var(--sub);
+    border: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+
+  .stag.s-ts  { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+  .stag.s-rn  { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+  .stag.s-ng  { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
+  .stag.s-inf { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+  .stag.s-db  { background: #f5f3ff; color: #6d28d9; border-color: #ddd6fe; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.65);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .58rem;
+    text-align: center;
+    padding: 5px 22px;
+    letter-spacing: .04em;
+    flex-shrink: 0;
+  }
+
+  .footer span { margin: 0 6px; opacity: .4; }
+
+  /* ─── PRINT ─── */
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+
+    .page {
+      box-shadow: none;
+      border-radius: 0;
+      width:  210mm;
+      height: 297mm;
+      max-width:  210mm;
+      max-height: 297mm;
+      overflow: hidden;
+      page-break-after: avoid;
+    }
+
+    .proj:hover {
+      border-color: var(--rule);
+      box-shadow: none;
+      transform: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ═══ HEADER ═══ -->
+    <div class="header">
+      <div class="avatar"><img src="avatar.png" alt="Nguyen Van Thang"></div>
+      <div class="h-info">
+        <div class="h-name">Nguyen Van Thang</div>
+        <div class="h-role">Full-Stack Developer <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"
+            style="vertical-align:middle;opacity:.6">
+            <circle cx="12" cy="12" r="3" />
+          </svg> Web &amp; Mobile</div>
+        <div class="h-loc"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" style="vertical-align:middle;margin-right:3px">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>Ho Chi Minh City, Vietnam</div>
+        <div class="h-contacts">
+          <a class="c-item" href="mailto:4.victor.201@gmail.com">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            4.victor.201@gmail.com
+          </a>
+          <a class="c-item" href="tel:+84867652947">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
+            </svg>
+            +84 867 652 947
+          </a>
+          <a class="c-item" href="https://github.com/Victor-201" target="_blank">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
+            </svg>
+            github.com/victor-201
+          </a>
+          <a class="c-item" href="https://victor-201.github.io" target="_blank">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+            </svg>
+            victor-201.github.io
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BODY ═══ -->
+    <div class="body">
+
+      <!-- ─── SIDEBAR ─── -->
+      <div class="sidebar">
+
+        <!-- TECH STACK -->
+        <div>
+          <div class="s-label">Tech Stack</div>
+
+          <div class="sg-title">Languages</div>
+          <div class="tags">
+            <span class="tag t-lang">JavaScript</span>
+            <span class="tag t-lang">TypeScript</span>
+            <span class="tag t-lang">Dart</span>
+          </div>
+
+          <div class="sg-title">Frontend</div>
+          <div class="tags">
+            <span class="tag t-front">Next.js</span>
+            <span class="tag t-front">React.js</span>
+            <span class="tag t-front">Redux Toolkit</span>
+            <span class="tag t-front">Tailwind CSS</span>
+            <span class="tag t-front">Vite</span>
+          </div>
+
+          <div class="sg-title">Mobile</div>
+          <div class="tags">
+            <span class="tag t-front">React Native</span>
+            <span class="tag t-front">Flutter</span>
+          </div>
+
+          <div class="sg-title">Backend</div>
+          <div class="tags">
+            <span class="tag t-back">Node.js</span>
+            <span class="tag t-back">Express.js</span>
+            <span class="tag t-back">NestJS</span>
+          </div>
+
+          <div class="sg-title">Infra &amp; DevOps</div>
+          <div class="tags">
+            <span class="tag t-infra">AWS</span>
+            <span class="tag t-infra">GitHub Actions</span>
+            <span class="tag t-infra">Docker</span>
+            <span class="tag t-infra">Kubernetes</span>
+            <span class="tag t-infra">RabbitMQ</span>
+            <span class="tag t-infra">Kong Gateway</span>
+          </div>
+
+          <div class="sg-title">Databases &amp; BaaS</div>
+          <div class="tags">
+            <span class="tag t-db">PostgreSQL</span>
+            <span class="tag t-db">MongoDB</span>
+            <span class="tag t-db">Supabase</span>
+            <span class="tag t-db">MySQL</span>
+            <span class="tag t-db">Prisma</span>
+            <span class="tag t-db">Sequelize</span>
+          </div>
+
+          <div class="sg-title">Security &amp; Tools</div>
+          <div class="tags">
+            <span class="tag t-tool">Jest / Testing</span>
+            <span class="tag t-tool">JWT / OAuth2</span>
+            <span class="tag t-tool">RBAC</span>
+            <span class="tag t-tool">Git / GitHub</span>
+            <span class="tag t-tool">Chrome APIs</span>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div>
+          <div class="s-label">Education</div>
+          <div class="edu-name">HCMC University<br>of Transport</div>
+          <div class="edu-year">2022 — 2026</div>
+          <div class="edu-degree">BSc. Information Technology</div>
+          <div class="edu-degree">Expected Graduation: 2026</div>
+        </div>
+
+        <!-- ACTIVITIES -->
+        <div>
+          <div class="s-label">Activities</div>
+          <div class="act-item"><b>Hackathon participant</b> — rapid full-stack prototyping under time constraints</div>
+          <div class="act-item"><b>IT Club member</b> — cross-functional teamwork &amp; event coordination</div>
+          <div class="act-item"><b>Coding Competitions</b> — algorithmic problem solving &amp; optimization</div>
+          <div class="act-item"><b>Volunteer</b> — community &amp; university outreach programs</div>
+        </div>
+
+        <!-- INTERESTS -->
+        <div>
+          <div class="s-label">Interests</div>
+          <div class="act-item">Distributed systems &amp; cloud architecture</div>
+          <div class="act-item">UI/UX &amp; product thinking</div>
+          <div class="act-item">Open-source contribution</div>
+        </div>
+
+      </div><!-- /sidebar -->
+
+      <!-- ─── MAIN ─── -->
+      <div class="main">
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <div>
+          <div class="m-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" />
+            </svg>
+            Professional Summary
+          </div>
+          <p class="summary">
+            Full-stack developer and IT graduate of <strong>Ho Chi Minh City University of Transport</strong>, with <strong>2+ years of freelance project delivery</strong>. Proven ability to architect and ship end-to-end systems — from responsive web UIs to microservices backends and cross-platform mobile apps. Delivered <strong>4 production-grade projects</strong> across distributed microservices, social learning platforms, e-commerce, and developer tooling. Proficient in <strong>Next.js, React, Node.js, TypeScript, PostgreSQL, AWS, Docker, Kubernetes, and automated testing (Jest)</strong>.
+          </p>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div>
+          <div class="m-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+            </svg>
+            Experience
+          </div>
+
+          <div class="proj" style="background:#f8fafc;">
+            <div class="proj-top">
+              <div class="proj-name">Freelance Full-Stack Developer</div>
+              <div class="proj-meta">
+                <span class="badge">Independent</span>
+                <span class="badge-commits">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
+                  </svg>
+                  Jan 2023 — Present · 2+ yrs
+                </span>
+              </div>
+            </div>
+            <p class="proj-desc">End-to-end ownership across architecture, backend, frontend, and deployment.</p>
+            <ul class="bullets">
+              <li>Delivered <strong>4 full-stack products</strong> independently, scaling to <strong>10k+ MAU</strong>.</li>
+              <li>Managed full project lifecycle with <strong>90%+ test coverage</strong> using <strong>Jest/Supertest</strong> and automated <strong>CI/CD</strong>.</li>
+            </ul>
+            <div class="stack">
+              <span class="stag s-ts">React</span>
+              <span class="stag s-rn">Node.js</span>
+              <span class="stag s-ts">TypeScript</span>
+              <span class="stag s-db">PostgreSQL</span>
+              <span class="stag s-inf">Docker / K8s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FEATURED PROJECTS -->
+        <div>
+          <div class="m-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            Featured Projects
+          </div>
+
+          <!-- EV Charging -->
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">EV Charging Orchestration Platform</div>
+              <div class="proj-meta">
+                <span class="badge">Capstone</span>
+                <span class="badge-commits">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
+                  </svg>
+                  2024 — 2025
+                </span>
+              </div>
+            </div>
+            <p class="proj-desc">Cloud-native EV charging platform spanning a Flutter mobile app, React web portal, and 5+ distributed microservices for intelligent station scheduling and session lifecycle management.</p>
+            <a class="proj-url" href="https://github.com/Victor-201/ev-charging-orchestration-platform"
+              target="_blank"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" style="vertical-align:middle;margin-right:3px">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>github.com/Victor-201/ev-charging-orchestration-platform</a>
+            <ul class="bullets">
+              <li>Architected a <strong>race-condition-safe booking engine</strong> with distributed priority-queue logic and <strong>Redis-backed session state</strong> across 5+ microservices.</li>
+              <li>Designed <strong>event-driven inter-service communication</strong> via <strong>RabbitMQ</strong> with <strong>Kong API Gateway</strong> enforcing JWT auth and rate-limiting policies.</li>
+              <li>Automated <strong>CI/CD to AWS EKS</strong> (Docker + Kubernetes) via <strong>GitHub Actions</strong>, achieving <strong>90%+ test coverage</strong> with <strong>Jest &amp; Supertest</strong>.</li>
+            </ul>
+            <div class="stack">
+              <span class="stag s-rn">Flutter / Dart</span>
+              <span class="stag s-ts">React</span>
+              <span class="stag s-ts">TypeScript</span>
+              <span class="stag s-db">PostgreSQL / PL/pgSQL</span>
+              <span class="stag s-inf">RabbitMQ</span>
+              <span class="stag s-inf">Kong</span>
+              <span class="stag s-inf">Docker / K8s</span>
+            </div>
+          </div>
+
+          <!-- StudyHub -->
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">StudyHub — Social Learning Platform</div>
+              <div class="proj-meta">
+                <span class="badge">Full-Stack</span>
+                <span class="badge-commits">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
+                  </svg>
+                  2023
+                </span>
+              </div>
+            </div>
+            <p class="proj-desc">Full-stack social learning platform with real-time collaborative study rooms, resource sharing, and group chat — built end-to-end from DB schema to deployed UI.</p>
+            <a class="proj-url" href="https://github.com/Victor-201/studyhub-platform" target="_blank"><svg width="10"
+                height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                style="vertical-align:middle;margin-right:3px">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>github.com/Victor-201/studyhub-platform</a>
+            <ul class="bullets">
+              <li>Implemented <strong>bidirectional WebSocket communication</strong> with <strong>Socket.IO room isolation</strong>, sustaining <strong>500+ concurrent connections</strong> without message loss.</li>
+              <li>Re-architected frontend to <strong>Next.js 14 (SSR + ISR)</strong>, reducing <strong>TTFB by 40%</strong> and boosting <strong>Lighthouse score from 62 to 91</strong>.</li>
+              <li>Designed <strong>RESTful API</strong> with <strong>JWT authentication</strong> and <strong>PostgreSQL-backed RBAC</strong> for secure, multi-role resource access control.</li>
+            </ul>
+            <div class="stack">
+              <span class="stag s-rn">Node.js</span>
+              <span class="stag s-rn">Express.js</span>
+              <span class="stag s-ng">Next.js</span>
+              <span class="stag s-db">PostgreSQL</span>
+              <span class="stag">Socket.IO</span>
+            </div>
+          </div>
+
+          <!-- WebDev Toolkit -->
+          <div class="proj">
+            <div class="proj-top">
+              <div class="proj-name">WebDev Toolkit — Chrome Extension</div>
+              <div class="proj-meta">
+                <span class="badge">Side Project</span>
+                <span class="badge-commits">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
+                  </svg>
+                  2023
+                </span>
+              </div>
+            </div>
+            <p class="proj-desc">Chrome Extension (Manifest V3) bundling 6 developer inspection tools — color picker, font detector, CSS inspector, image downloader, page ruler, and productivity overlay.</p>
+            <a class="proj-url" href="https://github.com/Victor-201/webdev-toolkit" target="_blank"><svg width="10"
+                height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                style="vertical-align:middle;margin-right:3px">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>github.com/Victor-201/webdev-toolkit</a>
+            <ul class="bullets">
+              <li>Built <strong>6 DOM-integrated tools</strong> via <strong>Chrome Manifest V3 content scripts</strong> with sandboxed injection and zero render-blocking overhead.</li>
+              <li>Persisted user preferences cross-session via <strong>Chrome Storage API</strong> with real-time sync across browser tabs.</li>
+            </ul>
+            <div class="stack">
+              <span class="stag">JavaScript</span>
+              <span class="stag">Chrome Extension APIs</span>
+              <span class="stag">HTML / CSS</span>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div><!-- /main -->
+
+    </div><!-- /body -->
+
+    <!-- ═══ FOOTER ═══ -->
+    <div class="footer">
+      Nguyen Van Thang <span>|</span> Full-Stack Developer <span>|</span> 4.victor.201@gmail.com <span>|</span> Ho Chi Minh City, Vietnam
+    </div>
+
+  </div><!-- /page -->
+</body>
+
+</html>

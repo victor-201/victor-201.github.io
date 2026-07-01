@@ -19,10 +19,11 @@ export const router = createBrowserRouter([
             { path: "projects/:slug", element: <ProjectDetailPage /> },
             { path: "tech-stack", element: <TechStackPage /> },
             { path: "about", element: <AboutPage /> },
-            { path: "resume", element: <ResumePage /> },
             { path: "contact", element: <ContactPage /> },
             { path: "404", element: <NotFoundPage /> },
             { path: "*", element: <NotFoundPage /> },
         ],
     },
+    // Resume page is a standalone route — no RootLayout, no navbar/header
+    { path: "/resume", element: <ResumePage /> },
 ]);

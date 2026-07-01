@@ -1,9 +1,14 @@
 {
-  "name": "Nguyễn Văn Thắng",
+  "name": "Victor · Nguyễn Văn Thắng",
   "title": "Về tôi",
-  "desc": "Đôi nét về bản thân.",
-  "bio1": "Tôi là một AI/ML Engineer & Full Stack Developer đam mê từ Việt Nam, với tình yêu sâu sắc dành cho việc xây dựng những trải nghiệm kỹ thuật số ấn tượng. Tôi phát triển mạnh mẽ ở điểm giao thoa giữa AI và công nghệ web hiện đại.",
-  "bio2": "Với chuyên môn trải dài từ React, TypeScript, Node.js đến hạ tầng đám mây, tôi tạo ra những ứng dụng có khả năng mở rộng, giải quyết các vấn đề thực tế — từ công cụ AI, nền tảng xã hội đến hệ thống hạ tầng xe điện.",
-  "bio3": "Khi không code, bạn sẽ thấy tôi khám phá công nghệ mới, đóng góp cho mã nguồn mở, hoặc tìm hiểu các nghiên cứu AI mới nhất. Tôi tin vào việc viết code sạch, học hỏi không ngừng và xây dựng những sản phẩm tạo ra giá trị.",
-  "available": "Sẵn sàng nhận việc"
+  "desc": "Hồ sơ năng lực & Thế mạnh chuyên môn",
+  "bio1": "Tôi là một Kỹ sư Phát triển Full-stack với kinh nghiệm xây dựng các ứng dụng web và di động xuyên suốt toàn bộ vòng đời phát triển — từ giao diện người dùng & UI/UX cho đến hệ thống backend API và thiết kế cơ sở dữ liệu. Tôi làm việc thành thạo với React, React Native, Node.js, TypeScript và các hệ cơ sở dữ liệu quan hệ, sẵn sàng chịu trách nhiệm chính về tính năng cũng như phối hợp hiệu quả trong môi trường làm việc nhóm.",
+  "bio2": "Hiện đang sinh sống tại Thành phố Hồ Chí Minh, mục tiêu của tôi là hiện thực hóa các ý tưởng thành giao diện, và biến giao diện thành những giá trị thực tế, mang lại sự sinh động cho từng sản phẩm. Trí tuệ nhân tạo hãy cẩn thận — tôi có thể thay thế bạn trước khi bạn kịp thay thế tôi.",
+  "available": "Sẵn sàng cho các cơ hội mới",
+  "pillar1_title": "Full-Stack & Microservices",
+  "pillar1_desc": "Thiết kế hệ thống microservices bền vững, xử lý dữ liệu thời gian thực (RabbitMQ, Socket.io) và áp dụng Clean Architecture.",
+  "pillar2_title": "Hạ tầng & Hệ thống",
+  "pillar2_desc": "Xây dựng hạ tầng container (Docker), cấu hình API Gateway (Kong), tối ưu cơ sở dữ liệu và triển khai ứng dụng hệ thống cấp thấp.",
+  "pillar3_title": "Kỹ nghệ phần mềm chuẩn mực",
+  "pillar3_desc": "Đảm bảo code sạch (Clean Code), viết test đầy đủ, tối ưu hóa mã nguồn và tự động hóa quy trình tích hợp liên tục."
 }
