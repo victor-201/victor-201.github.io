@@ -1,14 +1,14 @@
 {
   "name": "Victor · Nguyễn Văn Thắng",
   "title": "Về tôi",
-  "desc": "Hồ sơ năng lực & Thế mạnh chuyên môn",
-  "bio1": "Tôi là một Kỹ sư Phát triển Full-stack với kinh nghiệm xây dựng các ứng dụng web và di động xuyên suốt toàn bộ vòng đời phát triển — từ giao diện người dùng & UI/UX cho đến hệ thống backend API và thiết kế cơ sở dữ liệu. Tôi làm việc thành thạo với React, React Native, Node.js, TypeScript và các hệ cơ sở dữ liệu quan hệ, sẵn sàng chịu trách nhiệm chính về tính năng cũng như phối hợp hiệu quả trong môi trường làm việc nhóm.",
-  "bio2": "Hiện đang sinh sống tại Thành phố Hồ Chí Minh, mục tiêu của tôi là hiện thực hóa các ý tưởng thành giao diện, và biến giao diện thành những giá trị thực tế, mang lại sự sinh động cho từng sản phẩm. Trí tuệ nhân tạo hãy cẩn thận — tôi có thể thay thế bạn trước khi bạn kịp thay thế tôi.",
+  "desc": "Lập trình viên Full-stack Freelance",
+  "bio1": "Tôi là lập trình viên Full-stack với 1 năm kinh nghiệm freelance xây dựng ứng dụng web và hệ thống backend. Tôi làm việc với React, Node.js, TypeScript và PostgreSQL để tạo ra các giải pháp hoàn chỉnh — từ giao diện người dùng đến RESTful API và thiết kế cơ sở dữ liệu. Tôi có thể tự chịu trách nhiệm về tính năng và làm việc độc lập.",
+  "bio2": "Hiện sống tại Thành phố Hồ Chí Minh, tôi tập trung vào việc biến yêu cầu thành phần mềm thực tế. Tôi đã bàn giao 3 dự án freelance bao gồm nền tảng học tập xã hội, hệ thống quản lý công nợ, và portfolio cá nhân. Trước đó đã hoàn thành các dự án học thuật về hệ thống phân tán và kỹ nghệ phần mềm.",
   "available": "Sẵn sàng cho các cơ hội mới",
-  "pillar1_title": "Full-Stack & Microservices",
-  "pillar1_desc": "Thiết kế hệ thống microservices bền vững, xử lý dữ liệu thời gian thực (RabbitMQ, Socket.io) và áp dụng Clean Architecture.",
+  "pillar1_title": "Phát triển Full-Stack",
+  "pillar1_desc": "Xây dựng ứng dụng web với React, Node.js và PostgreSQL. Thiết kế RESTful API và quản lý toàn bộ vòng đời phát triển.",
   "pillar2_title": "Hạ tầng & Hệ thống",
-  "pillar2_desc": "Xây dựng hạ tầng container (Docker), cấu hình API Gateway (Kong), tối ưu cơ sở dữ liệu và triển khai ứng dụng hệ thống cấp thấp.",
-  "pillar3_title": "Kỹ nghệ phần mềm chuẩn mực",
-  "pillar3_desc": "Đảm bảo code sạch (Clean Code), viết test đầy đủ, tối ưu hóa mã nguồn và tự động hóa quy trình tích hợp liên tục."
+  "pillar2_desc": "Container hóa ứng dụng với Docker, cấu hình API Gateway (Kong) và triển khai lên nền tảng đám mây. Kiến thức nền tảng về kiến trúc microservices.",
+  "pillar3_title": "Kỹ nghệ phần mềm",
+  "pillar3_desc": "Viết code sạch và dễ bảo trì, thực hiện kiểm thử (Jest), sử dụng Git/GitHub và tự động hóa quy trình với CI/CD."
 }

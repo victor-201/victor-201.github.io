@@ -13,7 +13,7 @@ import { SEO } from "@/infra/SEO";
 function HomePage() {
     return (
         <>
-            <SEO title="Nguyễn Văn Thắng — AI/ML Engineer" />
+            <SEO title="Nguyễn Văn Thắng — Full Stack Developer" />
             <SmoothScroll>
                 <AnimatedBackground />
                 <main className={cn("bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>

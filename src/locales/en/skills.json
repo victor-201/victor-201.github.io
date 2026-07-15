@@ -1,122 +1,82 @@
 {
   "js": {
     "label": "JavaScript",
-    "percentage": 90,
+    "percentage": 80,
     "shortDescription": "Interactive UIs & server-side logic."
   },
   "ts": {
     "label": "TypeScript",
-    "percentage": 90,
+    "percentage": 75,
     "shortDescription": "Type-safe code for maintainable apps."
   },
   "html": {
     "label": "HTML",
-    "percentage": 95,
+    "percentage": 80,
     "shortDescription": "Semantic, accessible & SEO-friendly markup."
   },
   "css": {
     "label": "CSS",
-    "percentage": 85,
+    "percentage": 75,
     "shortDescription": "Flexbox, Grid, animation & responsive design."
   },
   "react": {
     "label": "React",
-    "percentage": 85,
-    "shortDescription": "Dynamic, high-performance component UIs."
-  },
-  "vue": {
-    "label": "Vue",
-    "percentage": 70,
-    "shortDescription": "Reactive interfaces with data binding."
-  },
-  "nextjs": {
-    "label": "Next.js",
-    "percentage": 80,
-    "shortDescription": "SSR, SSG & API routes — full-stack React."
+    "percentage": 75,
+    "shortDescription": "Component-based UIs with hooks & state management."
   },
   "tailwind": {
     "label": "Tailwind",
-    "percentage": 80,
+    "percentage": 70,
     "shortDescription": "Utility-first, rapid & consistent styling."
   },
   "nodejs": {
     "label": "Node.js",
-    "percentage": 85,
-    "shortDescription": "Scalable server-side apps & APIs."
+    "percentage": 75,
+    "shortDescription": "Server-side apps & REST APIs."
   },
   "express": {
     "label": "Express",
-    "percentage": 80,
+    "percentage": 70,
     "shortDescription": "Lightweight RESTful APIs & middleware."
   },
   "postgres": {
     "label": "PostgreSQL",
-    "percentage": 75,
-    "shortDescription": "Advanced queries, indexing & data integrity."
+    "percentage": 65,
+    "shortDescription": "Relational DB design, queries & indexing."
   },
   "mongodb": {
     "label": "MongoDB",
-    "percentage": 75,
+    "percentage": 60,
     "shortDescription": "Flexible NoSQL document storage."
   },
   "git": {
     "label": "Git",
-    "percentage": 85,
+    "percentage": 75,
     "shortDescription": "Version control, branching & collaboration."
   },
   "github": {
     "label": "GitHub",
-    "percentage": 85,
+    "percentage": 75,
     "shortDescription": "Code hosting, CI/CD & project management."
   },
-  "prettier": {
-    "label": "Prettier",
-    "percentage": 80,
-    "shortDescription": "Consistent code formatting automation."
+  "docker": {
+    "label": "Docker",
+    "percentage": 60,
+    "shortDescription": "Containerized dev environments & deployment."
+  },
+  "linux": {
+    "label": "Linux",
+    "percentage": 65,
+    "shortDescription": "Development & server administration on Unix."
   },
   "npm": {
     "label": "NPM",
-    "percentage": 80,
+    "percentage": 70,
     "shortDescription": "Package management & dependency scripts."
   },
   "firebase": {
     "label": "Firebase",
-    "percentage": 70,
+    "percentage": 55,
     "shortDescription": "Auth, database & cloud functions — BaaS."
-  },
-  "wordpress": {
-    "label": "WordPress",
-    "percentage": 60,
-    "shortDescription": "CMS with themes, plugins & custom post types."
-  },
-  "linux": {
-    "label": "Linux",
-    "percentage": 80,
-    "shortDescription": "Development & server administration on Unix."
-  },
-  "docker": {
-    "label": "Docker",
-    "percentage": 75,
-    "shortDescription": "Containerized dev environments & deployment."
-  },
-  "nginx": {
-    "label": "NginX",
-    "percentage": 70,
-    "shortDescription": "Reverse proxy, load balancing & static serving."
-  },
-  "aws": {
-    "label": "AWS",
-    "percentage": 65,
-    "shortDescription": "Cloud compute, storage & serverless services."
-  },
-  "vim": {
-    "label": "Vim",
-    "percentage": 75,
-    "shortDescription": "Fast, keyboard-driven modal text editing."
-  },
-  "vercel": {
-    "label": "Vercel",
-    "percentage": 75,
-    "shortDescription": "Frontend deployment with serverless functions."
   }
 }

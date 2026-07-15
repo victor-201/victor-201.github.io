@@ -73,21 +73,21 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    startDate: "Sep 2024",
+    startDate: "Jul 2025",
     endDate: "Present",
     skills: [
       SkillNames.JS, SkillNames.TS, SkillNames.NODEJS, SkillNames.EXPRESS,
-      SkillNames.POSTGRES, SkillNames.DOCKER, SkillNames.REACT, SkillNames.TAILWIND,
-      SkillNames.GIT, SkillNames.GITHUB,
+      SkillNames.POSTGRES, SkillNames.REACT, SkillNames.TAILWIND,
+      SkillNames.GIT, SkillNames.GITHUB, SkillNames.DOCKER,
     ],
   },
   {
     id: 2,
-    startDate: "Jan 2024",
-    endDate: "Sep 2024",
+    startDate: "Sep 2024",
+    endDate: "Jun 2025",
     skills: [
       SkillNames.JS, SkillNames.REACT, SkillNames.NODEJS, SkillNames.MONGODB,
-      SkillNames.GIT, SkillNames.GITHUB,
+      SkillNames.GIT, SkillNames.GITHUB, SkillNames.HTML, SkillNames.CSS,
     ],
   },
 ];

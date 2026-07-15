@@ -1,10 +1,10 @@
 {
   "title": "Victor | Full Stack Developer",
   "description": {
-    "long": "Explore the portfolio of Victor (Victor-201), a Full Stack Developer specializing in web applications, AI-powered tools, EV infrastructure systems, and social platforms built with JavaScript, TypeScript, Python, and React.",
-    "short": "Discover the portfolio of Victor, a Full Stack Developer building impactful web apps, AI tools, and scalable platforms."
+    "long": "Explore the portfolio of Victor (Victor-201), a Full Stack Developer specializing in web applications, EV infrastructure systems, and social platforms built with JavaScript, TypeScript, Python, and React.",
+    "short": "Discover the portfolio of Victor, a Full Stack Developer building impactful web apps, tools, and scalable platforms."
   },
-  "keywords": ["Victor", "Victor-201", "portfolio", "full stack developer", "web development", "JavaScript", "TypeScript", "Python", "React", "Node.js", "EV charging system", "social network", "AI tools", "Docker", "PostgreSQL"],
+  "keywords": ["Victor", "Victor-201", "portfolio", "full stack developer", "web development", "JavaScript", "TypeScript", "Python", "React", "Node.js", "EV charging system", "social network", "Docker", "PostgreSQL"],
   "author": "Victor",
   "name": "Victor",
   "techStackPageTitle": "Skills & Technologies — Nguyễn Văn Thắng",

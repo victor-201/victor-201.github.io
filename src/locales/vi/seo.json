@@ -1,10 +1,10 @@
 {
   "title": "Victor | Lập trình viên Full Stack",
   "description": {
-    "long": "Khám phá portfolio của Victor (Victor-201), Lập trình viên Full Stack chuyên về ứng dụng web, công cụ AI, hệ thống hạ tầng EV và nền tảng xã hội xây dựng với JavaScript, TypeScript, Python và React.",
-    "short": "Khám phá portfolio của Victor, Lập trình viên Full Stack xây dựng ứng dụng web, công cụ AI và nền tảng mở rộng."
+    "long": "Khám phá portfolio của Victor (Victor-201), Lập trình viên Full Stack chuyên về ứng dụng web, hệ thống hạ tầng EV và nền tảng xã hội xây dựng với JavaScript, TypeScript, Python và React.",
+    "short": "Khám phá portfolio của Victor, Lập trình viên Full Stack xây dựng ứng dụng web và nền tảng mở rộng."
   },
-  "keywords": ["Victor", "Victor-201", "portfolio", "lập trình viên full stack", "phát triển web", "JavaScript", "TypeScript", "Python", "React", "Node.js", "hệ thống sạc EV", "mạng xã hội", "công cụ AI", "Docker", "PostgreSQL"],
+  "keywords": ["Victor", "Victor-201", "portfolio", "lập trình viên full stack", "phát triển web", "JavaScript", "TypeScript", "Python", "React", "Node.js", "hệ thống sạc EV", "mạng xã hội", "Docker", "PostgreSQL"],
   "author": "Nguyễn Văn Thắng",
   "name": "Thắng",
   "techStackPageTitle": "Kỹ năng & Công nghệ — Nguyễn Văn Thắng",

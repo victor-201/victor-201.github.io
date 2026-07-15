@@ -2,22 +2,22 @@
   "items": [
     {
       "id": 1,
-      "title": "Kỹ sư Full Stack",
-      "company": "Dự án phát triển phần mềm",
+      "title": "Lập trình viên Full-stack Freelance",
+      "company": "Tự do",
       "description": [
-        "Thiết kế hệ thống quản lý trạm sạc EV theo kiến trúc microservices với Kong API Gateway, RabbitMQ, Docker và Postgres.",
-        "Phát triển StudyHub, nền tảng học tập xã hội hỗ trợ chat thời gian thực, nhóm học tập và chia sẻ tài nguyên.",
-        "Xây dựng hệ thống quản lý thu hồi nợ (ARMS) áp dụng Clean Architecture để số hóa quy trình theo dõi nợ cho doanh nghiệp."
+        "Xây dựng StudyHub, nền tảng học tập xã hội với chat thời gian thực, nhóm học và chia sẻ tài liệu (Node.js, Express, PostgreSQL, Socket.IO).",
+        "Phát triển hệ thống Quản lý Thu hồi Công nợ (ARMS) áp dụng Clean Architecture để số hóa quy trình theo dõi nợ cho doanh nghiệp SME (React, Node.js).",
+        "Thiết kế và triển khai website portfolio cá nhân với React, Vite, Tailwind CSS và Framer Motion, tích hợp 3D và chat thời gian thực."
       ]
     },
     {
       "id": 2,
-      "title": "Kỹ sư phần mềm",
-      "company": "Dự án nghiên cứu và học thuật",
+      "title": "Dự án học thuật",
+      "company": "Đại học & Nghiên cứu",
       "description": [
-        "Dẫn dắt phát triển mạng xã hội mở rộng sử dụng React, Node.js và MongoDB cho tương tác thời gian thực.",
-        "Xây dựng hệ thống cảnh báo buồn ngủ thông minh dùng AI và Thị giác máy tính để giám sát mệt mỏi thời gian thực và phòng ngừa tai nạn.",
-        "Phát triển công cụ dịch video AI hỗ trợ nhận dạng giọng nói tự động và tổng hợp âm thanh tiếng Việt."
+        "Tham gia xây dựng Hệ thống Quản lý Trạm sạc EV — dự án capstone microservices với Kong API Gateway, RabbitMQ, Docker và Postgres.",
+        "Xây dựng Hệ thống Cảnh báo Buồn ngủ Tài xế giám sát mệt mỏi thời gian thực sử dụng thị giác máy tính (Python, OpenCV).",
+        "Phát triển công cụ dịch video web với nhận dạng giọng nói và tổng hợp âm thanh tiếng Việt (React, Python backend)."
       ]
     }
   ]

@@ -2,22 +2,22 @@
   "items": [
     {
       "id": 1,
-      "title": "Full Stack Engineer",
-      "company": "Software Development Projects",
+      "title": "Freelance Full-stack Developer",
+      "company": "Independent",
       "description": [
-        "Architected an EV Charging Station Management System using a microservices pattern with Kong API Gateway, RabbitMQ, Docker, and Postgres.",
-        "Developed StudyHub, a comprehensive social learning platform that supports real-time chat, study groups, and resource sharing.",
-        "Created an Accounts Receivable Management System (ARMS) implementing Clean Architecture to digitize the SME debt tracking process."
+        "Built StudyHub, a social learning platform with real-time chat, study groups, and resource sharing using Node.js, Express, PostgreSQL, and Socket.IO.",
+        "Developed an Accounts Receivable Management System (ARMS) implementing Clean Architecture to digitize SME debt tracking with React and Node.js.",
+        "Designed and deployed a personal portfolio website with React, Vite, Tailwind CSS, and Framer Motion, featuring 3D elements and real-time chat."
       ]
     },
     {
       "id": 2,
-      "title": "Software Engineer",
-      "company": "Research & Academic Projects",
+      "title": "Academic Projects",
+      "company": "University & Research",
       "description": [
-        "Led development of a scalable social network application leveraging React, Node.js, and MongoDB for real-time user engagement.",
-        "Engineered an intelligent Driver Drowsiness Alert System using AI and Computer Vision to monitor real-time fatigue and prevent accidents.",
-        "Built a full-stack AI-powered video translator capable of automatic speech recognition and Vietnamese audio script synthesis."
+        "Contributed to an EV Charging Station Management System — a capstone microservices project with Kong API Gateway, RabbitMQ, Docker, and Postgres.",
+        "Built a Driver Drowsiness Alert System for real-time fatigue monitoring using computer vision techniques (Python, OpenCV).",
+        "Developed a web video translator with speech recognition and Vietnamese audio synthesis (React, Python backend)."
       ]
     }
   ]

@@ -1,14 +1,14 @@
 {
   "name": "Victor · Nguyễn Văn Thắng",
   "title": "About Me",
-  "desc": "Professional Profile & Core Expertise",
-  "bio1": "I am a Full-stack Developer with experience building web and mobile applications across the stack — from frontend interfaces and UI/UX to backend APIs and database design. I work with React, React Native, Node.js, TypeScript, and relational databases, comfortable taking ownership of features and collaborating in team environments.",
-  "bio2": "Currently living in Ho Chi Minh City, I focus on turning ideas into interfaces, and interfaces into real impact, making it all more vibrant. AI, beware — I might replace you before you replace me.",
+  "desc": "Freelance Full-stack Developer",
+  "bio1": "I am a Full-stack Developer with 1 year of freelance experience building web applications and backend systems. I work with React, Node.js, TypeScript, and PostgreSQL to deliver end-to-end solutions — from responsive UIs to RESTful APIs and database design. Comfortable taking ownership of features and working independently.",
+  "bio2": "Based in Ho Chi Minh City, I focus on turning requirements into reliable software. I have delivered 3 freelance projects including a social learning platform, a debt management system, and a developer portfolio. Previously completed academic projects in distributed systems and software engineering.",
   "available": "Open to new opportunities",
-  "pillar1_title": "Full-Stack & Microservices",
-  "pillar1_desc": "Designing resilient microservices, processing real-time data flow (RabbitMQ, Socket.io), and implementing Clean Architecture.",
+  "pillar1_title": "Full-Stack Development",
+  "pillar1_desc": "Building responsive web applications with React, Node.js, and PostgreSQL. Designing RESTful APIs and managing the full development lifecycle.",
   "pillar2_title": "Systems & Infrastructure",
-  "pillar2_desc": "Building containerized environments (Docker), configuring API Gateways (Kong), optimizing databases, and developing low-level system applications.",
+  "pillar2_desc": "Containerizing applications with Docker, configuring API Gateways (Kong), and deploying to cloud platforms. Foundational knowledge of microservices architecture.",
   "pillar3_title": "Software Excellence",
-  "pillar3_desc": "Ensuring clean and maintainable code, writing comprehensive tests, optimizing codebase structure, and automating integration workflows."
+  "pillar3_desc": "Writing clean, maintainable code, conducting thorough testing (Jest), using version control (Git/GitHub), and automating workflows with CI/CD pipelines."
 }

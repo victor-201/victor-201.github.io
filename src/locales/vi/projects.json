@@ -28,8 +28,8 @@
     {
       "id": "web-video-translator",
       "title": "Trình dịch video web",
-      "category": "Công cụ AI",
-      "description": "Ứng dụng web AI full-stack phát hiện video từ bất kỳ trang web nào và dịch sang tiếng Việt với phụ đề và thuyết minh."
+      "category": "Công cụ web",
+      "description": "Ứng dụng web full-stack phát hiện video từ bất kỳ trang web nào và dịch sang tiếng Việt với phụ đề và thuyết minh."
     },
     {
       "id": "smtp-linux",
@@ -40,8 +40,8 @@
     {
       "id": "se-drowsiness-alert",
       "title": "Cảnh báo buồn ngủ tài xế",
-      "category": "AI / Thị giác máy tính",
-      "description": "Ứng dụng AI và Thị giác máy tính giám sát tài xế theo thời gian thực, phát hiện dấu hiệu buồn ngủ hoặc mất tập trung để ngăn ngừa tai nạn."
+      "category": "Thị giác máy tính",
+      "description": "Ứng dụng thị giác máy tính giám sát tài xế theo thời gian thực, phát hiện dấu hiệu buồn ngủ hoặc mất tập trung để ngăn ngừa tai nạn."
     },
     {
       "id": "victor-portfolio",

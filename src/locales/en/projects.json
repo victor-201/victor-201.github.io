@@ -28,8 +28,8 @@
     {
       "id": "web-video-translator",
       "title": "Web Video Translator",
-      "category": "AI Web Tool",
-      "description": "A full-stack AI-powered web application that detects videos from any website and translates them into Vietnamese with subtitles and voice-over."
+      "category": "Full-Stack Web Tool",
+      "description": "A full-stack web application that detects videos from any website and translates them into Vietnamese with subtitles and voice-over."
     },
     {
       "id": "smtp-linux",
@@ -40,8 +40,8 @@
     {
       "id": "se-drowsiness-alert",
       "title": "Driver Drowsiness Alert",
-      "category": "AI / Computer Vision",
-      "description": "An AI and Computer Vision application that monitors drivers in real-time, detecting signs of drowsiness or distraction to prevent accidents."
+      "category": "Computer Vision",
+      "description": "A computer vision application that monitors drivers in real-time, detecting signs of drowsiness or distraction to prevent accidents."
     },
     {
       "id": "victor-portfolio",
