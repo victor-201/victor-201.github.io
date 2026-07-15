@@ -79,7 +79,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: victor-201-github-io
+          projectName: victor-portfolio
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           # branch = 'main' means production deployment
