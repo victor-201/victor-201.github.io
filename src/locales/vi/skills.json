@@ -1,82 +1,122 @@
 {
   "js": {
     "label": "JavaScript",
-    "percentage": 80,
+    "percentage": 90,
     "shortDescription": "UI tương tác & xử lý server."
   },
   "ts": {
     "label": "TypeScript",
-    "percentage": 75,
+    "percentage": 90,
     "shortDescription": "Code an toàn, dễ bảo trì."
   },
   "html": {
     "label": "HTML",
-    "percentage": 80,
+    "percentage": 95,
     "shortDescription": "Markup ngữ nghĩa, tối ưu SEO."
   },
   "css": {
     "label": "CSS",
-    "percentage": 75,
+    "percentage": 85,
     "shortDescription": "Flexbox, Grid, animation, responsive."
   },
   "react": {
     "label": "React",
-    "percentage": 75,
-    "shortDescription": "UI component với hooks & state management."
+    "percentage": 85,
+    "shortDescription": "UI động, hiệu suất cao với component."
+  },
+  "vue": {
+    "label": "Vue",
+    "percentage": 70,
+    "shortDescription": "Reactive data binding, giao diện linh hoạt."
+  },
+  "nextjs": {
+    "label": "Next.js",
+    "percentage": 80,
+    "shortDescription": "SSR, SSG & API routes — full-stack React."
   },
   "tailwind": {
     "label": "Tailwind",
-    "percentage": 70,
+    "percentage": 80,
     "shortDescription": "Utility-first, UI nhanh & nhất quán."
   },
   "nodejs": {
     "label": "Node.js",
-    "percentage": 75,
-    "shortDescription": "Server-side apps & REST APIs."
+    "percentage": 85,
+    "shortDescription": "Server-side & API mở rộng."
   },
   "express": {
     "label": "Express",
-    "percentage": 70,
+    "percentage": 80,
     "shortDescription": "RESTful API & middleware nhẹ."
   },
   "postgres": {
     "label": "PostgreSQL",
-    "percentage": 65,
-    "shortDescription": "Thiết kế DB quan hệ, truy vấn & indexing."
+    "percentage": 75,
+    "shortDescription": "Truy vấn nâng cao, indexing, toàn vẹn dữ liệu."
   },
   "mongodb": {
     "label": "MongoDB",
-    "percentage": 60,
+    "percentage": 75,
     "shortDescription": "NoSQL linh hoạt, lưu trữ phi cấu trúc."
   },
   "git": {
     "label": "Git",
-    "percentage": 75,
+    "percentage": 85,
     "shortDescription": "Quản lý phiên bản, branching, cộng tác."
   },
   "github": {
     "label": "GitHub",
-    "percentage": 75,
+    "percentage": 85,
     "shortDescription": "Code hosting, CI/CD, quản lý dự án."
   },
-  "docker": {
-    "label": "Docker",
-    "percentage": 60,
-    "shortDescription": "Container hóa môi trường & triển khai."
-  },
-  "linux": {
-    "label": "Linux",
-    "percentage": 65,
-    "shortDescription": "Dev & quản trị server trên Unix."
+  "prettier": {
+    "label": "Prettier",
+    "percentage": 80,
+    "shortDescription": "Format code tự động, style nhất quán."
   },
   "npm": {
     "label": "NPM",
-    "percentage": 70,
+    "percentage": 80,
     "shortDescription": "Quản lý package & dependencies."
   },
   "firebase": {
     "label": "Firebase",
-    "percentage": 55,
+    "percentage": 70,
     "shortDescription": "Auth, database & cloud functions — BaaS."
+  },
+  "wordpress": {
+    "label": "WordPress",
+    "percentage": 60,
+    "shortDescription": "CMS với theme, plugin & custom post."
+  },
+  "linux": {
+    "label": "Linux",
+    "percentage": 80,
+    "shortDescription": "Dev & quản trị server trên Unix."
+  },
+  "docker": {
+    "label": "Docker",
+    "percentage": 75,
+    "shortDescription": "Container hóa môi trường & triển khai."
+  },
+  "nginx": {
+    "label": "NginX",
+    "percentage": 70,
+    "shortDescription": "Reverse proxy, load balancing, static serving."
+  },
+  "aws": {
+    "label": "AWS",
+    "percentage": 65,
+    "shortDescription": "Cloud compute, storage & serverless."
+  },
+  "vim": {
+    "label": "Vim",
+    "percentage": 75,
+    "shortDescription": "Soạn thảo nhanh bằng bàn phím."
+  },
+  "vercel": {
+    "label": "Vercel",
+    "percentage": 75,
+    "shortDescription": "Deploy frontend với serverless functions."
   }
 }

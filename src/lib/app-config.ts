@@ -111,7 +111,7 @@ export type Project = {
 export type ProjectSkillKey = "next" | "chakra" | "node" | "python" | "prisma" | "postgres" | "mongo" | "express" | "reactQuery" | "shadcn" | "aceternity" | "tailwind" | "docker" | "yjs" | "firebase" | "sockerio" | "js" | "ts" | "vue" | "react" | "sanity" | "spline" | "gsap" | "framerMotion" | "supabase";
 
 export const config = {
-  site: "https://victor-201.github.io",
+  site: "https://victorfolio.pages.dev",
   email: "4.victor.201@gmail.com",
   githubUsername: "Victor-201",
   githubRepo: "",

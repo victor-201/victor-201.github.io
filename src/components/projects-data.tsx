@@ -73,7 +73,7 @@ const projects: Project[] = [
         src: "/assets/projects-screenshots/ev-charging/landing.png",
         screenshots: ["landing.png"],
         github: "https://github.com/Victor-201/ev-charging-station-management-system",
-        live: "https://github.com/Victor-201/ev-charging-station-management-system",
+        live: "https://victor-admin.pages.dev",
         skills: {
             frontend: [
                 PROJECT_SKILLS.react,
@@ -95,7 +95,7 @@ const projects: Project[] = [
         src: "/assets/projects-screenshots/studyhub/landing.png",
         screenshots: ["landing.png"],
         github: "https://github.com/Victor-201/studyhub-platform",
-        live: "https://github.com/Victor-201/studyhub-platform",
+        live: "https://victor-studyhub.pages.dev",
         skills: {
             frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.react],
             backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.docker],
@@ -106,7 +106,7 @@ const projects: Project[] = [
         src: "/assets/projects-screenshots/customer-debt/landing.png",
         screenshots: ["landing.png"],
         github: "https://github.com/Victor-201/customer-debt-management",
-        live: "https://github.com/Victor-201/customer-debt-management",
+        live: "https://victor-debt.pages.dev",
         skills: {
             frontend: [PROJECT_SKILLS.js],
             backend: [PROJECT_SKILLS.postgres, PROJECT_SKILLS.node],
@@ -161,7 +161,7 @@ const projects: Project[] = [
         src: "/assets/projects-screenshots/studyhub/landing.png",
         screenshots: [],
         github: "https://github.com/Victor-201/victor-201.github.io",
-        live: "https://github.com/Victor-201/victor-201.github.io",
+        live: "https://victorfolio.pages.dev",
         skills: {
             frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.tailwind, PROJECT_SKILLS.js],
             backend: [],
