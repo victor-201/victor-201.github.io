@@ -6,12 +6,16 @@ import {
     SiDocker,
     SiExpress,
     SiFirebase,
+    SiFlutter,
     SiJavascript,
     SiMongodb,
+    SiNestjs,
     SiPostgresql,
     SiPrisma,
     SiPython,
+    SiRabbitmq,
     SiReactquery,
+    SiRedis,
     SiSanity,
     SiShadcnui,
     SiSocketdotio,
@@ -56,6 +60,10 @@ export const PROJECT_SKILLS: Record<string, ProjectSkill> = {
     gsap: { title: "GSAP", bg: "black", fg: "white", icon: <TbLetterG /> },
     framerMotion: { title: "Framer Motion", bg: "black", fg: "white", icon: <TbBrandFramerMotion /> },
     supabase: { title: "Supabase", bg: "black", fg: "white", icon: <SiSupabase /> },
+    nestjs: { title: "NestJS", bg: "black", fg: "white", icon: <SiNestjs /> },
+    redis: { title: "Redis", bg: "black", fg: "white", icon: <SiRedis /> },
+    rabbitmq: { title: "RabbitMQ", bg: "black", fg: "white", icon: <SiRabbitmq /> },
+    flutter: { title: "Flutter", bg: "black", fg: "white", icon: <SiFlutter /> },
 };
 
 export type ProjectLink = {
@@ -79,7 +87,7 @@ const projects: Project[] = [
         id: "ev-charging",
         src: "/assets/projects-screenshots/ev-charging/landing.png",
         screenshots: ["landing.png"],
-        github: "https://github.com/Victor-201/ev-charging-station-management-system",
+        github: "https://github.com/Victor-201/ev-charging-orchestration-platform",
         live: "https://victor-ev-admin.pages.dev",
         links: [
             { label: "Admin Panel", url: "https://victor-ev-admin.pages.dev" },
@@ -87,16 +95,19 @@ const projects: Project[] = [
         ],
         skills: {
             frontend: [
+                PROJECT_SKILLS.next,
                 PROJECT_SKILLS.react,
                 PROJECT_SKILLS.ts,
                 PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.flutter,
             ],
             backend: [
+                PROJECT_SKILLS.nestjs,
                 PROJECT_SKILLS.node,
-                PROJECT_SKILLS.express,
                 PROJECT_SKILLS.postgres,
+                PROJECT_SKILLS.redis,
+                PROJECT_SKILLS.rabbitmq,
                 PROJECT_SKILLS.docker,
-                PROJECT_SKILLS.prisma,
                 PROJECT_SKILLS.sockerio,
             ],
         },

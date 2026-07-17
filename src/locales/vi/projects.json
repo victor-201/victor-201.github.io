@@ -4,8 +4,8 @@
       "id": "ev-charging",
       "title": "Hệ thống quản lý trạm sạc EV",
       "category": "Nền tảng hạ tầng",
-      "description": "Nền tảng full-stack hỗ trợ tài xế EV (tìm trạm, đặt lịch, sạc và thanh toán), nhân viên trạm sạc (quản lý phiên và thanh toán), và quản trị viên (phân tích và báo cáo toàn hệ thống). Bao gồm kiosk cảm ứng cho trạm sạc với giao tiếp OCPP thời gian thực qua WebSocket. Xây dựng với kiến trúc microservices gồm 6 dịch vụ backend, Kong API Gateway, RabbitMQ message broker, Apache NiFi ETL pipeline, Docker và Kubernetes.",
-      "techStack": "Express.js + TypeScript microservices, NestJS + Prisma, ứng dụng di động Flutter, cổng web React 18 + Vite và kiosk, cơ sở dữ liệu PostgreSQL và MySQL."
+      "description": "Nền tảng điều phối sạc EV full-stack — 8 microservices NestJS (IAM, Trạm sạc, Đặt lịch, Thanh toán, Phân tích, Thông báo, Cổng OCPP, Telemetry), 6 cơ sở dữ liệu PostgreSQL + ClickHouse cho telemetry, RabbitMQ event-driven, Redis caching, Kong API Gateway, Socket.IO thời gian thực. Ba frontend: Dashboard Next.js 14, Kiosk PWA React + Vite và ứng dụng di động Flutter đa nền tảng (Android, iOS, Web, Windows) với Bloc state management.",
+      "techStack": "NestJS + TypeScript (8 microservices), TypeORM + PostgreSQL + ClickHouse, Next.js 14 + React 18 + Vite (Admin & Kiosk), Flutter + Bloc (Mobile), RabbitMQ + Redis + Kong, Docker + Docker Compose, Prometheus + Grafana + OpenTelemetry, VNPay, Firebase FCM."
     },
     {
       "id": "studyhub",
