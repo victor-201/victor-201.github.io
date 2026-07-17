@@ -20,6 +20,18 @@
       "description": "A full-stack customer debt management system for tracking receivables, payment history, and customer records. Built with Clean Architecture to digitize the Accounts Receivable process."
     },
     {
+      "id": "ev-kiosk",
+      "title": "EVOLTTOUCH — Smart Kiosk",
+      "category": "EV Infrastructure",
+      "description": "A touch-screen kiosk interface for EV charging stations, enabling drivers to browse stations, start/stop charging sessions, make payments, and scan QR codes. Features real-time OCPP communication via WebSocket with live charging status updates."
+    },
+    {
+      "id": "queens-hill-climbing",
+      "title": "N-Queens Hill Climbing Visualizer",
+      "category": "Algorithm Visualization",
+      "description": "An interactive visualization of the N-Queens problem solved using the Hill Climbing algorithm. Users can adjust board size, observe real-time state exploration, and step through the algorithm's progress."
+    },
+    {
       "id": "social-network",
       "title": "Capstone Social Network",
       "category": "Social Network",

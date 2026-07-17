@@ -113,6 +113,37 @@ const projects: Project[] = [
         },
     },
     {
+        id: "ev-kiosk",
+        src: "/assets/projects-screenshots/ev-kiosk/landing.png",
+        screenshots: ["landing.png"],
+        github: "https://github.com/Victor-201/ev-charging-orchestration-platform",
+        live: "https://victor-ev-kiosk.pages.dev",
+        skills: {
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.ts,
+                PROJECT_SKILLS.tailwind,
+            ],
+            backend: [
+                PROJECT_SKILLS.sockerio,
+            ],
+        },
+    },
+    {
+        id: "queens-hill-climbing",
+        src: "/assets/projects-screenshots/queens-hill-climbing/landing.png",
+        screenshots: ["landing.png"],
+        github: "https://github.com/Victor-201/queens-hill-climbing",
+        live: "https://victor-queens.pages.dev",
+        skills: {
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.tailwind,
+            ],
+            backend: [],
+        },
+    },
+    {
         id: "social-network",
         src: "/assets/projects-screenshots/social-network/landing.png",
         screenshots: ["landing.png"],

@@ -20,6 +20,18 @@
       "description": "Hệ thống quản lý nợ khách hàng full-stack theo dõi khoản phải thu, lịch sử thanh toán và hồ sơ khách hàng. Xây dựng với Clean Architecture để số hóa quy trình quản lý công nợ."
     },
     {
+      "id": "ev-kiosk",
+      "title": "EVOLTTOUCH — Kiosk thông minh",
+      "category": "Hạ tầng EV",
+      "description": "Giao diện kiosk cảm ứng cho trạm sạc EV, cho phép tài xế duyệt trạm, bắt đầu/dừng phiên sạc, thanh toán và quét mã QR. Tích hợp giao tiếp OCPP thời gian thực qua WebSocket với cập nhật trạng thái sạc trực tiếp."
+    },
+    {
+      "id": "queens-hill-climbing",
+      "title": "Trực quan hóa N-Queens Hill Climbing",
+      "category": "Trực quan hóa thuật toán",
+      "description": "Trực quan hóa tương tác bài toán N-Queens giải bằng thuật toán Hill Climbing. Người dùng có thể điều chỉnh kích thước bàn cờ, quan sát quá trình khám phá trạng thái thời gian thực và theo dõi từng bước của thuật toán."
+    },
+    {
       "id": "social-network",
       "title": "Mạng xã hội Capstone",
       "category": "Mạng xã hội",
