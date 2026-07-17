@@ -90,8 +90,8 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/ev-charging-orchestration-platform",
         live: "https://victor-ev-admin.pages.dev",
         links: [
-            { label: "Admin Panel", url: "https://victor-ev-admin.pages.dev" },
-            { label: "Kiosk Terminal", url: "https://victor-ev-kiosk.pages.dev" },
+            { label: "EVoltBoard Admin", url: "https://victor-ev-admin.pages.dev" },
+            { label: "EVOLTTOUCH Kiosk", url: "https://victor-ev-kiosk.pages.dev" },
         ],
         skills: {
             frontend: [

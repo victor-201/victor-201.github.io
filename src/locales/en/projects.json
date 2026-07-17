@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "ev-charging",
-      "title": "EV Charging Station Management System",
+      "title": "EV Charging Orchestration Platform",
       "category": "Infrastructure Platform",
       "description": "A full-stack EV charging orchestration platform — 8 NestJS microservices (IAM, Stations, Booking, Billing, Analytics, Notifications, OCPP Gateway, Telemetry), 6 PostgreSQL databases + ClickHouse for telemetry, RabbitMQ event-driven messaging, Redis caching, Kong API Gateway, Socket.IO real-time updates. Three frontends: Next.js 14 Admin Dashboard, React + Vite Kiosk PWA (touch-screen terminal), and Flutter cross-platform mobile app (Android, iOS, Web, Windows) with Bloc state management.",
       "techStack": "NestJS + TypeScript (8 microservices), TypeORM + PostgreSQL + ClickHouse, Next.js 14 + React 18 + Vite (Admin & Kiosk), Flutter + Bloc (Mobile), RabbitMQ + Redis + Kong, Docker + Docker Compose, Prometheus + Grafana + OpenTelemetry, VNPay, Firebase FCM."
