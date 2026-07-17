@@ -75,11 +75,23 @@ const Modall = ({ project }: { project: Project }) => {
             <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
               {t("common", "buttons.cancel")}
             </button>
-            <Link to={project.live} target="_blank">
-              <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-                {t("common", "buttons.visit")}
-              </button>
-            </Link>
+            {project.links ? (
+              <div className="flex gap-2">
+                {project.links.map((link) => (
+                  <Link key={link.url} to={link.url} target="_blank">
+                    <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-fit whitespace-nowrap">
+                      {link.label}
+                    </button>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <Link to={project.live} target="_blank">
+                <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
+                  {t("common", "buttons.visit")}
+                </button>
+              </Link>
+            )}
           </ModalFooter>
         </ModalBody>
       </Modal>
@@ -122,18 +134,33 @@ const ProjectContents = ({ project }: { project: Project }) => {
         <p className="font-mono">
           {projectLocale?.description}
         </p>
-        <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8">
-          <a
-            className="font-mono underline flex gap-2"
-            rel="noopener"
-            target="_new"
-            href={project.live}
-          >
-            <span className="px-2 py-1 bg-black text-white dark:bg-white dark:text-black text-sm rounded-md border border-black">
-              {t("common", "buttons.visitWebsite")}
-              <ArrowUpRight className="ml-3 w-5 h-5 inline" />
-            </span>
-          </a>
+        <div className="flex flex-col md:flex-row items-center justify-start gap-3 my-3 mb-8 flex-wrap">
+          {project.links ? project.links.map((link) => (
+            <a
+              key={link.url}
+              className="font-mono underline flex gap-2"
+              rel="noopener"
+              target="_new"
+              href={link.url}
+            >
+              <span className="px-2 py-1 bg-black text-white dark:bg-white dark:text-black text-sm rounded-md border border-black">
+                {link.label}
+                <ArrowUpRight className="ml-3 w-5 h-5 inline" />
+              </span>
+            </a>
+          )) : (
+            <a
+              className="font-mono underline flex gap-2"
+              rel="noopener"
+              target="_new"
+              href={project.live}
+            >
+              <span className="px-2 py-1 bg-black text-white dark:bg-white dark:text-black text-sm rounded-md border border-black">
+                {t("common", "buttons.visitWebsite")}
+                <ArrowUpRight className="ml-3 w-5 h-5 inline" />
+              </span>
+            </a>
+          )}
           {project.github && (
             <a
               className="font-mono underline flex gap-2"
@@ -143,6 +170,19 @@ const ProjectContents = ({ project }: { project: Project }) => {
             >
               <span className="px-2 py-1 bg-black text-white dark:bg-white dark:text-black text-sm rounded-md border border-black">
                 {t("common", "buttons.github")}
+                <ArrowUpRight className="ml-3 w-5 h-5 inline" />
+              </span>
+            </a>
+          )}
+          {project.apk && (
+            <a
+              className="font-mono underline flex gap-2"
+              rel="noopener"
+              target="_new"
+              href={project.apk}
+            >
+              <span className="px-2 py-1 bg-green-700 text-white dark:bg-green-600 dark:text-white text-sm rounded-md border border-green-700">
+                📱 Download APK
                 <ArrowUpRight className="ml-3 w-5 h-5 inline" />
               </span>
             </a>

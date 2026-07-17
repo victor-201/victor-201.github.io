@@ -4,8 +4,8 @@
       "id": "ev-charging",
       "title": "Hệ thống quản lý trạm sạc EV",
       "category": "Nền tảng hạ tầng",
-      "description": "Nền tảng full-stack hỗ trợ tài xế EV (tìm trạm, đặt lịch, sạc và thanh toán), nhân viên trạm sạc (quản lý phiên và thanh toán), và quản trị viên (phân tích và báo cáo toàn hệ thống). Xây dựng với kiến trúc microservices gồm 6 dịch vụ backend, Kong API Gateway, RabbitMQ message broker, Apache NiFi ETL pipeline, Docker và Kubernetes.",
-      "techStack": "Express.js + TypeScript microservices, NestJS + Prisma, ứng dụng di động React Native, cổng web React 18 + Vite, cơ sở dữ liệu PostgreSQL và MySQL."
+      "description": "Nền tảng full-stack hỗ trợ tài xế EV (tìm trạm, đặt lịch, sạc và thanh toán), nhân viên trạm sạc (quản lý phiên và thanh toán), và quản trị viên (phân tích và báo cáo toàn hệ thống). Bao gồm kiosk cảm ứng cho trạm sạc với giao tiếp OCPP thời gian thực qua WebSocket. Xây dựng với kiến trúc microservices gồm 6 dịch vụ backend, Kong API Gateway, RabbitMQ message broker, Apache NiFi ETL pipeline, Docker và Kubernetes.",
+      "techStack": "Express.js + TypeScript microservices, NestJS + Prisma, ứng dụng di động Flutter, cổng web React 18 + Vite và kiosk, cơ sở dữ liệu PostgreSQL và MySQL."
     },
     {
       "id": "studyhub",
@@ -18,12 +18,6 @@
       "title": "Quản lý thu hồi công nợ",
       "category": "Quản lý doanh nghiệp",
       "description": "Hệ thống quản lý nợ khách hàng full-stack theo dõi khoản phải thu, lịch sử thanh toán và hồ sơ khách hàng. Xây dựng với Clean Architecture để số hóa quy trình quản lý công nợ."
-    },
-    {
-      "id": "ev-kiosk",
-      "title": "EVOLTTOUCH — Kiosk thông minh",
-      "category": "Hạ tầng EV",
-      "description": "Giao diện kiosk cảm ứng cho trạm sạc EV, cho phép tài xế duyệt trạm, bắt đầu/dừng phiên sạc, thanh toán và quét mã QR. Tích hợp giao tiếp OCPP thời gian thực qua WebSocket với cập nhật trạng thái sạc trực tiếp."
     },
     {
       "id": "queens-hill-climbing",

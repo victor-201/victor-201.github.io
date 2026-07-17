@@ -58,6 +58,11 @@ export const PROJECT_SKILLS: Record<string, ProjectSkill> = {
     supabase: { title: "Supabase", bg: "black", fg: "white", icon: <SiSupabase /> },
 };
 
+export type ProjectLink = {
+    label: string;
+    url: string;
+};
+
 export type Project = {
     id: string;
     src: string;
@@ -65,6 +70,8 @@ export type Project = {
     skills: { frontend: ProjectSkill[]; backend: ProjectSkill[] };
     github?: string;
     live: string;
+    links?: ProjectLink[];
+    apk?: string;
 };
 
 const projects: Project[] = [
@@ -74,6 +81,10 @@ const projects: Project[] = [
         screenshots: ["landing.png"],
         github: "https://github.com/Victor-201/ev-charging-station-management-system",
         live: "https://victor-ev-admin.pages.dev",
+        links: [
+            { label: "Admin Panel", url: "https://victor-ev-admin.pages.dev" },
+            { label: "Kiosk Terminal", url: "https://victor-ev-kiosk.pages.dev" },
+        ],
         skills: {
             frontend: [
                 PROJECT_SKILLS.react,
@@ -110,23 +121,6 @@ const projects: Project[] = [
         skills: {
             frontend: [PROJECT_SKILLS.js],
             backend: [PROJECT_SKILLS.postgres, PROJECT_SKILLS.node],
-        },
-    },
-    {
-        id: "ev-kiosk",
-        src: "/assets/projects-screenshots/ev-kiosk/landing.png",
-        screenshots: ["landing.png"],
-        github: "https://github.com/Victor-201/ev-charging-orchestration-platform",
-        live: "https://victor-ev-kiosk.pages.dev",
-        skills: {
-            frontend: [
-                PROJECT_SKILLS.react,
-                PROJECT_SKILLS.ts,
-                PROJECT_SKILLS.tailwind,
-            ],
-            backend: [
-                PROJECT_SKILLS.sockerio,
-            ],
         },
     },
     {

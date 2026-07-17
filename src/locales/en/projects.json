@@ -4,8 +4,8 @@
       "id": "ev-charging",
       "title": "EV Charging Station Management System",
       "category": "Infrastructure Platform",
-      "description": "A complete full-stack platform supporting EV drivers (station search, booking, charging & payment), charge station staff (session & payment management), and administrators (system-wide analytics & reporting). Built with microservices architecture across 6 backend services, Kong API Gateway, RabbitMQ message broker, Apache NiFi ETL pipeline, Docker & Kubernetes.",
-      "techStack": "Express.js + TypeScript microservices, NestJS + Prisma, React Native mobile app, React 18 + Vite web portal, PostgreSQL & MySQL databases."
+      "description": "A complete full-stack platform supporting EV drivers (station search, booking, charging & payment), charge station staff (session & payment management), and administrators (system-wide analytics & reporting). Includes a touch-screen kiosk terminal for EV charging stations with real-time OCPP communication via WebSocket. Built with microservices architecture across 6 backend services, Kong API Gateway, RabbitMQ message broker, Apache NiFi ETL pipeline, Docker & Kubernetes.",
+      "techStack": "Express.js + TypeScript microservices, NestJS + Prisma, Flutter mobile app, React 18 + Vite web portal & kiosk, PostgreSQL & MySQL databases."
     },
     {
       "id": "studyhub",
@@ -18,12 +18,6 @@
       "title": "Accounts Receivable Management",
       "category": "Business Management",
       "description": "A full-stack customer debt management system for tracking receivables, payment history, and customer records. Built with Clean Architecture to digitize the Accounts Receivable process."
-    },
-    {
-      "id": "ev-kiosk",
-      "title": "EVOLTTOUCH — Smart Kiosk",
-      "category": "EV Infrastructure",
-      "description": "A touch-screen kiosk interface for EV charging stations, enabling drivers to browse stations, start/stop charging sessions, make payments, and scan QR codes. Features real-time OCPP communication via WebSocket with live charging status updates."
     },
     {
       "id": "queens-hill-climbing",
