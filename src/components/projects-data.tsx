@@ -73,7 +73,7 @@ const projects: Project[] = [
         src: "/assets/projects-screenshots/ev-charging/landing.png",
         screenshots: ["landing.png"],
         github: "https://github.com/Victor-201/ev-charging-station-management-system",
-        live: "https://victor-admin.pages.dev",
+        live: "https://victor-ev-admin.pages.dev",
         skills: {
             frontend: [
                 PROJECT_SKILLS.react,
