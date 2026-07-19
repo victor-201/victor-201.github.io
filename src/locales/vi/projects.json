@@ -11,49 +11,57 @@
       "id": "studyhub",
       "title": "Nền tảng StudyHub",
       "category": "Nền tảng học tập xã hội",
-      "description": "Nền tảng học tập xã hội cho sinh viên chia sẻ tài liệu học tập, tạo nhóm học, trò chuyện thời gian thực và đánh giá tài nguyên."
+      "description": "Nền tảng học tập xã hội theo kiến trúc microservice kết nối sinh viên chia sẻ tài liệu, tham gia nhóm học, trò chuyện thời gian thực và đánh giá tài nguyên giáo dục. Backend vận hành 7 dịch vụ Express (Auth, User, Group, Document, Chat, Notification, Gateway) với MySQL, MongoDB và RabbitMQ cho giao tiếp liên dịch vụ. Tích hợp xác thực JWT + Google OAuth, lưu trữ file/hình ảnh qua Cloudinary, nhắn tin thời gian thực với Socket.IO và frontend React + Vite với Tailwind CSS.",
+      "techStack": "Express + Node.js (7 microservices), MySQL + MongoDB, RabbitMQ, React 18 + Vite + Tailwind CSS, Socket.IO, JWT + Google OAuth, Cloudinary, Docker + Docker Compose, Kong API Gateway."
     },
     {
       "id": "customer-debt",
       "title": "Quản lý thu hồi công nợ",
       "category": "Quản lý doanh nghiệp",
-      "description": "Hệ thống quản lý nợ khách hàng full-stack theo dõi khoản phải thu, lịch sử thanh toán và hồ sơ khách hàng. Xây dựng với Clean Architecture để số hóa quy trình quản lý công nợ."
+      "description": "Hệ thống quản lý nợ khách hàng full-stack số hóa quy trình quản lý khoản phải thu. Xây dựng theo Clean Architecture (các tầng domain, application, infrastructure, presentation) trên Express + Sequelize với PostgreSQL. Tích hợp xác thực JWT, phân quyền dựa trên vai trò, thông báo email qua Nodemailer với Handlebars templates, báo cáo định kỳ qua node-cron, và frontend React + Redux với Tailwind CSS. Triển khai với Docker Compose + Nginx reverse proxy + Certbot SSL.",
+      "techStack": "Express + Node.js + Sequelize ORM, PostgreSQL, React 18 + Redux Toolkit + Vite + Tailwind CSS, JWT + bcrypt + Joi, Nodemailer + Handlebars, node-cron, Docker + Docker Compose + Nginx + Certbot."
     },
     {
       "id": "queens-hill-climbing",
       "title": "Trực quan hóa N-Queens Hill Climbing",
       "category": "Trực quan hóa thuật toán",
-      "description": "Trực quan hóa tương tác bài toán N-Queens giải bằng thuật toán Hill Climbing. Người dùng có thể điều chỉnh kích thước bàn cờ, quan sát quá trình khám phá trạng thái thời gian thực và theo dõi từng bước của thuật toán."
+      "description": "Trực quan hóa tương tác bài toán N-Queens (4x4 đến 8x8) giải bằng thuật toán Steepest-Ascent Hill Climbing. Xây dựng với React và Framer Motion, có hiệu ứng hoạt ảnh quân hậu bay, bảng nhiệt trị số heuristic, đánh dấu xung đột với gạch chéo đường chéo, đếm cặp tấn công, nhật ký thực thi từng bước và hệ thống ảnh chụp nhanh để phát lại trạng thái thuật toán. Hỗ trợ cả nhập liệu thủ công và nhấp chuột đặt quân với i18n Tiếng Việt/Tiếng Anh.",
+      "techStack": "React 18 + Vite + Tailwind CSS 4, Framer Motion, công cụ Hill Climbing tùy chỉnh (JS thuần), CSS Grid + animations, i18n (EN/VI)."
     },
     {
       "id": "social-network",
       "title": "Mạng xã hội Capstone",
       "category": "Mạng xã hội",
-      "description": "Mạng xã hội kết nối người dùng để chia sẻ bài viết và hình ảnh. Có hồ sơ cá nhân, bảng tin, hệ thống bạn bè/theo dõi và tham gia nhóm."
+      "description": "Nền tảng mạng xã hội thời gian thực kết nối người dùng qua bài viết, hình ảnh, bạn bè và nhóm. Có bảng tin cuộn vô hạn, hệ thống bạn bè/theo dõi, hồ sơ cá nhân, tạo và tham gia nhóm, nhắn tin thời gian thực với Socket.IO và thông báo. Xây dựng với kiến trúc MERN theo nguyên tắc thiết kế RESTful API.",
+      "techStack": "React + Vite + Tailwind CSS, Node.js + Express, MongoDB + Mongoose, Socket.IO, xác thực JWT."
     },
     {
       "id": "web-video-translator",
       "title": "Trình dịch video web",
       "category": "Công cụ web",
-      "description": "Ứng dụng web full-stack phát hiện video từ bất kỳ trang web nào và dịch sang tiếng Việt với phụ đề và thuyết minh."
+      "description": "Ứng dụng web full-stack phát hiện video nhúng từ bất kỳ trang web nào và dịch sang tiếng Việt với phụ đề tự động và thuyết minh. Kết hợp xử lý video và phiên âm bằng Python với frontend React. Hỗ trợ dịch hàng loạt và đồng bộ phụ đề.",
+      "techStack": "React + Vite + Tailwind CSS, Node.js + Express, Python (xử lý video + phiên âm), REST API."
     },
     {
       "id": "smtp-linux",
       "title": "Máy chủ thư SMTP Linux",
       "category": "Kỹ thuật hệ thống",
-      "description": "Triển khai máy chủ SMTP tùy chỉnh trên Linux để chứng minh quản lý tiến trình cấp thấp, xử lý I/O và giao thức truyền thư bằng Python."
+      "description": "Triển khai máy chủ SMTP tùy chỉnh trên Linux xây dựng từ đầu bằng thư viện socket chuẩn của Python. Cài đặt giao thức SMTP đầy đủ (HELO, AUTH LOGIN, MAIL FROM, RCPT TO, DATA, QUIT) với xử lý kết nối đồng thời qua threading, xác thực PLAIN/LOGIN, lưu trữ email dạng file (.eml) và ghi nhật ký toàn diện. Được thiết kế như một minh họa giáo dục về quản lý tiến trình cấp thấp, xử lý I/O và giao thức truyền thư.",
+      "techStack": "Python 3 (thư viện chuẩn: socket, threading, base64), Linux, lưu trữ file phẳng (.eml + users.txt)."
     },
     {
       "id": "se-drowsiness-alert",
       "title": "Cảnh báo buồn ngủ tài xế",
       "category": "Thị giác máy tính",
-      "description": "Ứng dụng thị giác máy tính giám sát tài xế theo thời gian thực, phát hiện dấu hiệu buồn ngủ hoặc mất tập trung để ngăn ngừa tai nạn."
+      "description": "Ứng dụng desktop thị giác máy tính giám sát tài xế thời gian thực qua webcam, phát hiện dấu hiệu buồn ngủ hoặc mất tập trung để ngăn ngừa tai nạn. Tính toán Eye Aspect Ratio (EAR) và Mouth Aspect Ratio (MAR) từ 68 điểm mốc khuôn mặt qua dlib, áp dụng Canny edge detection cho phân tích vùng mắt, và kích hoạt cảnh báo âm thanh/hình ảnh khi vượt ngưỡng. Xây dựng với giao diện đa nền tảng Kivy và hỗ trợ chế độ hiệu chỉnh và OpenCV thô.",
+      "techStack": "Python 3, OpenCV, dlib (68 điểm mốc khuôn mặt), NumPy, Pillow, Kivy (GUI), Matplotlib."
     },
     {
       "id": "victor-portfolio",
       "title": "Portfolio IT Victor",
       "category": "Phát triển web",
-      "description": "Portfolio cá nhân hiện đại, tương thích di động cho dân IT, xây dựng với React, Vite, TailwindCSS và Framer Motion."
+      "description": "Website portfolio cá nhân hiện đại, tương thích di động giới thiệu dự án và kỹ năng IT. Xây dựng với React 19 + TypeScript, Vite, Tailwind CSS và shadcn/ui (Radix UI). Tích hợp cảnh 3D tương tác với Spline và Three.js, hiệu ứng cuộn mượt với Lenis + GSAP + Framer Motion, hỗ trợ giao diện tối/sáng, đa ngôn ngữ (EN/VI) và form liên hệ xác thực với Zod. Triển khai trên Cloudflare Pages.",
+      "techStack": "React 19 + TypeScript + Vite, Tailwind CSS + Radix UI/shadcn, Framer Motion + GSAP + Lenis, Three.js + Spline, Zod, i18next, Cloudflare Pages."
     }
   ]
 }

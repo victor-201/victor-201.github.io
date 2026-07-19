@@ -4,6 +4,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/core";
 import "@splidejs/react-splide/css";
 import { SEO } from "@/infra/SEO";
+import { ImageWithFallback } from "@/components/ui/image-with-fallback";
 
 const PROJECTS = [
     {
@@ -87,13 +88,14 @@ function ProjectsPage() {
                                 >
                                     {project.images.map((image) => (
                                         <SplideSlide key={image}>
-                                            <img
+                                            <ImageWithFallback
                                                 src={image}
                                                 alt={`screenshot of "${project.name}`}
                                                 className="w-[300px] h-[200px] rounded-md bg-zinc-900 object-cover"
                                                 width={300}
                                                 height={400}
                                                 style={{ height: "200px" }}
+                                                variant="project"
                                             />
                                         </SplideSlide>
                                     ))}

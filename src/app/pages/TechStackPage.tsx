@@ -3,6 +3,7 @@ import React from "react";
 import { SEO } from "@/infra/SEO";
 import { SKILLS, getSkillIconUrl } from "@/lib/app-config";
 import { useLocale } from "@/locales/use-locale";
+import { ImageWithFallback } from "@/components/ui/image-with-fallback";
 
 function TechStackPage() {
   const { t } = useLocale();
@@ -17,12 +18,13 @@ function TechStackPage() {
               key={skill.id}
               className="flex flex-col items-center gap-2 p-3 border border-zinc-800 rounded-xl bg-zinc-900/40"
             >
-              <img
+              <ImageWithFallback
                 src={getSkillIconUrl(skill)}
                 alt={t("skills", skill.name + ".label")}
                 width={32}
                 height={32}
                 className="w-6 h-6 object-contain"
+                variant="icon"
               />
               <span className="text-[11px] text-zinc-400 text-center leading-tight">
                 {t("skills", skill.name + ".label")}

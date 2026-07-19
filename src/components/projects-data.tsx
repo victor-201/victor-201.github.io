@@ -1,29 +1,40 @@
 import AceTernityLogo from "@/components/logos/aceternity";
 import { ReactNode } from "react";
-import { RiNextjsFill, RiNodejsFill, RiReactjsFill } from "react-icons/ri";
+import { RiNextjsFill, RiNodejsFill, RiReactjsFill, RiVuejsFill } from "react-icons/ri";
 import {
     SiChakraui,
+    SiCloudinary,
+    SiDlib,
     SiDocker,
     SiExpress,
     SiFirebase,
     SiFlutter,
     SiJavascript,
+    SiKong,
     SiMongodb,
+    SiMysql,
     SiNestjs,
+    SiNginx,
+    SiOpencv,
     SiPostgresql,
     SiPrisma,
     SiPython,
     SiRabbitmq,
+    SiRadixui,
     SiReactquery,
     SiRedis,
+    SiRedux,
     SiSanity,
+    SiSequelize,
     SiShadcnui,
     SiSocketdotio,
     SiSupabase,
     SiTailwindcss,
     SiThreedotjs,
     SiTypescript,
+    SiVite,
     SiVuedotjs,
+    SiZod,
 } from "react-icons/si";
 import { TbBrandFramerMotion, TbLetterG, TbLetterY } from "react-icons/tb";
 
@@ -50,7 +61,7 @@ export const PROJECT_SKILLS: Record<string, ProjectSkill> = {
     docker: { title: "Docker", bg: "black", fg: "white", icon: <SiDocker /> },
     yjs: { title: "Y.js", bg: "black", fg: "white", icon: <TbLetterY /> },
     firebase: { title: "Firebase", bg: "black", fg: "white", icon: <SiFirebase /> },
-    sockerio: { title: "Socket.io", bg: "black", fg: "white", icon: <SiSocketdotio /> },
+    socketio: { title: "Socket.io", bg: "black", fg: "white", icon: <SiSocketdotio /> },
     js: { title: "JavaScript", bg: "black", fg: "white", icon: <SiJavascript /> },
     ts: { title: "TypeScript", bg: "black", fg: "white", icon: <SiTypescript /> },
     vue: { title: "Vue.js", bg: "black", fg: "white", icon: <SiVuedotjs /> },
@@ -64,6 +75,17 @@ export const PROJECT_SKILLS: Record<string, ProjectSkill> = {
     redis: { title: "Redis", bg: "black", fg: "white", icon: <SiRedis /> },
     rabbitmq: { title: "RabbitMQ", bg: "black", fg: "white", icon: <SiRabbitmq /> },
     flutter: { title: "Flutter", bg: "black", fg: "white", icon: <SiFlutter /> },
+    mysql: { title: "MySQL", bg: "black", fg: "white", icon: <SiMysql /> },
+    redux: { title: "Redux", bg: "black", fg: "white", icon: <SiRedux /> },
+    sequelize: { title: "Sequelize", bg: "black", fg: "white", icon: <SiSequelize /> },
+    kong: { title: "Kong", bg: "black", fg: "white", icon: <SiKong /> },
+    opencv: { title: "OpenCV", bg: "black", fg: "white", icon: <SiOpencv /> },
+    dlib: { title: "dlib", bg: "black", fg: "white", icon: <SiDlib /> },
+    radix: { title: "Radix UI", bg: "black", fg: "white", icon: <SiRadixui /> },
+    zod: { title: "Zod", bg: "black", fg: "white", icon: <SiZod /> },
+    vite: { title: "Vite", bg: "black", fg: "white", icon: <SiVite /> },
+    nginx: { title: "Nginx", bg: "black", fg: "white", icon: <SiNginx /> },
+    cloudinary: { title: "Cloudinary", bg: "black", fg: "white", icon: <SiCloudinary /> },
 };
 
 export type ProjectLink = {
@@ -108,7 +130,7 @@ const projects: Project[] = [
                 PROJECT_SKILLS.redis,
                 PROJECT_SKILLS.rabbitmq,
                 PROJECT_SKILLS.docker,
-                PROJECT_SKILLS.sockerio,
+                PROJECT_SKILLS.socketio,
             ],
         },
     },
@@ -119,8 +141,22 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/studyhub-platform",
         live: "https://victor-studyhub.pages.dev",
         skills: {
-            frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.react],
-            backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.docker],
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.vite,
+                PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.js,
+                PROJECT_SKILLS.socketio,
+            ],
+            backend: [
+                PROJECT_SKILLS.node,
+                PROJECT_SKILLS.express,
+                PROJECT_SKILLS.mysql,
+                PROJECT_SKILLS.rabbitmq,
+                PROJECT_SKILLS.docker,
+                PROJECT_SKILLS.kong,
+                PROJECT_SKILLS.cloudinary,
+            ],
         },
     },
     {
@@ -130,8 +166,21 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/customer-debt-management",
         live: "https://victor-debt.pages.dev",
         skills: {
-            frontend: [PROJECT_SKILLS.js],
-            backend: [PROJECT_SKILLS.postgres, PROJECT_SKILLS.node],
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.vite,
+                PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.redux,
+                PROJECT_SKILLS.js,
+            ],
+            backend: [
+                PROJECT_SKILLS.node,
+                PROJECT_SKILLS.express,
+                PROJECT_SKILLS.postgres,
+                PROJECT_SKILLS.sequelize,
+                PROJECT_SKILLS.docker,
+                PROJECT_SKILLS.nginx,
+            ],
         },
     },
     {
@@ -143,7 +192,9 @@ const projects: Project[] = [
         skills: {
             frontend: [
                 PROJECT_SKILLS.react,
+                PROJECT_SKILLS.vite,
                 PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.js,
             ],
             backend: [],
         },
@@ -155,8 +206,19 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/capstone-group7-social-network",
         live: "https://github.com/Victor-201/capstone-group7-social-network",
         skills: {
-            frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.react],
-            backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.mongo],
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.vite,
+                PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.js,
+                PROJECT_SKILLS.socketio,
+            ],
+            backend: [
+                PROJECT_SKILLS.node,
+                PROJECT_SKILLS.express,
+                PROJECT_SKILLS.mongo,
+                PROJECT_SKILLS.socketio,
+            ],
         },
     },
     {
@@ -166,8 +228,17 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/web-video-translator",
         live: "https://github.com/Victor-201/web-video-translator",
         skills: {
-            frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.js],
-            backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.node],
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.vite,
+                PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.js,
+            ],
+            backend: [
+                PROJECT_SKILLS.python,
+                PROJECT_SKILLS.node,
+                PROJECT_SKILLS.express,
+            ],
         },
     },
     {
@@ -178,7 +249,9 @@ const projects: Project[] = [
         live: "https://github.com/Victor-201/smtp-linux",
         skills: {
             frontend: [],
-            backend: [PROJECT_SKILLS.python, PROJECT_SKILLS.js],
+            backend: [
+                PROJECT_SKILLS.python,
+            ],
         },
     },
     {
@@ -188,8 +261,14 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/se-drowsiness-alert",
         live: "https://github.com/Victor-201/se-drowsiness-alert",
         skills: {
-            frontend: [],
-            backend: [PROJECT_SKILLS.python],
+            frontend: [
+                PROJECT_SKILLS.python,
+            ],
+            backend: [
+                PROJECT_SKILLS.python,
+                PROJECT_SKILLS.opencv,
+                PROJECT_SKILLS.dlib,
+            ],
         },
     },
     {
@@ -199,7 +278,17 @@ const projects: Project[] = [
         github: "https://github.com/Victor-201/victor-201.github.io",
         live: "https://victorfolio.pages.dev",
         skills: {
-            frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.tailwind, PROJECT_SKILLS.js],
+            frontend: [
+                PROJECT_SKILLS.react,
+                PROJECT_SKILLS.ts,
+                PROJECT_SKILLS.vite,
+                PROJECT_SKILLS.tailwind,
+                PROJECT_SKILLS.radix,
+                PROJECT_SKILLS.zod,
+                PROJECT_SKILLS.framerMotion,
+                PROJECT_SKILLS.gsap,
+                PROJECT_SKILLS.spline,
+            ],
             backend: [],
         },
     },

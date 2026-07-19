@@ -11,49 +11,57 @@
       "id": "studyhub",
       "title": "StudyHub Platform",
       "category": "Social Learning Platform",
-      "description": "A social learning platform for students to share study materials, create study groups, engage in real-time chat, and rate resources."
+      "description": "A microservice-based social learning platform connecting students to share study materials, join study groups, chat in real-time, and rate educational resources. Backend runs 7 Express services (Auth, User, Group, Document, Chat, Notification, Gateway) with MySQL, MongoDB, and RabbitMQ for inter-service communication. Features JWT + Google OAuth authentication, Cloudinary file/image storage, Socket.IO real-time messaging, and a React + Vite frontend with Tailwind CSS.",
+      "techStack": "Express + Node.js (7 microservices), MySQL + MongoDB, RabbitMQ, React 18 + Vite + Tailwind CSS, Socket.IO, JWT + Google OAuth, Cloudinary, Docker + Docker Compose, Kong API Gateway."
     },
     {
       "id": "customer-debt",
       "title": "Accounts Receivable Management",
       "category": "Business Management",
-      "description": "A full-stack customer debt management system for tracking receivables, payment history, and customer records. Built with Clean Architecture to digitize the Accounts Receivable process."
+      "description": "A full-stack customer debt management system for digitizing the Accounts Receivable process. Built with Clean Architecture (domain, application, infrastructure, presentation layers) on Express + Sequelize with PostgreSQL. Features JWT authentication, role-based access, email notifications via Nodemailer with Handlebars templates, scheduled reports via node-cron, and a React + Redux frontend with Tailwind CSS. Deployed with Docker Compose + Nginx reverse proxy + Certbot SSL.",
+      "techStack": "Express + Node.js + Sequelize ORM, PostgreSQL, React 18 + Redux Toolkit + Vite + Tailwind CSS, JWT + bcrypt + Joi, Nodemailer + Handlebars, node-cron, Docker + Docker Compose + Nginx + Certbot."
     },
     {
       "id": "queens-hill-climbing",
       "title": "N-Queens Hill Climbing Visualizer",
       "category": "Algorithm Visualization",
-      "description": "An interactive visualization of the N-Queens problem solved using the Hill Climbing algorithm. Users can adjust board size, observe real-time state exploration, and step through the algorithm's progress."
+      "description": "An interactive visualization of the N-Queens problem (4x4 to 8x8) solved using the Steepest-Ascent Hill Climbing algorithm. Built with React and Framer Motion, featuring real-time queen arc animations, heuristic heatmap tables, conflict highlighting with diagonal hatches, attack-pair counting, step-by-step execution logs, and a snapshot history system for replaying algorithm states. Supports both manual input and board-click placement modes with Vietnamese/English i18n.",
+      "techStack": "React 18 + Vite + Tailwind CSS 4, Framer Motion, custom Hill Climbing engine (pure JS), CSS Grid + animations, i18n (EN/VI)."
     },
     {
       "id": "social-network",
       "title": "Capstone Social Network",
       "category": "Social Network",
-      "description": "A social network connecting users to share posts, images, and interact. Features user profiles, news feed, friend/follow system, and group participation."
+      "description": "A real-time social networking platform connecting users through posts, images, friendships, and group interactions. Features a news feed with infinite scroll, friend/follow system, user profiles, group creation and membership, real-time messaging with Socket.IO, and notifications. Built with the MERN stack following RESTful API design principles.",
+      "techStack": "React + Vite + Tailwind CSS, Node.js + Express, MongoDB + Mongoose, Socket.IO, JWT authentication."
     },
     {
       "id": "web-video-translator",
       "title": "Web Video Translator",
       "category": "Full-Stack Web Tool",
-      "description": "A full-stack web application that detects videos from any website and translates them into Vietnamese with subtitles and voice-over."
+      "description": "A full-stack web application that detects embedded videos from any website and translates them into Vietnamese with auto-generated subtitles and voice-over. Combines Python-based video processing and transcription with a React frontend. Supports batch translation and subtitle synchronization.",
+      "techStack": "React + Vite + Tailwind CSS, Node.js + Express, Python (video processing + transcription), REST API."
     },
     {
       "id": "smtp-linux",
       "title": "SMTP Linux Mail Server",
       "category": "System Engineering",
-      "description": "A custom SMTP server implementation on Linux to demonstrate low-level process management, I/O handling, and mail transfer protocol execution using Python."
+      "description": "A custom SMTP server implementation on Linux built from scratch using Python's standard library sockets. Implements the full SMTP protocol (HELO, AUTH LOGIN, MAIL FROM, RCPT TO, DATA, QUIT) with concurrent connection handling via threading, PLAIN/LOGIN authentication, file-based email storage (.eml format), and comprehensive logging. Designed as an educational demonstration of low-level process management, I/O handling, and mail transfer protocols.",
+      "techStack": "Python 3 (standard library: socket, threading, base64), Linux, flat-file storage (.eml + users.txt)."
     },
     {
       "id": "se-drowsiness-alert",
       "title": "Driver Drowsiness Alert",
       "category": "Computer Vision",
-      "description": "A computer vision application that monitors drivers in real-time, detecting signs of drowsiness or distraction to prevent accidents."
+      "description": "A desktop computer vision application that monitors drivers in real-time using a webcam, detecting signs of drowsiness or distraction to prevent accidents. Computes Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) from 68-point facial landmarks via dlib, applies Canny edge detection for eye region analysis, and triggers audio/visual alerts when thresholds are exceeded. Built with a Kivy cross-platform GUI and supports calibration and raw OpenCV modes.",
+      "techStack": "Python 3, OpenCV, dlib (68-point facial landmarks), NumPy, Pillow, Kivy (GUI), Matplotlib."
     },
     {
       "id": "victor-portfolio",
       "title": "Victor IT Portfolio",
       "category": "Web Development",
-      "description": "A modern, responsive personal portfolio for IT professionals, built with React, Vite, TailwindCSS, and Framer Motion. Showcases high-quality frontend design principles."
+      "description": "A modern, responsive personal portfolio website showcasing IT projects and skills. Built with React 19 + TypeScript, Vite, Tailwind CSS, and shadcn/ui (Radix UI primitives). Features interactive 3D scenes with Spline and Three.js, smooth scroll animations with Lenis + GSAP + Framer Motion, dark/light theme support, multi-language i18n (EN/VI), and a clean animated UI with Zod-validated contact forms. Deployed on Cloudflare Pages.",
+      "techStack": "React 19 + TypeScript + Vite, Tailwind CSS + Radix UI/shadcn, Framer Motion + GSAP + Lenis, Three.js + Spline, Zod, i18next, Cloudflare Pages."
     }
   ]
 }

@@ -9,6 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 import { ScrollArea } from "./scroll-area";
 
 interface ModalContextType {
@@ -68,15 +69,17 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { open } = useModal();
+  const { open, setOpen } = useModal();
+  const modalRef = useRef(null);
+  useOutsideClick(modalRef, () => setOpen(false));
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") setOpen(false);
-      });
-    }
-  }, []);
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [setOpen]);
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -85,14 +88,13 @@ export const ModalBody = ({
     }
   }, [open]);
 
-  const modalRef = useRef(null);
-  const { setOpen } = useModal();
-  useOutsideClick(modalRef, () => setOpen(false));
+  if (typeof window === "undefined") return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
+          key="modal-backdrop"
           initial={{
             opacity: 0,
           }}
@@ -104,7 +106,7 @@ export const ModalBody = ({
             opacity: 0,
             backdropFilter: "blur(0px)",
           }}
-          className="modall fixed perspective-midrange transform-3d inset-0 h-full w-full  flex items-center justify-center z-50"
+          className="fixed inset-0 h-full w-full flex items-center justify-center z-50"
         >
           <Overlay />
 
@@ -144,7 +146,8 @@ export const ModalBody = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 };
 
@@ -240,11 +243,10 @@ export const useOutsideClick = (
       event: any,
       //  React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
     ) => {
-      // DO NOTHING if the element being clicked is the target element or their children
+      // Close only if clicking outside the ref element
       if (
         !ref.current ||
-        ref.current.contains(event.target) ||
-        !event.target.classList.contains("no-click-outside")
+        ref.current.contains(event.target)
       ) {
         return;
       }

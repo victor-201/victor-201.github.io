@@ -14,6 +14,7 @@ import SectionWrapper from "../ui/section-wrapper";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useMemo } from "react";
+import { ImageWithFallback } from "@/components/ui/image-with-fallback";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -121,13 +122,14 @@ const ExperienceCard = ({
                   variant="outline"
                   className="gap-2 text-xs font-normal bg-secondary/30 hover:bg-secondary/50 transition-colors border-transparent"
                 >
-                  <img
+                  <ImageWithFallback
                     src={getSkillIconUrl(skill)}
                     alt={t("skills", skill.name + ".label")}
                     className={cn(
                       "w-3.5 h-3.5 object-contain opacity-80",
                       isDarkColor(skill.color) && "dark:invert",
                     )}
+                    variant="icon"
                   />
                   {t("skills", skill.name + ".label")}
                 </Badge>

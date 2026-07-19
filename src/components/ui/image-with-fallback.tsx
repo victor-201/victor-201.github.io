@@ -1,39 +1,111 @@
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
+import { ImageOff } from "lucide-react";
 
-type Props = {
+type Props = React.ImgHTMLAttributes<HTMLImageElement> & {
   src: string;
   alt: string;
   className?: string;
   wrapperClassName?: string;
   style?: React.CSSProperties;
+  variant?: "project" | "icon";
 };
 
-export function ImageWithFallback({ src, alt, className, wrapperClassName, style }: Props) {
+function splitClassName(className?: string) {
+  if (!className) return { wrapperClasses: "", imgClasses: "" };
+  const tokens = className.split(/\s+/);
+  const wrapperTokens: string[] = [];
+  const imgTokens: string[] = [];
+
+  tokens.forEach((token) => {
+    // Image-specific classes: object-fit, filters, transitions, scales, and opacity hover
+    if (
+      /^(object)-(cover|contain|fill|none|scale-down|top|bottom|left|right|center)$/.test(token) ||
+      /^(transition|duration|ease|delay|scale|hover:scale)-/.test(token) ||
+      token === "dark:invert" ||
+      token === "invert" ||
+      token === "transition-all" ||
+      token === "transition"
+    ) {
+      imgTokens.push(token);
+    } else {
+      wrapperTokens.push(token);
+    }
+  });
+
+  return {
+    wrapperClasses: wrapperTokens.join(" "),
+    imgClasses: imgTokens.join(" "),
+  };
+}
+
+export function ImageWithFallback({
+  src,
+  alt,
+  className,
+  wrapperClassName,
+  style,
+  variant = "project",
+  width,
+  height,
+  ...restProps
+}: Props) {
   const [status, setStatus] = useState<"loading" | "error" | "loaded">("loading");
+  const { wrapperClasses, imgClasses } = splitClassName(className);
+
+  const wrapperStyle: React.CSSProperties = {
+    ...style,
+    ...(width ? { width } : {}),
+    ...(height ? { height } : {}),
+  };
 
   return (
-    <div className={cn("relative overflow-hidden", wrapperClassName)} style={style}>
-      {status !== "loaded" && <Placeholder status={status} />}
+    <div
+      className={cn("relative overflow-hidden", wrapperClasses, wrapperClassName)}
+      style={wrapperStyle}
+    >
+      {status !== "loaded" && <Placeholder status={status} variant={variant} />}
       {status !== "error" && (
         <img
           className={cn(
             "transition-opacity duration-300",
             status === "loaded" ? "opacity-100" : "opacity-0 absolute inset-0",
-            className,
+            "w-full h-full",
+            imgClasses,
           )}
           src={src}
           alt={alt}
+          width={width}
+          height={height}
           loading="lazy"
           onLoad={() => setStatus("loaded")}
           onError={() => setStatus("error")}
+          {...restProps}
         />
       )}
     </div>
   );
 }
 
-function Placeholder({ status }: { status: "loading" | "error" }) {
+function Placeholder({
+  status,
+  variant,
+}: {
+  status: "loading" | "error";
+  variant: "project" | "icon";
+}) {
+  if (variant === "icon") {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 dark:bg-slate-900 border border-neutral-200 dark:border-slate-800 rounded-md">
+        {status === "loading" ? (
+          <div className="w-full h-full animate-pulse bg-neutral-200 dark:bg-slate-800 rounded-md" />
+        ) : (
+          <ImageOff className="w-1/2 h-1/2 text-neutral-400 dark:text-slate-500 max-w-4 max-h-4 min-w-[8px] min-h-[8px]" />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
@@ -54,3 +126,4 @@ function Placeholder({ status }: { status: "loading" | "error" }) {
     </div>
   );
 }
+
