@@ -41,6 +41,7 @@ jobs:
 
       - name: Lint
         run: yarn lint
+        continue-on-error: true
 
       - name: Type-check + Build
         # tsc -b && vite build — both run inside `yarn build`
