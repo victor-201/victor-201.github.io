@@ -25,11 +25,11 @@ export const STATES = {
     },
     mobile: {
       scale: { x: 0.35, y: 0.35, z: 0.35 },
-      position: { x: 0, y: -80, z: 0 },
+      position: { x: 0, y: -600, z: 0 },
       rotation: {
-        x: -Math.PI / 4,
-        y: Math.PI / 6,
-        z: 0,
+        x: -Math.PI / 10,
+        y: Math.PI / 4,
+        z: Math.PI / 3,
       },
     },
   },
