@@ -55,15 +55,14 @@ jobs:
           path: dist/
           retention-days: 7
 
-  # ── Step 2: Deploy to Cloudflare Pages (main only) ────────────────
+  # ── Step 2: Deploy to gh-pages branch (main only) ────────────────
   deploy:
-    name: Deploy → Cloudflare Pages
+    name: Deploy → gh-pages Branch
     needs: quality
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      deployments: write
+      contents: write
 
     steps:
       - name: Checkout
@@ -75,20 +74,18 @@ jobs:
           name: dist-${{ github.sha }}
           path: dist/
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: victorfolio
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          # branch = 'main' means production deployment
-          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
 
       - name: Verify deployment
         run: |
-          echo "✅ Deployment triggered. Cloudflare Pages will propagate within 60s."
+          echo "✅ Published build output to gh-pages branch. Cloudflare Pages will update within 60s."
 
   # ── Step 3: Rollback (manual trigger only) ────────────────────────
   rollback:
