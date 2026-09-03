@@ -45,6 +45,11 @@ jobs:
 
       - name: Type-check + Build
         # tsc -b && vite build — both run inside `yarn build`
+        # VITE_* vars are baked into the bundle at build time by Vite
+        env:
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
         run: yarn build
 
       - name: Upload build artifact
