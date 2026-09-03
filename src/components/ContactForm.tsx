@@ -76,9 +76,9 @@ const ContactForm = () => {
     setStatus("loading");
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_apqmip3";
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_e668qu5";
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "sUYdRg-0wXj8LbVzB";
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error("EmailJS service configuration is missing");
