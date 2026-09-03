@@ -36,7 +36,7 @@ export const SKILLS: Record<SkillNames, Skill> = {
   [SkillNames.JS]: { id: 1, name: "js", color: "#F7DF1E", icon: "javascript" },
   [SkillNames.TS]: { id: 2, name: "ts", color: "#3178C6", icon: "typescript" },
   [SkillNames.HTML]: { id: 3, name: "html", color: "#E34F26", icon: "html5" },
-  [SkillNames.CSS]: { id: 4, name: "css", color: "#1572B6", icon: "css3" },
+  [SkillNames.CSS]: { id: 4, name: "css", color: "#1572B6", icon: "css" },
   [SkillNames.REACT]: { id: 5, name: "react", color: "#61DAFB", icon: "react" },
   [SkillNames.VUE]: { id: 6, name: "vue", color: "#4FC08D", icon: "vuedotjs" },
   [SkillNames.NEXTJS]: { id: 7, name: "nextjs", color: "#ffffffff", icon: "nextdotjs" },
@@ -59,7 +59,14 @@ export const SKILLS: Record<SkillNames, Skill> = {
   [SkillNames.VERCEL]: { id: 24, name: "vercel", color: "#000000", icon: "vercel" },
 };
 
+const FALLBACK_ICONS: Record<string, string> = {
+  amazonwebservices: "https://cdn.jsdelivr.net/npm/simple-icons@13.0.0/icons/amazonwebservices.svg",
+};
+
 export function getSkillIconUrl(skill: Pick<Skill, "icon" | "color">): string {
+  if (FALLBACK_ICONS[skill.icon]) {
+    return FALLBACK_ICONS[skill.icon];
+  }
   return `https://cdn.simpleicons.org/${skill.icon}/${skill.color.replace("#", "")}`;
 }
 

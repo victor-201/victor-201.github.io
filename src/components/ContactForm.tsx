@@ -1,61 +1,79 @@
 "use client";
-import { ChevronRight, Loader2 } from "lucide-react";
-import React from "react";
+import { Check, ChevronRight, Clock, Loader2, X } from "lucide-react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Label } from "./ui/label";
 import { Input } from "./ui/ace-input";
 import { Textarea } from "./ui/ace-textarea";
 import { cn } from "@/lib/utils";
-import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
-import { useNavigate } from "react-router-dom";
 import { useLocale } from "@/locales/use-locale";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const COOLDOWN_DURATION_MS = 30_000; // 30s anti-spam cooldown between sends
+
+type SubmitStatus = "idle" | "loading" | "success" | "error" | "cooldown";
 
 const ContactForm = () => {
   const { t } = useLocale();
-  const [fullName, setFullName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // Anti-spam trap field
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
-  const { toast } = useToast();
-  const navigate = useNavigate();
+  const formMountTime = useRef(Date.now());
+  const statusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const resetStatusAfterDelay = (delay = 3500) => {
+    if (statusTimer.current) clearTimeout(statusTimer.current);
+    statusTimer.current = setTimeout(() => {
+      setStatus("idle");
+    }, delay);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (loading) return;
+    if (status === "loading") return;
 
+    // 1. Anti-spam Honeypot check: If the hidden trap field is filled, silently discard (bot detected)
+    if (honeypot.trim().length > 0) {
+      setFullName("");
+      setEmail("");
+      setMessage("");
+      setStatus("success");
+      resetStatusAfterDelay(3000);
+      return;
+    }
+
+    // 2. Anti-spam Speed check: Human submission takes at least 1.5s to type and review
+    if (Date.now() - formMountTime.current < 1500) {
+      setStatus("error");
+      resetStatusAfterDelay(2500);
+      return;
+    }
+
+    // 3. Anti-spam Cooldown check: Prevent rapid repeated mail blasts
+    const lastSent = Number(localStorage.getItem("contact_last_sent") || 0);
+    const elapsedSinceLastSent = Date.now() - lastSent;
+    if (elapsedSinceLastSent < COOLDOWN_DURATION_MS) {
+      setStatus("cooldown");
+      resetStatusAfterDelay(3000);
+      return;
+    }
+
+    // 4. Input validation
     const trimmedName = fullName.trim();
     const trimmedEmail = email.trim();
     const trimmedMessage = message.trim();
 
-    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
-      toast({
-        title: t("common", "contact.errorTitle"),
-        description: t("common", "contact.errorDesc"),
-        variant: "destructive",
-        className: cn(
-          "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
-        ),
-      });
+    if (!trimmedName || !trimmedEmail || !trimmedMessage || !EMAIL_REGEX.test(trimmedEmail)) {
+      setStatus("error");
+      resetStatusAfterDelay(2500);
       return;
     }
 
-    if (!EMAIL_REGEX.test(trimmedEmail)) {
-      toast({
-        title: t("common", "contact.errorTitle"),
-        description: t("common", "contact.errorDesc"),
-        variant: "destructive",
-        className: cn(
-          "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
-        ),
-      });
-      return;
-    }
-
-    setLoading(true);
+    setStatus("loading");
 
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -79,38 +97,50 @@ const ContactForm = () => {
         publicKey
       );
 
-      toast({
-        title: t("common", "contact.successTitle"),
-        description: t("common", "contact.successDesc"),
-        variant: "default",
-        className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
-      });
+      // Record successful send timestamp for anti-spam rate limiting
+      localStorage.setItem("contact_last_sent", String(Date.now()));
 
+      // Reset form fields only on success
       setFullName("");
       setEmail("");
       setMessage("");
 
-      const timer = setTimeout(() => {
-        navigate("/");
-        clearTimeout(timer);
-      }, 1000);
+      // Gentle green tick status on the button
+      setStatus("success");
+      resetStatusAfterDelay(4000);
     } catch (err) {
       console.error("EmailJS submission error:", err);
-      toast({
-        title: t("common", "contact.errorTitle"),
-        description: t("common", "contact.errorDesc"),
-        className: cn(
-          "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
-        ),
-        variant: "destructive",
-      });
-    } finally {
-      setLoading(false);
+      // Gentle red error status on the button, preserve user input so they can retry
+      setStatus("error");
+      resetStatusAfterDelay(3500);
     }
   };
 
+  const isLoading = status === "loading";
+  const isSuccess = status === "success";
+  const isError = status === "error";
+  const isCooldown = status === "cooldown";
+
   return (
     <form className="w-full" onSubmit={handleSubmit} aria-live="polite">
+      {/* Invisible Anti-spam Honeypot field (hidden from real users, bots fill this) */}
+      <div
+        className="opacity-0 absolute -z-50 pointer-events-none h-0 w-0 overflow-hidden"
+        aria-hidden="true"
+        tabIndex={-1}
+      >
+        <label htmlFor="hp_company_field">Leave this empty</label>
+        <input
+          id="hp_company_field"
+          type="text"
+          name="company_name_hp"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
         <LabelInputContainer>
           <Label htmlFor="fullname">{t("common", "contact.fullName")}</Label>
@@ -120,6 +150,7 @@ const ContactForm = () => {
             type="text"
             required
             aria-required="true"
+            disabled={isLoading}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -132,11 +163,13 @@ const ContactForm = () => {
             type="email"
             required
             aria-required="true"
+            disabled={isLoading}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </LabelInputContainer>
       </div>
+
       <div className="grid w-full gap-1.5 mb-4">
         <Label htmlFor="content">{t("common", "contact.yourMessage")}</Label>
         <Textarea
@@ -144,6 +177,7 @@ const ContactForm = () => {
           id="content"
           required
           aria-required="true"
+          disabled={isLoading}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           className="h-33"
@@ -152,23 +186,65 @@ const ContactForm = () => {
           {t("common", "contact.privacy")}
         </p>
       </div>
+
+      {/* Button with in-place soft visual feedback */}
       <Button
-        disabled={loading}
-        aria-busy={loading}
-        className="bg-linear-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+        disabled={isLoading || isSuccess}
+        aria-busy={isLoading}
+        className={cn(
+          "relative group/btn w-full md:w-auto px-6 rounded-md h-10 font-medium transition-all duration-300",
+          // Normal state
+          status === "idle" &&
+            "bg-linear-to-br from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]",
+          // Loading state
+          isLoading &&
+            "bg-zinc-800 text-zinc-300 border border-zinc-700 cursor-wait",
+          // Soft green tick success state
+          isSuccess &&
+            "bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 shadow-[0_0_16px_rgba(16,185,129,0.18)] cursor-default",
+          // Soft red cross error state
+          isError &&
+            "bg-rose-950/40 border border-rose-500/40 text-rose-300 shadow-[0_0_16px_rgba(244,63,94,0.18)]",
+          // Cooldown state
+          isCooldown &&
+            "bg-amber-950/40 border border-amber-500/40 text-amber-300 shadow-[0_0_16px_rgba(245,158,11,0.18)]"
+        )}
         type="submit"
       >
-        {loading ? (
+        {isLoading ? (
           <div className="flex items-center justify-center">
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            <p>{t("common", "contact.pleaseWait")}</p>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin text-zinc-300" />
+            <span>{t("common", "contact.pleaseWait")}...</span>
+          </div>
+        ) : isSuccess ? (
+          <div className="flex items-center justify-center animate-in zoom-in-75 duration-200">
+            <Check className="w-4 h-4 mr-2 text-emerald-400 stroke-[2.5]" />
+            <span className="font-medium text-emerald-300">
+              {t("common", "contact.sentSuccess")}
+            </span>
+          </div>
+        ) : isError ? (
+          <div className="flex items-center justify-center animate-in zoom-in-75 duration-200">
+            <X className="w-4 h-4 mr-2 text-rose-400 stroke-[2.5]" />
+            <span className="font-medium text-rose-300">
+              {t("common", "contact.sendFailed")}
+            </span>
+          </div>
+        ) : isCooldown ? (
+          <div className="flex items-center justify-center animate-in zoom-in-75 duration-200">
+            <Clock className="w-4 h-4 mr-2 text-amber-400" />
+            <span className="font-medium text-amber-300">
+              {t("common", "contact.waitCooldown")}
+            </span>
           </div>
         ) : (
           <div className="flex items-center justify-center">
-            {t("common", "contact.sendMessage")} <ChevronRight className="w-4 h-4 ml-4" />
+            {t("common", "contact.sendMessage")}
+            <ChevronRight className="w-4 h-4 ml-3 group-hover/btn:translate-x-1 transition duration-200" />
           </div>
         )}
-        <BottomGradient />
+
+        {status === "idle" && <BottomGradient />}
       </Button>
     </form>
   );

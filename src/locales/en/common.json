@@ -48,7 +48,10 @@
     "successTitle": "Thank you!",
     "successDesc": "I'll get back to you as soon as possible.",
     "errorTitle": "Error",
-    "errorDesc": "Something went wrong! Please check the fields."
+    "errorDesc": "Something went wrong! Please check the fields.",
+    "sentSuccess": "Message Sent",
+    "sendFailed": "Failed to send, retry",
+    "waitCooldown": "Please wait a moment"
   },
   "theme": {
     "light": [

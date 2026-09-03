@@ -48,7 +48,10 @@
     "successTitle": "Cảm ơn bạn!",
     "successDesc": "Tôi sẽ liên hệ lại với bạn sớm nhất có thể.",
     "errorTitle": "Lỗi",
-    "errorDesc": "Đã xảy ra lỗi! Vui lòng kiểm tra lại thông tin."
+    "errorDesc": "Đã xảy ra lỗi! Vui lòng kiểm tra lại thông tin.",
+    "sentSuccess": "Đã gửi thành công",
+    "sendFailed": "Gửi thất bại, thử lại",
+    "waitCooldown": "Vui lòng đợi một chút"
   },
   "theme": {
     "light": [
