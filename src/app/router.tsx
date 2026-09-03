@@ -6,7 +6,6 @@ import ProjectDetailPage from "./pages/ProjectDetailPage";
 import TechStackPage from "./pages/TechStackPage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
-import ContactPage from "./pages/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 export const router = createBrowserRouter([
@@ -19,7 +18,6 @@ export const router = createBrowserRouter([
             { path: "projects/:slug", element: <ProjectDetailPage /> },
             { path: "tech-stack", element: <TechStackPage /> },
             { path: "about", element: <AboutPage /> },
-            { path: "contact", element: <ContactPage /> },
             { path: "404", element: <NotFoundPage /> },
             { path: "*", element: <NotFoundPage /> },
         ],
