@@ -70,8 +70,10 @@ const ContactForm = () => {
         serviceId,
         templateId,
         {
+          title: "New message from Portfolio",
           from_name: trimmedName,
           from_email: trimmedEmail,
+          time: new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }),
           message: trimmedMessage,
         },
         publicKey
