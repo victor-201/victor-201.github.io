@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./style.module.scss";
 import { height } from "../anim";
 import Body from "./body/body";
 import Footer from "./footer/footer";
@@ -30,10 +29,10 @@ const Index: React.FC<IndexProps> = ({ setIsActive }) => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className={styles.nav}
+      className="overflow-hidden"
     >
-      <div className={cn(styles.wrapper, 'flex justify-end sm:justify-start')}>
-        <div className={styles.container}>
+      <div className={cn('relative flex gap-[50px] mb-3 justify-end sm:justify-start lg:mb-0 lg:justify-between')}>
+        <div className="flex flex-col justify-between">
           <Body
             links={links}
             selectedLink={selectedLink}

@@ -1,11 +1,10 @@
-import styles from './style.module.scss';
 import { translate } from '../../anim';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
-      <ul>
+    <div className="flex items-end flex-wrap text-[12px] uppercase mt-10 lg:justify-between">
+      <ul className="w-1/2 mt-2.5 overflow-hidden list-none p-0 lg:w-auto">
         <motion.li
           custom={[0.3, 0]}
           variants={translate}
@@ -14,10 +13,10 @@ export default function Footer() {
           exit="exit"
         >
           {/* space */}
-          <span>Inspired by:</span> Studio Lumio
+          <span className="text-muted-foreground">Inspired by:</span> Studio Lumio
         </motion.li>
       </ul>
-      <ul>
+      <ul className="w-1/2 mt-2.5 overflow-hidden list-none p-0 lg:w-auto">
         <motion.li
           custom={[0.3, 0]}
           variants={translate}
@@ -25,10 +24,10 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          <span>Typography:</span> Inter
+          <span className="text-muted-foreground">Typography:</span> Inter
         </motion.li>
       </ul>
-      <ul>
+      <ul className="w-1/2 mt-2.5 overflow-hidden list-none p-0 lg:w-auto">
         <motion.li
           custom={[0.3, 0]}
           variants={translate}
@@ -36,10 +35,10 @@ export default function Footer() {
           animate="enter"
           exit="exit"
         >
-          <span>Images:</span> Unsplash
+          <span className="text-muted-foreground">Images:</span> Unsplash
         </motion.li>
       </ul>
-      <ul>
+      <ul className="w-1/2 mt-2.5 overflow-hidden list-none p-0 lg:w-auto">
         <motion.li
           custom={[0.3, 0]}
           variants={translate}

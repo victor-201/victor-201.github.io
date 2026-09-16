@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 // next/image removed - using <img> tag
-import styles from "./style.module.scss";
 import { opacity } from "../../anim";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +15,7 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
       variants={opacity}
       initial="initial"
       animate={isActive ? "open" : "closed"}
-      className={styles.imageContainer}
+      className={cn("hidden lg:block lg:relative lg:w-[500px] lg:h-[450px]")}
     >
       <img
         src={src}

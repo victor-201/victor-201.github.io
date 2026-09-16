@@ -11,12 +11,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // silence deprecation warnings from legacy scss API
-        silenceDeprecations: ['legacy-js-api'],
-      },
-    },
-  },
 })
