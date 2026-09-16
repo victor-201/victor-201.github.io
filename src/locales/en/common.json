@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "skills": "Skills",
+    "experience": "Experience",
     "projects": "Projects",
     "blogs": "Blogs",
     "contact": "Contact"
@@ -11,7 +12,7 @@
     "greeting": "Hi, I'm",
     "role": "Full Stack Developer",
     "description": "I build impactful web apps, tools, and scalable platforms.",
-    "downloadResume": "Download Resume",
+    "downloadResume": "View Resume",
     "hireMe": "Hire Me"
   },
   "footer": {
@@ -74,5 +75,12 @@
     "intro": "%cOh, there you are!\nLooks like you found the secret console.\nWanna see what I can do?\nJust type %cmy name%c and hit enter.",
     "summon": "%cYou called?\n\nI'm Thang, nice to meet you!\nThanks for visiting my website.",
     "hint": "%cDid you know?\n\nPress 'n' on the viewport to see something cool."
+  },
+  "resume": {
+    "pageTitle": "Resume — Nguyen Van Thang",
+    "backHome": "Home",
+    "downloadCV": "Download CV",
+    "statusLabel": "Resume",
+    "statusAuthor": "Nguyen Van Thang"
   }
 }

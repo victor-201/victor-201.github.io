@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import styles from "./style.module.scss";
 import { blur, translate } from "../../anim";
 import { Link as LinkType } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FunnyThemeToggle from "@/components/theme/funny-theme-toggle";
+import { useLocale } from "@/locales/use-locale";
 
 interface SelectedLink {
   isActive: boolean;
@@ -27,6 +27,7 @@ export default function Body({
   setIsActive,
 }: BodyProps) {
   const params = useLocation();
+  const { t } = useLocale();
   const [currentHref, setCurrentHref] = useState("/");
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -55,21 +56,22 @@ export default function Body({
   };
 
   return (
-    <div className={cn(styles.body, "flex flex-col items-end md:flex-row")}>
+    <div className={cn("flex flex-wrap mt-[30px] flex-col items-end md:flex-row lg:max-w-[1200px] lg:mt-20")}>
       <FunnyThemeToggle className="w-6 h-6 mr-6 flex md:hidden" />
       {links.map((link, index) => {
-        const { title, href, target } = link;
+        const { titleKey, href, target } = link;
+        const title = t("common", titleKey) as string;
 
         return (
           <Link
             key={`l_${index}`}
             to={href}
             target={target}
-            className="cursor-can-hover rounded-lg"
+            className="cursor-can-hover rounded-lg uppercase text-foreground no-underline"
           >
             <motion.p
               className={cn(
-                "rounded-lg",
+                "rounded-lg m-0 flex overflow-hidden whitespace-pre text-[32px] pr-[30px] pt-[10px] font-[350] lg:text-[5vw] lg:pr-[2vw]",
                 currentHref !== href ? "text-muted-foreground" : "underline"
               )}
               onClick={() => {

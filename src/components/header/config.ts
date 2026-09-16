@@ -2,37 +2,32 @@ import { Link } from "@/types";
 
 const links: Link[] = [
   {
-    title: 'Home',
+    titleKey: 'nav.home',
     href: '/',
     thumbnail: '/assets/nav-link-previews/landing.png'
   },
   {
-    title: 'About',
+    titleKey: 'nav.about',
     href: '/#about',
     thumbnail: '/assets/nav-link-previews/about.png'
   },
   {
-    title: 'Skills',
+    titleKey: 'nav.skills',
     href: '/#skills',
     thumbnail: '/assets/nav-link-previews/skills.png'
   },
   {
-    title: 'Projects',
+    titleKey: 'nav.experience',
+    href: '/#experience',
+    thumbnail: '/assets/nav-link-previews/experience.png'
+  },
+  {
+    titleKey: 'nav.projects',
     href: '/#projects',
     thumbnail: '/assets/nav-link-previews/projects.png'
   },
-  // {
-  //   title: 'Testimonials',
-  //   href: '/testimonials',
-  //   thumbnail: '/assets/nav-link-previews/testimonials.png'
-  // },
   {
-    title: 'Blogs',
-    href: '/blogs',
-    thumbnail: '/assets/nav-link-previews/blog.png',
-  },
-  {
-    title: 'Contact',
+    titleKey: 'nav.contact',
     href: '/#contact',
     thumbnail: '/assets/nav-link-previews/contact.png'
   }

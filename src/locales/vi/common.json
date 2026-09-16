@@ -3,6 +3,7 @@
     "home": "Trang chủ",
     "about": "Giới thiệu",
     "skills": "Kỹ năng",
+    "experience": "Kinh nghiệm",
     "projects": "Dự án",
     "blogs": "Bài viết",
     "contact": "Liên hệ"
@@ -11,7 +12,7 @@
     "greeting": "Xin chào, tôi là",
     "role": "Lập trình viên Full Stack",
     "description": "Tôi xây dựng các ứng dụng web, công cụ và nền tảng mở rộng.",
-    "downloadResume": "Tải CV",
+    "downloadResume": "Xem CV",
     "hireMe": "Thuê tôi"
   },
   "footer": {
@@ -74,5 +75,12 @@
     "intro": "%cĐù, ngầu đấy!\nBạn vừa khám phá ra console bí mật này à?\nMuốn xem tôi làm được gì không?\nGõ %ctên tôi%c và nhấn Enter đi!",
     "summon": "%cẢO THUẬT ĐẬM CHẤT LƯỜI\n\nBạn vừa triệu hồi thành công chủ tịch!\nKhông ấn tượng hả? Kệ, người ta bảo: Càng ngầu càng vô dụng mà!",
     "hint": "%cSuỵt!\n\nNhấn 'n' trên màn hình coi có gì hay ho!"
+  },
+  "resume": {
+    "pageTitle": "Resume — Nguyễn Văn Thắng",
+    "backHome": "Trang chủ",
+    "downloadCV": "Tải CV xuống",
+    "statusLabel": "Resume",
+    "statusAuthor": "Nguyễn Văn Thắng"
   }
 }

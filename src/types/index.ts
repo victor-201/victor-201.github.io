@@ -1,5 +1,5 @@
 export interface Link {
-    title: string;
+    titleKey: string;
     href: string;
     thumbnail: string;
     target?: string;
