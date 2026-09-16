@@ -82,13 +82,12 @@ const HeroSection = () => {
               <div className="mt-8 flex flex-col gap-3 w-fit">
                 <Link
                   to="/resume"
-                  target="_blank"
                   className="flex-1"
                 >
                   <BoxReveal delay={2} width="100%">
-                    <Button className="flex items-center gap-2 w-full">
-                      <File size={24} />
-                      <p>{t("common", "hero.downloadResume")}</p>
+                    <Button className="flex items-center gap-2 w-full [&_*]:!pointer-events-none">
+                      <File size={24} style={{ pointerEvents: "none" }} />
+                      <p style={{ pointerEvents: "none" }}>{t("common", "hero.downloadResume")}</p>
                     </Button>
                   </BoxReveal>
                 </Link>

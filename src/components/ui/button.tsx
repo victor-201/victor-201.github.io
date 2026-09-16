@@ -26,9 +26,10 @@ const addClassNameRecursively = (
   const foo = (child: ReactNode) => {
     if (!isValidElement(child)) return child;
 
-    const el = child as React.ReactElement<{ className?: string; children?: ReactNode }>;
+    const el = child as React.ReactElement<{ className?: string; style?: React.CSSProperties; children?: ReactNode }>;
     return cloneElement(el, {
       className: `${el.props.className || ""} ${className}`.trim(),
+      style: { ...el.props.style, pointerEvents: "none" },
       children: addClassNameRecursively(el.props.children, className),
     });
   };

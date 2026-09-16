@@ -1,801 +1,306 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ArrowLeft, Download } from "lucide-react";
 import Particles from "@/components/Particles";
+import ElasticCursor from "@/components/ui/ElasticCursor";
+import { useLocale } from "@/locales/use-locale";
+import {
+  personal,
+  education,
+  freelance,
+  projects,
+  skills,
+  cvFile,
+  footer,
+  sections,
+  labels,
+} from "@/data/resume";
 
-// Raw CSS from Cv.html injected scoped to this standalone page
-const CV_STYLES = `
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+export default function ResumePage() {
+  const { t } = useLocale();
 
-  :root {
-    --navy:     #0f172a;
-    --navy-mid: #1e3a5f;
-    --blue:     #2563eb;
-    --blue-lt:  rgba(37,99,235,0.1);
-    --blue-ltr: rgba(37,99,235,0.05);
-    --sky:      #38bdf8;
-    --text:     #1e293b;
-    --sub:      #334155;
-    --muted:    #64748b;
-    --rule:     #e2e8f0;
-    --bg:       #ffffff;
-    --sidebar:  #f8fafc;
-    --green:    #16a34a;
-    --green-lt: rgba(22,163,74,0.1);
-    --purple:   #7c3aed;
-    --purple-lt:rgba(124,58,237,0.1);
-    --amber:    #d97706;
-    --amber-lt: rgba(217,119,6,0.1);
-    --red:      #dc2626;
-    --red-lt:   rgba(220,38,38,0.1);
-    --teal:     #0d9488;
-    --teal-lt:  rgba(13,148,136,0.1);
-  }
-
-  html { font-size: 14.6px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
-  body {
-    background: hsl(222.2deg 84% 4.9%);
-    display: flex;
-    justify-content: center;
-    padding: 28px 20px;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    font-weight: 400;
-    line-height: 1.5;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    min-height: 100vh;
-  }
-
-  @media print {
-    html, body {
-      width: 210mm !important;
-      height: 297mm !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      background: #fff !important;
-      display: block !important;
-      overflow: hidden !important;
-    }
-    canvas { display: none !important; }
-    .cv-actions { display: none !important; }
-    .cv-root { display: block !important; }
-    .page {
-      box-shadow: none !important;
-      border-radius: 0 !important;
-      width: 210mm !important;
-      height: 297mm !important;
-      max-width: 210mm !important;
-      max-height: 297mm !important;
-      overflow: hidden !important;
-      page-break-after: avoid !important;
-      break-after: avoid !important;
-    }
-    .proj:hover { border-color: var(--rule) !important; box-shadow: none !important; transform: none !important; }
-  }
-
-  .cv-root { display: flex; flex-direction: column; align-items: center; width: 100%; }
-
-  /* ─── A4 PAGE ─── */
-  .page {
-    width:  210mm;
-    height: 297mm;
-    max-width:  210mm;
-    max-height: 297mm;
-    overflow: hidden;
-    background: var(--bg);
-    box-shadow: 0 20px 40px -10px rgba(0,0,0,.15), 0 0 10px rgba(0,0,0,.02);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-  }
-
-  /* ─── ACTION BAR ─── */
-  .cv-actions {
-    width: 210mm;
-    max-width: 210mm;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px 16px;
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
-  }
-  .cv-actions-left { display: flex; align-items: center; gap: 10px; }
-  .cv-actions-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: linear-gradient(135deg, #38bdf8, #2563eb);
-    box-shadow: 0 0 8px rgba(56,189,248,0.6);
-    flex-shrink: 0;
-  }
-  .cv-actions h1 {
-    font-size: .88rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(148,163,184,0.8));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .cv-actions-badge {
-    font-size: .6rem; font-weight: 500;
-    padding: 2px 8px; border-radius: 20px;
-    background: rgba(37,99,235,0.15);
-    color: rgba(147,197,253,0.9);
-    border: 1px solid rgba(37,99,235,0.25);
-    letter-spacing: .04em;
-  }
-  .cv-actions-btns { display: flex; gap: 8px; align-items: center; }
-  .btn-outline {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 14px;
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.75);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    font-size: 0.78rem; font-weight: 500;
-    cursor: pointer;
-    transition: all .2s ease;
-    text-decoration: none;
-    backdrop-filter: blur(8px);
-    font-family: 'Inter', sans-serif;
-  }
-  .btn-outline:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.95);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 14px;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    color: #fff;
-    border: 1px solid rgba(59,130,246,0.4);
-    border-radius: 8px;
-    font-size: 0.78rem; font-weight: 600;
-    cursor: pointer;
-    transition: all .2s ease;
-    text-decoration: none;
-    box-shadow: 0 2px 12px rgba(37,99,235,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
-    font-family: 'Inter', sans-serif;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    transition: left .4s ease;
-  }
-  .btn-primary:hover::before { left: 100%; }
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    box-shadow: 0 4px 20px rgba(37,99,235,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
-    transform: translateY(-1px);
-  }
-
-  /* ─── HEADER ─── */
-  .header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-    padding: 14px 22px 12px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-shrink: 0;
-    border-bottom: 3px solid var(--blue);
-  }
-
-  .avatar {
-    width: 80px; height: 106px;
-    border-radius: 6px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.30);
-    overflow: hidden; background: #1e3a5f;
-  }
-  .avatar img {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center;
-    border-radius: 4px; transition: transform 0.3s ease;
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-  }
-  .avatar:hover img { transform: scale(1.1); }
-
-  .h-info { flex: 1; }
-  .h-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 2.1rem; font-weight: 800;
-    background: linear-gradient(to right, #ffffff, #e0e7ff);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -1px; line-height: 1.1;
-  }
-  .h-role {
-    font-family: 'Inter', sans-serif;
-    font-size: .72rem; font-weight: 500;
-    letter-spacing: .16em; text-transform: uppercase;
-    color: var(--sky); margin-top: 6px;
-    display: flex; align-items: center; gap: 5px;
-  }
-  .h-loc { font-size: .72rem; color: rgba(255,255,255,.6); margin-top: 4px; display: flex; align-items: center; gap: 4px; }
-  .h-contacts { display: flex; flex-wrap: wrap; gap: 3px 14px; margin-top: 7px; }
-  .c-item {
-    display: flex; align-items: center; gap: 4px;
-    font-size: .72rem; color: rgba(255,255,255,.82);
-    text-decoration: none; transition: color .15s, transform .15s;
-  }
-  .c-item:hover { color: #38bdf8; transform: translateX(2px); }
-  .c-item svg { flex-shrink: 0; opacity: .75; }
-
-  /* ─── BODY ─── */
-  .body { display: flex; flex: 1; overflow: hidden; }
-
-  /* ─── SIDEBAR ─── */
-  .sidebar {
-    width: 200px; flex-shrink: 0;
-    background: var(--sidebar); border-right: 1px solid var(--rule);
-    padding: 14px 14px;
-    display: flex; flex-direction: column; gap: 10px;
-    overflow: hidden;
-  }
-
-  .s-label {
-    font-family: 'Inter', sans-serif;
-    font-size: .6rem; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
-    color: var(--navy-mid);
-    padding-bottom: 4px;
-    border-bottom: 1.5px solid var(--blue-lt);
-    margin-bottom: 8px;
-  }
-  .sg-title { font-size: .63rem; font-weight: 500; color: var(--sub); margin-bottom: 4px; margin-top: 7px; }
-  .sg-title:first-of-type { margin-top: 0; }
-  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 2px; }
-  .tag {
-    font-family: 'Inter', sans-serif;
-    font-size: .57rem; font-weight: 500;
-    padding: 2px 7px; border-radius: 10px;
-    white-space: nowrap; border: 1px solid rgba(0,0,0,0.04); letter-spacing: 0.1px;
-  }
-  .t-lang  { background: var(--purple-lt); color: var(--purple); }
-  .t-front { background: var(--blue-lt);   color: var(--navy-mid); }
-  .t-back  { background: var(--green-lt);  color: var(--green); }
-  .t-infra { background: var(--red-lt);    color: var(--red); }
-  .t-db    { background: var(--amber-lt);  color: var(--amber); }
-  .t-tool  { background: #f1f5f9;          color: var(--sub); }
-
-  .edu-name { font-size: .72rem; font-weight: 600; color: var(--text); line-height: 1.3; }
-  .edu-degree { font-size: .65rem; color: var(--sub); margin: 2px 0 1px; }
-  .edu-year { font-family: 'Inter', sans-serif; font-size: .6rem; color: var(--blue); font-weight: 500; }
-
-  .act-item {
-    font-size: .64rem; color: var(--sub);
-    padding-left: 10px; position: relative;
-    line-height: 1.4; margin-bottom: 4px;
-  }
-  .act-item:last-child { margin-bottom: 0; }
-  .act-item::before { content: '•'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
-  .act-item b { color: var(--text); font-weight: 600; }
-
-  /* ─── MAIN ─── */
-  .main {
-    flex: 1;
-    padding: 14px 18px;
-    display: flex; flex-direction: column; gap: 10px;
-    overflow: hidden;
-  }
-
-  .m-label {
-    display: flex; align-items: center; gap: 8px;
-    font-family: 'Inter', sans-serif;
-    font-size: .8rem; font-weight: 700;
-    letter-spacing: -0.1px; color: var(--navy-mid);
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--blue-lt);
-    margin-bottom: 6px;
-  }
-  .m-label svg { color: var(--blue); flex-shrink: 0; }
-
-  .summary {
-    font-size: .74rem; color: var(--sub); line-height: 1.65; font-weight: 400;
-    border-left: 3px solid var(--blue); padding-left: 10px;
-  }
-  .summary strong { color: var(--text); font-weight: 600; }
-
-  .proj {
-    border: 1px solid var(--rule); border-radius: 8px;
-    padding: 8px 12px; margin-bottom: 3px; background: #ffffff;
-    transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .proj:last-child { margin-bottom: 0; }
-  .proj:hover { border-color: rgba(37,99,235,0.3); box-shadow: 0 2px 8px rgba(37,99,235,0.08); transform: translateY(-1px); }
-
-  .proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px; flex-wrap: nowrap; }
-  .proj-name { font-family: 'Inter', sans-serif; font-size: .79rem; font-weight: 600; color: var(--navy-mid); line-height: 1.2; display: flex; align-items: baseline; gap: 4px; flex-wrap: nowrap; min-width: 0; overflow: hidden; }
-  .proj-name > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1; }
-  .proj-name > span:first-child::after { content: ' ·'; color: var(--muted); opacity: .5; margin-left: 4px; font-weight: 400; }
-  .proj-name > span:last-child { white-space: nowrap; flex-shrink: 0; font-weight: 400; color: var(--muted); font-size: .72rem; }
-  .proj-meta { display: flex; align-items: center; gap: 5px; flex-shrink: 0; white-space: nowrap; }
-
-  .badge {
-    font-family: 'Inter', sans-serif;
-    font-size: .55rem; font-weight: 600;
-    padding: 2px 7px; border-radius: 10px; letter-spacing: .02em;
-    background: var(--blue-lt); color: var(--blue);
-    border: 1px solid rgba(37,99,235,.18);
-  }
-  .badge-commits {
-    font-family: 'Inter', sans-serif;
-    font-size: .58rem; color: var(--muted);
-    display: flex; align-items: center; gap: 3px;
-  }
-
-  .proj-desc { font-size: .69rem; color: var(--muted); margin-bottom: 4px; line-height: 1.4; }
-  .proj-url {
-    font-family: 'Inter', sans-serif;
-    font-size: .6rem; color: var(--blue);
-    text-decoration: none; display: flex; align-items: center; gap: 3px;
-    margin-bottom: 5px; transition: color .15s;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .proj-url:hover { text-decoration: underline; }
-
-  .bullets { margin: 3px 0 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 4px; }
-  .bullets li {
-    font-size: .67rem; color: var(--sub); font-weight: 400;
-    position: relative; line-height: 1.45;
-    list-style: none; padding-left: 0;
-  }
-  .bullets li::before { content: '▸'; position: absolute; left: -11px; color: var(--blue); font-size: .55rem; top: 2px; }
-
-  .stack { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 5px; }
-  .stag {
-    font-family: 'Inter', sans-serif;
-    font-size: .55rem; font-weight: 500;
-    padding: 2px 6px; border-radius: 4px;
-    background: #f1f5f9; color: var(--sub);
-    border: 1px solid var(--rule); white-space: nowrap;
-  }
-  .stag.s-ts  { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-  .stag.s-rn  { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
-  .stag.s-ng  { background: #fef9c3; color: #854d0e; border-color: #fde68a; }
-  .stag.s-inf { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
-  .stag.s-db  { background: #f5f3ff; color: #6d28d9; border-color: #ddd6fe; }
-
-  /* ─── HIGHLIGHTS STRIP ─── */
-  .highlights {
-    display: flex;
-    background: #f8fafc;
-    border-bottom: 1px solid var(--rule);
-    flex-shrink: 0;
-  }
-  .hl-item {
-    flex: 1;
-    padding: 7px 10px;
-    text-align: center;
-    border-right: 1px solid var(--rule);
-  }
-  .hl-item:last-child { border-right: none; }
-  .hl-value {
-    font-family: 'Inter', sans-serif;
-    font-size: .82rem; font-weight: 700;
-    color: var(--blue);
-    line-height: 1.2;
-  }
-  .hl-label {
-    font-size: .56rem; color: var(--muted);
-    text-transform: uppercase; letter-spacing: .06em;
-    margin-top: 1px;
-  }
-
-  /* ─── FOOTER ─── */
-  .cv-footer {
-    background: var(--navy); color: rgba(255,255,255,.65);
-    font-family: 'Inter', sans-serif;
-    font-size: .58rem; text-align: center;
-    padding: 5px 22px; letter-spacing: .04em;
-    flex-shrink: 0;
-  }
-  .cv-footer span { margin: 0 6px; opacity: .4; }
-
-  /* ─── PRINT ─── */
-  @page { size: A4 portrait; margin: 0; }
-  @media print {
-    html, body { width: 210mm; height: 297mm; margin: 0; padding: 0; background: #fff; }
-    .cv-actions { display: none !important; }
-    .page { box-shadow: none; border-radius: 0; width: 210mm; height: 297mm; max-width: 210mm; max-height: 297mm; overflow: hidden; }
-    .proj:hover { border-color: var(--rule); box-shadow: none; transform: none; }
-  }
-`;
-
-function ResumePage() {
   useEffect(() => {
-    document.title = "Resume — Nguyễn Văn Thắng";
+    document.title = t("common", "resume.pageTitle") || "Resume — Nguyen Van Thang";
+  }, [t]);
 
-    // Inject scoped CV styles
-    const style = document.createElement("style");
-    style.id = "cv-page-styles";
-    style.textContent = CV_STYLES;
-    document.head.appendChild(style);
-
-    // Save & override body/html so the page looks exactly like the standalone HTML
-    const prevBodyStyle = document.body.getAttribute("style") || "";
-    const prevHtmlFontSize = document.documentElement.style.fontSize;
-
-    document.documentElement.style.fontSize = "14.6px";
-    document.body.setAttribute("style",
-      "background:hsl(222.2deg 84% 4.9%);display:flex;justify-content:center;padding:28px 20px;font-family:'Inter',sans-serif;color:#1e293b;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact;min-height:100vh;"
-    );
-
-    return () => {
-      document.getElementById("cv-page-styles")?.remove();
-      document.documentElement.style.fontSize = prevHtmlFontSize;
-      document.body.setAttribute("style", prevBodyStyle);
-    };
-  }, []);
 
   return (
-    <>
-      {/* Dark starry background — identical to home page */}
-      <Particles
-        className="fixed inset-0 -z-10 animate-fade-in"
-        quantity={100}
-      />
-      <div className="cv-root">
-        {/* Actions bar — hidden on print */}
-        <div className="cv-actions">
-          <div className="cv-actions-left">
-            <Link to="/" className="btn-outline">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-              Home
-            </Link>
-            <div className="cv-actions-dot" />
-            <h1>Interactive Resume</h1>
-            <span className="cv-actions-badge">2026</span>
-          </div>
-          <div className="cv-actions-btns">
-            <a
-              href="/Nguyen_Van_Thang_CV.pdf"
-              download="Nguyen_Van_Thang_CV.pdf"
-              className="btn-primary"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              PDF Version
-            </a>
-          </div>
+    <div className="relative min-h-screen bg-[#030712] text-[#2B2118] font-['Inter',Arial,sans-serif] py-6 px-3 sm:px-6 flex flex-col items-center print:bg-[#FAF8F4] print:p-0 print:m-0">
+      {/* Print styles matching cv-design.json */}
+      <style>{`
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+        @media print {
+          body {
+            background: #FAF8F4 !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+        }
+        .section,
+        .experience-item,
+        .project,
+        .education-item {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      `}</style>
+
+      {/* Elastic Cursor on Resume Page - hidden in print */}
+      <div className="print:hidden">
+        <ElasticCursor />
+      </div>
+
+      {/* Background Particles (starry sky) - hidden in print */}
+      <div className="print:hidden">
+        <Particles
+          className="fixed inset-0 z-0 pointer-events-none"
+          quantity={120}
+        />
+      </div>
+
+      {/* Top Action Bar (hidden in print) */}
+      <header className="relative z-10 w-full max-w-[210mm] mb-5 flex items-center justify-between gap-3 px-4 py-3 bg-zinc-900/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.36)] print:hidden">
+        <Link
+          to="/"
+          className="cursor-can-hover inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-zinc-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 transition-all duration-200 active:scale-95 group [&_*]:!pointer-events-none"
+          title={t("common", "resume.backHome")}
+        >
+          <ArrowLeft style={{ pointerEvents: "none" }} className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5 text-zinc-400 group-hover:text-white" />
+          <span style={{ pointerEvents: "none" }}>{t("common", "resume.backHome")}</span>
+        </Link>
+
+        <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-zinc-400 select-none">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" />
+          <span className="text-zinc-300 font-semibold">{t("common", "resume.statusLabel")}</span>
+          <span className="text-zinc-600">·</span>
+          <span>{t("common", "resume.statusAuthor")}</span>
         </div>
 
-        {/* A4 Page */}
-        <div className="page">
+        <a
+          href={cvFile.path}
+          download={cvFile.name}
+          className="cursor-can-hover inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-zinc-900 bg-white hover:bg-zinc-200 border border-white/20 shadow-md hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-200 active:scale-95 group [&_*]:!pointer-events-none"
+          title={t("common", "resume.downloadCV")}
+        >
+          <Download style={{ pointerEvents: "none" }} className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5 text-zinc-800" />
+          <span style={{ pointerEvents: "none" }}>{t("common", "resume.downloadCV")}</span>
+        </a>
+      </header>
 
-          {/* HEADER */}
-          <div className="header">
-            <div className="avatar">
-              <img src="/assets/cv/avatar.png" alt="Nguyen Van Thang"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+      {/* Main CV Paper Container (padding: 12mm 15mm, contentWidth: 180mm, contentHeight: 273mm) */}
+      <main className="relative z-10 w-full max-w-[210mm] min-h-[297mm] bg-[#FAF8F4] text-[#2B2118] shadow-[0_10px_40px_rgba(0,0,0,0.22)] rounded-sm p-[12mm_15mm] my-[20px] print:my-0 print:p-[12mm_15mm] print:w-[210mm] print:min-h-[297mm] print:shadow-none print:rounded-none print:bg-[#FAF8F4]">
+        <div className="flex flex-col md:flex-row items-start gap-0 w-full">
+          {/* ================= MAIN COLUMN (66%) ================= */}
+          <section className="w-full md:w-[66%] bg-[#FAF8F4] order-2 md:order-1 pr-0 md:pr-[6mm]">
+            {/* Header Band */}
+            <div className="p-0">
+              <h1 className="font-bold text-[28pt] leading-none tracking-[-0.4pt] mb-[2pt] text-[#2B2118]">
+                {personal.fullName}
+              </h1>
+              <div className="font-medium text-[12pt] leading-[1.2] tracking-[0.5px] uppercase text-[#B9863C] mb-[5pt]">
+                {personal.role}
+              </div>
+              <p className="text-[9.5pt] font-normal leading-[1.3] text-[#2B2118] max-w-[98%]">
+                {personal.bio}
+              </p>
             </div>
-            <div className="h-info">
-              <div className="h-name">Nguyen Van Thang</div>
-              <div className="h-role" style={{ display: 'flex', alignItems: 'center', gap: 5, flexWrap: 'nowrap' }}>
-                <span>Full-Stack Developer</span>
-              </div>
-              <div className="h-loc" style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap' }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, minWidth: 11, opacity: .8 }}>
-                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
-                </svg>
-                <span>Ho Chi Minh City, Vietnam</span>
-              </div>
-              <div className="h-contacts">
-                <a className="c-item" href="mailto:4.victor.201@gmail.com">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                  4.victor.201@gmail.com
-                </a>
-                <a className="c-item" href="tel:+84867652947">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
-                  </svg>
-                  +84 867 652 947
-                </a>
-                <a className="c-item" href="https://github.com/Victor-201" target="_blank" rel="noreferrer">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12" />
-                  </svg>
-                  github.com/victor-201
-                </a>
-                <a className="c-item" href="https://victorfolio.pages.dev" target="_blank" rel="noreferrer">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
-                  </svg>
-                  victorfolio.pages.dev
-                </a>
-              </div>
+
+            {/* Freelance & Independent Work */}
+            <div className="section mt-[13pt] mb-0 print:break-inside-avoid">
+              <h2 className="font-bold text-[11pt] leading-[1.2] tracking-[0.2pt] uppercase text-[#2B2118] pb-[4pt] mb-[6pt] border-b-[0.6pt] border-[#8A5A34]">
+                {sections.freelance}
+              </h2>
+
+              <article className="experience-item mb-[9pt] print:break-inside-avoid">
+                <div className="flex items-center gap-[4pt] text-[8.5pt] font-normal text-[#8A5A34] leading-[1.3] mb-[1pt]">
+                  <span className="w-[4.5pt] h-[4.5pt] rounded-full bg-[#8A5A34] shrink-0" />
+                  {freelance.period}
+                </div>
+                <div className="text-[10.5pt] font-semibold text-[#2B2118] leading-[1.2] mb-[3pt]">
+                  <span className="font-semibold">{freelance.title}</span> &middot;{" "}
+                  <span className="text-[#8A5A34] font-semibold">{freelance.location}</span>
+                </div>
+                <ul className="pl-[14pt] flex flex-col list-none p-0 m-0">
+                  {freelance.bullets.map((bullet, i) => (
+                    <li
+                      key={i}
+                      className="relative pl-[10pt] text-[9.5pt] font-normal leading-[1.3] text-[#2B2118] mb-[2.5pt] last:mb-0 before:content-[''] before:absolute before:left-0 before:top-[5.5pt] before:w-[3.5pt] before:h-[3.5pt] before:rounded-full before:bg-[#B9863C]"
+                    >
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             </div>
-          </div>
 
-          {/* BODY */}
-          <div className="body">
+            {/* Featured Projects */}
+            <div className="section mt-[13pt] mb-0 print:break-inside-avoid">
+              <h2 className="font-bold text-[11pt] leading-[1.2] tracking-[0.2pt] uppercase text-[#2B2118] pb-[4pt] mb-[6pt] border-b-[0.6pt] border-[#8A5A34]">
+                {sections.projects}
+              </h2>
 
-            {/* SIDEBAR */}
-            <div className="sidebar">
+              {projects.map((project, idx) => (
+                <article
+                  key={project.id}
+                  className={`project ${idx < projects.length - 1 ? "mb-[8pt]" : "mb-0"} print:break-inside-avoid`}
+                >
+                  <div className="flex items-center gap-[4pt] text-[8.5pt] font-normal text-[#8A5A34] leading-[1.3] mb-[1pt]">
+                    <span className="w-[4.5pt] h-[4.5pt] rounded-full bg-[#8A5A34] shrink-0" />
+                    {project.period}
+                  </div>
+                  <h3 className="text-[10.5pt] font-semibold text-[#2B2118] leading-[1.2] mb-[1pt]">
+                    {project.title}
+                  </h3>
+                  <div className="text-[8.5pt] font-normal text-[#6B5D4E] leading-[1.3] -mt-[1pt] mb-[2pt]">
+                    {project.type}
+                  </div>
+                  <p className="text-[9.5pt] font-normal text-[#6B5D4E] leading-[1.3] mb-[3pt]">
+                    {project.description}
+                  </p>
+                  <ul className="pl-[14pt] flex flex-col list-none p-0 m-0">
+                    {project.bullets.map((bullet, i) => (
+                      <li
+                        key={i}
+                        className="relative pl-[10pt] text-[9.5pt] font-normal leading-[1.3] text-[#2B2118] mb-[2.5pt] last:mb-0 before:content-[''] before:absolute before:left-0 before:top-[5.5pt] before:w-[3.5pt] before:h-[3.5pt] before:rounded-full before:bg-[#B9863C]"
+                      >
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-[3pt] text-[8.5pt] font-normal leading-[1.3] text-[#6B5D4E]">
+                    <strong className="text-[#2B2118] font-semibold">{labels.tech}</strong>{" "}
+                    {project.tech}
+                  </p>
+                </article>
+              ))}
+            </div>
 
-              {/* TECH STACK */}
-              <div>
-                <div className="s-label">Tech Stack</div>
-                <div className="sg-title">Languages</div>
-                <div className="tags">
-                  <span className="tag t-lang">JavaScript</span>
-                  <span className="tag t-lang">TypeScript</span>
-                  <span className="tag t-lang">Dart</span>
+            {/* Footer */}
+            <footer className="flex justify-between items-center px-0 pt-[5mm] mt-[6pt] border-t border-[#DCD1BE] text-[8pt] text-[#6B5D4E]">
+              <span>{footer.label}</span>
+            </footer>
+          </section>
+
+          {/* ================= SIDEBAR (34%) ================= */}
+          <aside className="w-full md:w-[34%] bg-[#EFE9DE] rounded-sm order-1 md:order-2 p-3 md:p-[5mm_5mm_6mm_5mm]">
+            {/* Sidebar Top: Photo + Contact */}
+            <div className="p-0">
+              {/* Photo */}
+              <div className="w-[32mm] md:w-[34mm] aspect-[3/4] rounded-[3pt] overflow-hidden relative mx-auto mb-[5mm] bg-[#40301F] shadow-[0_2px_10px_rgba(64,48,31,0.35)] group">
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#40301F] to-[#332615] text-[#B9863C] font-bold text-[16pt] tracking-[1px]">
+                  {personal.initials}
                 </div>
-                <div className="sg-title">Frontend</div>
-                <div className="tags">
-                  <span className="tag t-front">Next.js</span>
-                  <span className="tag t-front">React.js</span>
-                  <span className="tag t-front">Redux Toolkit</span>
-                  <span className="tag t-front">Tailwind CSS</span>
-                  <span className="tag t-front">Vite</span>
-                </div>
-                <div className="sg-title">Mobile</div>
-                <div className="tags">
-                  <span className="tag t-front">React Native</span>
-                  <span className="tag t-front">Flutter</span>
-                </div>
-                <div className="sg-title">Backend</div>
-                <div className="tags">
-                  <span className="tag t-back">Node.js</span>
-                  <span className="tag t-back">Express.js</span>
-                  <span className="tag t-back">NestJS</span>
-                </div>
-                <div className="sg-title">Infra &amp; DevOps</div>
-                <div className="tags">
-                  <span className="tag t-infra">Docker</span>
-                  <span className="tag t-infra">Kubernetes (basic)</span>
-                  <span className="tag t-infra">GitHub Actions</span>
-                  <span className="tag t-infra">RabbitMQ</span>
-                  <span className="tag t-infra">Kong Gateway</span>
-                </div>
-                <div className="sg-title">Databases &amp; BaaS</div>
-                <div className="tags">
-                  <span className="tag t-db">PostgreSQL</span>
-                  <span className="tag t-db">MongoDB</span>
-                  <span className="tag t-db">Supabase</span>
-                  <span className="tag t-db">MySQL</span>
-                  <span className="tag t-db">Prisma</span>
-                  <span className="tag t-db">Sequelize</span>
-                </div>
-                <div className="sg-title">Testing &amp; Tools</div>
-                <div className="tags">
-                  <span className="tag t-tool">Jest / Supertest</span>
-                  <span className="tag t-tool">JWT / OAuth2</span>
-                  <span className="tag t-tool">RBAC</span>
-                  <span className="tag t-tool">Git / GitHub</span>
-                  <span className="tag t-tool">Chrome APIs</span>
-                </div>
+                <img
+                  src={personal.avatar}
+                  alt={personal.fullName}
+                  className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    (e.target as HTMLElement).style.display = "none";
+                  }}
+                />
               </div>
 
-              {/* EDUCATION */}
+              {/* Contact List */}
+              <ul className="mt-[8pt] flex flex-col gap-[6pt] list-none p-0 m-0">
+                {/* Location */}
+                <li className="flex items-center gap-[5pt] text-[9pt] font-normal leading-[1.4] text-[#2B2118] break-words">
+                  <span className="w-[15pt] h-[15pt] rounded-full border-[1.5px] border-[#40301F] bg-[#FAF8F4] flex items-center justify-center shrink-0">
+                    <svg className="w-[7.5pt] h-[7.5pt] stroke-[#B9863C] fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12z" />
+                      <circle cx="12" cy="9" r="2.4" />
+                    </svg>
+                  </span>
+                  <span>{personal.location}</span>
+                </li>
+
+                {/* Email */}
+                <li className="flex items-center gap-[5pt] text-[9pt] font-normal leading-[1.4] text-[#2B2118] break-words">
+                  <span className="w-[15pt] h-[15pt] rounded-full border-[1.5px] border-[#40301F] bg-[#FAF8F4] flex items-center justify-center shrink-0">
+                    <svg className="w-[7.5pt] h-[7.5pt] stroke-[#B9863C] fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 6h18v12H3z" />
+                      <path d="M3 6l9 7 9-7" />
+                    </svg>
+                  </span>
+                  <a href={`mailto:${personal.email}`} className="hover:text-[#8A5A34] transition-colors">
+                    {personal.email}
+                  </a>
+                </li>
+
+                {/* GitHub */}
+                <li className="flex items-center gap-[5pt] text-[9pt] font-normal leading-[1.4] text-[#2B2118] break-words">
+                  <span className="w-[15pt] h-[15pt] rounded-full border-[1.5px] border-[#40301F] bg-[#FAF8F4] flex items-center justify-center shrink-0">
+                    <svg className="w-[7.5pt] h-[7.5pt] stroke-[#B9863C] fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 19c-4 1.5-4-1-6-1m12 3v-3.4c0-1 .3-1.6 1-2.2 3-.3 6-1.5 6-6.6a5.4 5.4 0 0 0-1.5-3.7 5 5 0 0 0-.1-3.7s-1.2-.4-4 1.4a13.6 13.6 0 0 0-7 0C6.6.9 5.4 1.3 5.4 1.3a5 5 0 0 0-.1 3.7A5.4 5.4 0 0 0 3.8 8.7c0 5 3 6.3 6 6.6.7.6 1 1.2 1 2.2V21" />
+                    </svg>
+                  </span>
+                  <a href={personal.github.url} target="_blank" rel="noreferrer" className="hover:text-[#8A5A34] transition-colors">
+                    {personal.github.label}
+                  </a>
+                </li>
+
+                {/* Website */}
+                <li className="flex items-center gap-[5pt] text-[9pt] font-normal leading-[1.4] text-[#2B2118] break-words">
+                  <span className="w-[15pt] h-[15pt] rounded-full border-[1.5px] border-[#40301F] bg-[#FAF8F4] flex items-center justify-center shrink-0">
+                    <svg className="w-[7.5pt] h-[7.5pt] stroke-[#B9863C] fill-none" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M3 12h18M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z" />
+                    </svg>
+                  </span>
+                  <a href={personal.website.url} target="_blank" rel="noreferrer" className="hover:text-[#8A5A34] transition-colors">
+                    {personal.website.label}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Education */}
+            <div className="section education-item mt-[13pt] print:break-inside-avoid">
+              <h2 className="font-bold text-[11pt] leading-[1.2] tracking-[0.2pt] uppercase text-[#2B2118] pb-[4pt] mb-[6pt] border-b-[0.6pt] border-[#8A5A34]">
+                {sections.education}
+              </h2>
               <div>
-                <div className="s-label">Education</div>
-                <div className="edu-name" style={{ whiteSpace: 'nowrap', fontSize: '.68rem' }}>HCMC University of Transport</div>
-                <div className="edu-year">2022 → 2026</div>
-                <div className="edu-degree">B.Sc. Information Technology</div>
-                <div className="edu-degree">GPA: 3.2+/4.0 · Expected Graduation: 2026</div>
-              </div>
-
-              {/* INTERESTS */}
-              <div>
-                <div className="s-label">Interests</div>
-                <div className="act-item">Distributed systems &amp; cloud architecture</div>
-                <div className="act-item">UI/UX &amp; product thinking</div>
-                <div className="act-item">Open-source contribution</div>
-              </div>
-
-            </div>{/* /sidebar */}
-
-            {/* MAIN */}
-            <div className="main">
-
-              {/* PROFESSIONAL SUMMARY */}
-              <div>
-                <div className="m-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" />
-                  </svg>
-                  Professional Summary
-                </div>
-                <p className="summary">
-                  Final-year Information Technology student at Ho Chi Minh City University of Transport (graduating 2026), with hands-on full-stack experience built through personal and freelance projects. Comfortable working across the stack — React/Next.js on the frontend, Node.js/NestJS on the backend, PostgreSQL for data, and containerized deployment with Docker. Led the design and development of a microservices-based capstone platform end-to-end, from database schema to CI/CD. Quick to pick up new tools and looking to grow as a backend/full-stack engineer in a team environment.
+                <h3 className="text-[10.5pt] font-semibold text-[#2B2118] leading-[1.2] mb-[2pt]">
+                  {education.institution}
+                </h3>
+                <p className="text-[8.5pt] font-normal text-[#6B5D4E] leading-[1.3]">
+                  {education.degree} &middot; {education.period}
+                </p>
+                <p className="text-[8.5pt] font-normal text-[#6B5D4E] leading-[1.3]">
+                  GPA: {education.gpa} &middot; {education.graduationNote}
                 </p>
               </div>
+            </div>
 
-              {/* EXPERIENCE */}
-              <div>
-                <div className="m-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-                  </svg>
-                  Freelance &amp; Independent Work
-                </div>
-                <div className="proj" style={{ background: "#f8fafc" }}>
-                  <div className="proj-top">
-                    <div className="proj-name">Freelance Web Developer</div>
-                    <div className="proj-meta">
-                      <span className="badge">Part-time / Remote</span>
-                      <span className="badge-commits">
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
-                        </svg>
-                        Jan 2025 → Present
+            {/* Technical Skills */}
+            <div className="section mt-[13pt]">
+              <h2 className="font-bold text-[11pt] leading-[1.2] tracking-[0.2pt] uppercase text-[#2B2118] pb-[4pt] mb-[6pt] border-b-[0.6pt] border-[#8A5A34]">
+                {sections.skills}
+              </h2>
+
+              {skills.map((group, idx) => (
+                <div key={group.category} className={`mb-[3.5pt] ${idx === skills.length - 1 ? "mb-0" : ""}`}>
+                  <h4 className="font-semibold text-[9.5pt] tracking-[0.4px] uppercase text-[#8A5A34] leading-[1.3] mb-[2pt]">
+                    {group.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-[8pt] items-center">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="bg-[#E5DDCC] text-[#42331F] text-[9.5pt] font-normal px-[5pt] py-[1.5pt] rounded-[3pt] whitespace-nowrap leading-[1.3]"
+                      >
+                        {item}
                       </span>
-                    </div>
-                  </div>
-                  <p className="proj-desc">Small-scale freelance projects taken on alongside coursework, covering the full build cycle from requirements to deployment.</p>
-                  <ul className="bullets">
-                    <li>Built and deployed small web applications independently for personal clients, handling planning, implementation, and go-live.</li>
-                    <li>Set up basic CI/CD pipelines (GitHub Actions, Docker) and wrote automated tests (Jest, Supertest) to keep releases stable.</li>
-                  </ul>
-                  <div className="stack">
-                    <span className="stag s-ts">React</span>
-                    <span className="stag s-rn">Node.js</span>
-                    <span className="stag s-ts">TypeScript</span>
-                    <span className="stag s-db">PostgreSQL</span>
-                    <span className="stag s-inf">Docker</span>
+                    ))}
                   </div>
                 </div>
-              </div>
-
-              {/* FEATURED PROJECTS */}
-              <div>
-                <div className="m-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                  Featured Projects
-                </div>
-
-                {/* EV Charging */}
-                <div className="proj">
-                  <div className="proj-top">
-                    <div className="proj-name">
-                      <span>EV Charging Orchestration Platform</span>
-                      <span>Capstone Thesis</span>
-                    </div>
-                    <div className="proj-meta">
-                      <span className="badge">Capstone Project</span>
-                      <span className="badge-commits">
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
-                        </svg>
-                        2025 → 2026
-                      </span>
-                    </div>
-                  </div>
-                  <p className="proj-desc">Cloud-native EV charging platform for my graduation thesis, spanning a Flutter mobile app, React web portal, and a microservices backend for station scheduling and session lifecycle management.</p>
-                  <a className="proj-url" href="https://github.com/Victor-201/ev-charging-orchestration-platform" target="_blank" rel="noreferrer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ flexShrink: 0 }}>
-                      <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                    </svg>
-                    github.com/Victor-201/ev-charging-orchestration-platform
-                  </a>
-                  <ul className="bullets">
-                    <li>Designed a booking flow that prevents double-booking of charging slots using queue-based logic and Redis-backed session state, across a set of NestJS microservices.</li>
-                    <li>Implemented event-driven communication between services with RabbitMQ, with Kong API Gateway handling JWT auth and rate-limiting at the edge.</li>
-                    <li>Containerized the platform with Docker/Kubernetes and set up a GitHub Actions CI/CD pipeline, with Jest &amp; Supertest test suites for the core services.</li>
-                  </ul>
-                  <div className="stack">
-                    <span className="stag s-rn">Flutter / Dart</span>
-                    <span className="stag s-ts">React</span>
-                    <span className="stag s-ts">TypeScript</span>
-                    <span className="stag s-db">PostgreSQL / PL/pgSQL</span>
-                    <span className="stag s-inf">RabbitMQ</span>
-                    <span className="stag s-inf">Kong</span>
-                    <span className="stag s-inf">Docker / K8s</span>
-                  </div>
-                </div>
-
-                {/* WebDev Toolkit */}
-                <div className="proj">
-                  <div className="proj-top">
-                    <div className="proj-name">
-                      <span>WebDev Toolkit</span>
-                      <span>Chrome Extension</span>
-                    </div>
-                    <div className="proj-meta">
-                      <span className="badge">Side Project</span>
-                      <span className="badge-commits">
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
-                        </svg>
-                        2025
-                      </span>
-                    </div>
-                  </div>
-                  <p className="proj-desc">Chrome Extension (Manifest V3) bundling developer inspection tools — color picker, font detector, CSS inspector, image downloader, page ruler, and a productivity overlay.</p>
-                  <a className="proj-url" href="https://github.com/Victor-201/webdev-toolkit" target="_blank" rel="noreferrer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ flexShrink: 0 }}>
-                      <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                    </svg>
-                    github.com/Victor-201/webdev-toolkit
-                  </a>
-                  <ul className="bullets">
-                    <li>Built developer inspection tools using Chrome Manifest V3 content scripts with sandboxed injection, avoiding render-blocking on the host page.</li>
-                    <li>Persisted user preferences across sessions with the Chrome Storage API, syncing state across open tabs.</li>
-                  </ul>
-                  <div className="stack">
-                    <span className="stag">JavaScript</span>
-                    <span className="stag">Chrome Extension APIs</span>
-                    <span className="stag">HTML / CSS</span>
-                  </div>
-                </div>
-
-                {/* StudyHub */}
-                <div className="proj">
-                  <div className="proj-top">
-                    <div className="proj-name">
-                      <span>StudyHub</span>
-                      <span>Social Learning Platform</span>
-                    </div>
-                    <div className="proj-meta">
-                      <span className="badge">Full-Stack Project</span>
-                      <span className="badge-commits">
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="3" /><line x1="3" y1="12" x2="9" y2="12" /><line x1="15" y1="12" x2="21" y2="12" />
-                        </svg>
-                        2024
-                      </span>
-                    </div>
-                  </div>
-                  <p className="proj-desc">Full-stack social learning platform with real-time collaborative study rooms, resource sharing, and group chat — built end-to-end from DB schema to deployed UI.</p>
-                  <a className="proj-url" href="https://github.com/Victor-201/studyhub-platform" target="_blank" rel="noreferrer">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ flexShrink: 0 }}>
-                      <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                    </svg>
-                    github.com/Victor-201/studyhub-platform
-                  </a>
-                  <ul className="bullets">
-                    <li>Implemented real-time collaborative features with Socket.IO, using room-based communication for isolated study sessions and group chat.</li>
-                    <li>Rebuilt the frontend with Next.js (SSR + ISR) to improve page load and rendering performance.</li>
-                    <li>Designed RESTful APIs with JWT authentication and PostgreSQL-backed RBAC for role-based access to platform resources.</li>
-                  </ul>
-
-                  <div className="stack">
-                    <span className="stag s-rn">Node.js</span>
-                    <span className="stag s-rn">Express.js</span>
-                    <span className="stag s-ng">Next.js</span>
-                    <span className="stag s-db">PostgreSQL</span>
-                    <span className="stag">Socket.IO</span>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>{/* /main */}
-
-          </div>{/* /body */}
-
-          {/* FOOTER */}
-          <div className="cv-footer">
-            Nguyen Van Thang <span>|</span> Full-Stack Developer <span>|</span> 4.victor.201@gmail.com <span>|</span> Ho Chi Minh City, Vietnam
-          </div>
-
-        </div>{/* /page */}
-      </div>
-    </>
+              ))}
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
   );
 }
-
-export default ResumePage;

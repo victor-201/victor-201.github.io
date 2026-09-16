@@ -13,12 +13,10 @@ export default function AppOverlays() {
 
   return (
     <>
-      {isHome && (
-        <Particles
-          className="fixed inset-0 -z-10 animate-fade-in"
-          quantity={100}
-        />
-      )}
+      <Particles
+        className="fixed inset-0 -z-10 animate-fade-in"
+        quantity={100}
+      />
       <RemoteCursors />
       {isHome && <EasterEggs />}
       {isHome && <ElasticCursor />}
