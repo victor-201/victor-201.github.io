@@ -55,7 +55,7 @@ const Header = ({ loader }: HeaderProps) => {
         }}
       >
         <div className="relative flex h-full items-center justify-between lowercase text-[12px] font-normal min-[600px]:text-[15px]">
-          <Link to="/" className="flex items-center justify-center text-foreground no-underline">
+          <Link to="/" className="flex items-center justify-center text-foreground no-underline pr-[12px]">
             <Button variant={"link"} className="text-xl">
               {t("seo", "author")}
             </Button>
