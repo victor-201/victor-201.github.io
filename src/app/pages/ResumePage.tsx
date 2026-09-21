@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Download } from "lucide-react";
-import Particles from "@/components/Particles";
-import ElasticCursor from "@/components/ui/ElasticCursor";
+import React, { useEffect, useState } from "react";
+import { Download } from "lucide-react";
 import { useLocale } from "@/locales/use-locale";
 import {
   personal,
@@ -18,37 +15,94 @@ import {
 
 export default function ResumePage() {
   const { t } = useLocale();
+  const [footerOverlap, setFooterOverlap] = useState(0);
 
   useEffect(() => {
     document.title = t("common", "resume.pageTitle") || "Resume — Nguyen Van Thang";
   }, [t]);
 
-  const handleExportPDF = () => {
-    const originalTitle = document.title;
-    const isDark = document.documentElement.classList.contains("dark");
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-    }
-    document.title = "CV_NguyenVanThang_FullStackDeveloper";
+  useEffect(() => {
+    const handleScroll = () => {
+      const footers = document.querySelectorAll("footer");
+      if (!footers.length) return;
+      const siteFooter = footers[footers.length - 1];
+      const footerRect = siteFooter.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-    setTimeout(() => {
-      window.print();
-      setTimeout(() => {
-        document.title = originalTitle;
-        if (isDark) {
-          document.documentElement.classList.add("dark");
-        }
-      }, 500);
-    }, 50);
+      if (footerRect.top < windowHeight) {
+        setFooterOverlap(windowHeight - footerRect.top);
+      } else {
+        setFooterOverlap(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  const handleExportPDF = () => {
+    const a = document.createElement("a");
+    a.href = cvFile.path;
+    a.download = cvFile.name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
-    <div className="cv-page-wrapper relative min-h-screen bg-[#030712] text-[#2B2118] font-['Inter',Arial,sans-serif] py-6 px-3 sm:px-6 flex flex-col items-center print:bg-[#FAF8F4] print:p-0 print:m-0">
-      {/* Print styles matching design.cv.md */}
+    <div className="cv-page-wrapper relative min-h-screen bg-transparent text-[#2B2118] font-['Inter',Arial,sans-serif] pt-[100px] pb-16 px-3 sm:px-6 flex flex-col items-center print:bg-[#FAF8F4] print:p-0 print:m-0">
       <style>{`
         @page {
           size: A4 portrait;
           margin: 0;
+        }
+
+        /* Fixed A4 dimensions and 2-column layout both on screen and print */
+        .cv-page {
+          width: 210mm !important;
+          min-width: 210mm !important;
+          max-width: 210mm !important;
+          height: 297mm !important;
+          min-height: 297mm !important;
+          max-height: 297mm !important;
+          box-sizing: border-box !important;
+          overflow: hidden !important;
+          flex-shrink: 0 !important;
+        }
+        .cv-layout-row {
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          width: 100% !important;
+          height: 100% !important;
+          gap: 0 !important;
+          align-items: flex-start !important;
+          justify-content: space-between !important;
+          box-sizing: border-box !important;
+        }
+        .cv-main-col {
+          width: 68% !important;
+          min-width: 68% !important;
+          max-width: 68% !important;
+          flex: 0 0 68% !important;
+          padding-right: 5mm !important;
+          order: 1 !important;
+          box-sizing: border-box !important;
+        }
+        .cv-sidebar-col {
+          width: 32% !important;
+          min-width: 32% !important;
+          max-width: 32% !important;
+          flex: 0 0 32% !important;
+          padding: 4mm !important;
+          order: 2 !important;
+          box-sizing: border-box !important;
         }
         @media print {
           html,
@@ -74,7 +128,18 @@ export default function ResumePage() {
 
           header,
           .print\\:hidden,
-          nav {
+          [class*="print:hidden"],
+          nav,
+          [class*="z-[99]"],
+          [class*="z-99"],
+          [class*="z-[1000]"],
+          #cursor-root {
+            display: none !important;
+          }
+
+          /* Hide site footer but keep CV-internal footer div */
+          body > footer,
+          #root footer:not(.cv-footer) {
             display: none !important;
           }
 
@@ -151,56 +216,16 @@ export default function ResumePage() {
         }
       `}</style>
 
-      {/* Elastic Cursor on Resume Page - hidden in print */}
-      <div className="print:hidden">
-        <ElasticCursor />
-      </div>
-
-      {/* Background Particles (starry sky) - hidden in print */}
-      <div className="print:hidden">
-        <Particles
-          className="fixed inset-0 z-0 pointer-events-none"
-          quantity={120}
-        />
-      </div>
-
-      {/* Top Action Bar (hidden in print) */}
-      <header className="relative z-10 w-full max-w-[210mm] mb-5 flex items-center justify-between gap-3 px-4 py-3 bg-zinc-900/70 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.36)] print:hidden">
-        <Link
-          to="/"
-          className="cursor-can-hover inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-zinc-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 transition-all duration-200 active:scale-95 group [&_*]:!pointer-events-none"
-          title={t("common", "resume.backHome")}
-        >
-          <ArrowLeft style={{ pointerEvents: "none" }} className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5 text-zinc-400 group-hover:text-white" />
-          <span style={{ pointerEvents: "none" }}>{t("common", "resume.backHome")}</span>
-        </Link>
-
-        <div className="hidden sm:flex items-center gap-2 text-xs font-medium text-zinc-400 select-none">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)] animate-pulse" />
-          <span className="text-zinc-300 font-semibold">{t("common", "resume.statusLabel")}</span>
-          <span className="text-zinc-600">·</span>
-          <span>{t("common", "resume.statusAuthor")}</span>
-        </div>
-
-        <button
-          type="button"
-          onClick={handleExportPDF}
-          className="cursor-can-hover cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-zinc-900 bg-white hover:bg-zinc-200 border border-white/20 shadow-md hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-200 active:scale-95 group"
-          title={t("common", "resume.downloadCV")}
-        >
-          <Download className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5 text-zinc-800 pointer-events-none" />
-          <span className="pointer-events-none">{t("common", "resume.downloadCV")}</span>
-        </button>
-      </header>
-
-      {/* Main CV Paper Container (margins: 10mm 14mm, content: 182mm × 277mm) */}
-      <main className="cv-page relative z-10 w-full max-w-[210mm] min-h-[297mm] bg-[#FAF8F4] text-[#2B2118] shadow-[0_10px_40px_rgba(0,0,0,0.22)] rounded-sm p-[10mm_14mm] my-[20px] print:my-0 print:p-[10mm_14mm] print:w-[210mm] print:min-h-[297mm] print:max-h-[297mm] print:shadow-none print:rounded-none print:bg-[#FAF8F4] print:overflow-hidden">
-        <div className="cv-layout-row flex flex-col md:flex-row print:flex-row items-start gap-0 w-full">
-          {/* ================= MAIN COLUMN (68%) ================= */}
-          <section className="cv-main-col w-full md:w-[68%] print:w-[68%] bg-[#FAF8F4] order-2 md:order-1 print:order-1 pr-0 md:pr-[5mm] print:pr-[5mm]">
+      {/* Scrollable container so smaller window width never deforms the CV */}
+      <div className="w-full overflow-x-auto flex justify-center py-2 px-2 print:p-0 print:m-0 print:overflow-visible">
+        {/* Main CV Paper Container (fixed A4 210mm × 297mm) */}
+        <main className="cv-page relative z-10 w-[210mm] min-w-[210mm] max-w-[210mm] h-[297mm] min-h-[297mm] max-h-[297mm] bg-[#FAF8F4] text-[#2B2118] shadow-[0_10px_40px_rgba(0,0,0,0.22)] rounded-sm p-[10mm_14mm] my-[20px] print:my-0 print:p-[10mm_14mm] print:shadow-none print:rounded-none overflow-hidden shrink-0 box-border">
+          <div className="cv-layout-row flex flex-row flex-nowrap items-start justify-between gap-0 w-full h-full box-border">
+            {/* ================= MAIN COLUMN (68%) ================= */}
+            <section className="cv-main-col w-[68%] min-w-[68%] max-w-[68%] shrink-0 bg-[#FAF8F4] pr-[5mm] order-1 box-border">
             {/* Header Band */}
             <div className="p-0">
-              <h1 className="font-bold text-[25pt] leading-none tracking-[-0.3pt] mb-[2pt] text-[#2B2118]">
+              <h1 className="font-bold text-[25pt] leading-none tracking-[-0.3pt] mb-[6pt] text-[#2B2118]">
                 {personal.fullName}
               </h1>
               <div className="font-medium text-[11pt] leading-[1.2] tracking-[0.4px] uppercase text-[#B9863C] mb-[4pt]">
@@ -281,14 +306,14 @@ export default function ResumePage() {
               ))}
             </div>
 
-            {/* Footer */}
-            <footer className="flex justify-between items-center px-0 pt-[3mm] mt-[4pt] border-t border-[#DCD1BE] text-[7.5pt] leading-[1.2] text-[#6B5D4E]">
+            {/* CV internal footer – uses div.cv-footer to avoid being hidden by print:footer rule */}
+            <div className="cv-footer flex justify-between items-center px-0 pt-[3mm] mt-[4pt] border-t border-[#DCD1BE] text-[7.5pt] leading-[1.2] text-[#6B5D4E]">
               <span>{footer.label}</span>
-            </footer>
+            </div>
           </section>
 
           {/* ================= SIDEBAR (32%) ================= */}
-          <aside className="cv-sidebar-col w-full md:w-[32%] print:w-[32%] bg-[#EFE9DE] rounded-sm order-1 md:order-2 print:order-2 p-3 md:p-[4mm] print:p-[4mm]">
+          <aside className="cv-sidebar-col w-[32%] min-w-[32%] max-w-[32%] shrink-0 bg-[#EFE9DE] rounded-sm p-[4mm] order-2 box-border">
             {/* Sidebar Top: Photo + Contact */}
             <div className="p-0">
               {/* Photo */}
@@ -402,8 +427,37 @@ export default function ResumePage() {
               ))}
             </div>
           </aside>
-        </div>
-      </main>
+          </div>
+        </main>
+      </div>
+
+      {/* Floating Export PDF Button (dynamically floats above footer when scrolling down) */}
+      <div
+        className="fixed right-6 sm:right-8 z-40 print:hidden transition-[bottom] duration-150 ease-out"
+        style={{
+          bottom: `${24 + footerOverlap}px`,
+        }}
+      >
+        <button
+          type="button"
+          onClick={handleExportPDF}
+          className="cursor-can-hover cursor-pointer relative inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-medium text-zinc-200 bg-zinc-950/85 hover:bg-zinc-900/90 backdrop-blur-2xl border border-white/15 hover:border-[#B9863C]/60 shadow-[0_12px_40px_rgba(0,0,0,0.8),0_0_20px_rgba(185,134,60,0.15),inset_0_1px_1px_rgba(255,255,255,0.15)] hover:shadow-[0_16px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(185,134,60,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] transition-all duration-300 active:scale-95 group overflow-hidden"
+          title={t("common", "resume.downloadCV") || "Export PDF"}
+        >
+          {/* Subtle cosmic glass shimmer highlight */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+
+          {/* Star gold glowing pulse indicator */}
+          <span className="w-1.5 h-1.5 rounded-full bg-[#B9863C] shadow-[0_0_8px_rgba(185,134,60,0.9)] animate-pulse pointer-events-none" />
+
+          {/* Download icon with gold accent */}
+          <Download className="w-4 h-4 text-[#B9863C] group-hover:text-amber-300 transition-all duration-300 group-hover:translate-y-0.5 pointer-events-none" />
+
+          <span className="tracking-wide group-hover:text-white transition-colors duration-200 pointer-events-none">
+            {t("common", "resume.downloadCV") || "Export PDF"}
+          </span>
+        </button>
+      </div>
     </div>
   );
 }

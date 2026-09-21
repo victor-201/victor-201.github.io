@@ -19,7 +19,7 @@ export default function AppOverlays() {
       />
       <RemoteCursors />
       {isHome && <EasterEggs />}
-      {isHome && <ElasticCursor />}
+      <ElasticCursor />
       {isHome && <RadialMenu />}
     </>
   );

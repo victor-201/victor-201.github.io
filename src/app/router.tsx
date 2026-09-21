@@ -7,7 +7,6 @@ import TechStackPage from "./pages/TechStackPage";
 import AboutPage from "./pages/AboutPage";
 import ResumePage from "./pages/ResumePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import { Providers } from "@/components/providers";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +14,7 @@ export const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             { index: true, element: <HomePage /> },
+            { path: "resume", element: <ResumePage /> },
             { path: "projects", element: <ProjectsPage /> },
             { path: "projects/:slug", element: <ProjectDetailPage /> },
             { path: "tech-stack", element: <TechStackPage /> },
@@ -22,14 +22,5 @@ export const router = createBrowserRouter([
             { path: "404", element: <NotFoundPage /> },
             { path: "*", element: <NotFoundPage /> },
         ],
-    },
-    // Resume: standalone (no header/footer) but still needs Providers for locale/theme
-    {
-        path: "/resume",
-        element: (
-            <Providers>
-                <ResumePage />
-            </Providers>
-        ),
     },
 ]);
