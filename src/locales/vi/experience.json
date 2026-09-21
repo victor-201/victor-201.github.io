@@ -2,22 +2,22 @@
   "items": [
     {
       "id": 1,
-      "title": "Lập trình viên Full-stack Freelance",
-      "company": "Tự do",
+      "title": "Lập trình viên Full-Stack Freelance",
+      "company": "Làm việc từ xa / Theo dự án",
       "description": [
-        "Xây dựng StudyHub, nền tảng học tập xã hội với chat thời gian thực, nhóm học và chia sẻ tài liệu (Node.js, Express, PostgreSQL, Socket.IO).",
-        "Phát triển hệ thống Quản lý Thu hồi Công nợ (ARMS) áp dụng Clean Architecture để số hóa quy trình theo dõi nợ cho doanh nghiệp SME (React, Node.js).",
-        "Thiết kế và triển khai website portfolio cá nhân với React, Vite, Tailwind CSS và Framer Motion, tích hợp 3D và chat thời gian thực."
+        "Bàn giao các ứng dụng web full-stack cho khách hàng từ phân tích yêu cầu đến các cột mốc hoàn thành trong nhóm lập trình viên.",
+        "Xây dựng giao diện React/TypeScript và REST API với Node.js, Express.js và PostgreSQL, bao gồm mô hình hóa dữ liệu, xác thực và phân quyền JWT.",
+        "Container hóa môi trường bằng Docker và tự động hóa linting/kiểm thử qua GitHub Actions, Jest và Supertest."
       ]
     },
     {
       "id": 2,
-      "title": "Dự án học thuật",
-      "company": "Đại học & Nghiên cứu",
+      "title": "Cử nhân Công nghệ Thông tin",
+      "company": "Trường ĐH Giao thông Vận tải TP.HCM",
       "description": [
-        "Tham gia xây dựng Hệ thống Quản lý Trạm sạc EV — dự án capstone microservices với Kong API Gateway, RabbitMQ, Docker và Postgres.",
-        "Xây dựng Hệ thống Cảnh báo Buồn ngủ Tài xế giám sát mệt mỏi thời gian thực sử dụng thị giác máy tính (Python, OpenCV).",
-        "Phát triển công cụ dịch video web với nhận dạng giọng nói và tổng hợp âm thanh tiếng Việt (React, Python backend)."
+        "Sinh viên năm cuối (2022–2026), GPA: 3.36/4.0, Dự kiến tốt nghiệp: 2026.",
+        "Thiết kế kiến trúc hệ thống phân tán điều phối trạm sạc EV gồm 8 dịch vụ với 104 endpoints (NestJS, PostgreSQL, RabbitMQ, ClickHouse).",
+        "Xây dựng nền tảng học tập microservices StudyHub gồm 6 dịch vụ Express, Kong API Gateway, MySQL, MongoDB và Socket.IO."
       ]
     }
   ]

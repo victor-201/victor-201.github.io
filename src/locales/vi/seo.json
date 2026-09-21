@@ -1,10 +1,10 @@
 {
-  "title": "Victor | Lập trình viên Full Stack",
+  "title": "Nguyễn Văn Thắng (Victor) | Lập trình viên Full-Stack",
   "description": {
-    "long": "Khám phá portfolio của Victor (Victor-201), Lập trình viên Full Stack chuyên về ứng dụng web, hệ thống hạ tầng EV và nền tảng xã hội xây dựng với JavaScript, TypeScript, Python và React.",
-    "short": "Khám phá portfolio của Victor, Lập trình viên Full Stack xây dựng ứng dụng web và nền tảng mở rộng."
+    "long": "Khám phá portfolio của Nguyễn Văn Thắng (Victor), Lập trình viên Full-Stack tốt nghiệp năm 2026 tại ĐH Giao thông Vận tải TP.HCM. Chuyên sâu về React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL, kiến trúc microservices và hệ thống phân tán trạm sạc EV.",
+    "short": "Portfolio của Nguyễn Văn Thắng (Victor), Lập trình viên Full-Stack chuyên về React, Next.js, Node.js, NestJS và hệ thống phân tán."
   },
-  "keywords": ["Victor", "Victor-201", "portfolio", "lập trình viên full stack", "phát triển web", "JavaScript", "TypeScript", "Python", "React", "Node.js", "hệ thống sạc EV", "mạng xã hội", "Docker", "PostgreSQL"],
+  "keywords": ["Nguyễn Văn Thắng", "Nguyen Van Thang", "Victor", "Victor-201", "portfolio", "lập trình viên full stack", "phát triển web", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "NestJS", "Express.js", "PostgreSQL", "RabbitMQ", "Docker", "hệ thống sạc EV", "microservices", "Socket.IO"],
   "author": "Nguyễn Văn Thắng",
   "name": "Thắng",
   "techStackPageTitle": "Kỹ năng & Công nghệ — Nguyễn Văn Thắng",

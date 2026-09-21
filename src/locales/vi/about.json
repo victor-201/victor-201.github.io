@@ -1,14 +1,14 @@
 {
   "name": "Victor · Nguyễn Văn Thắng",
   "title": "Về tôi",
-  "desc": "Lập trình viên Full-stack Freelance",
-  "bio1": "Tôi là lập trình viên Full-stack với 1 năm kinh nghiệm freelance xây dựng ứng dụng web và hệ thống backend. Tôi làm việc với React, Node.js, TypeScript và PostgreSQL để tạo ra các giải pháp hoàn chỉnh — từ giao diện người dùng đến RESTful API và thiết kế cơ sở dữ liệu. Tôi có thể tự chịu trách nhiệm về tính năng và làm việc độc lập.",
-  "bio2": "Hiện sống tại Thành phố Hồ Chí Minh, tôi tập trung vào việc biến yêu cầu thành phần mềm thực tế. Tôi đã bàn giao 3 dự án freelance bao gồm nền tảng học tập xã hội, hệ thống quản lý công nợ, và portfolio cá nhân. Trước đó đã hoàn thành các dự án học thuật về hệ thống phân tán và kỹ nghệ phần mềm.",
-  "available": "Sẵn sàng cho các cơ hội mới",
+  "desc": "Lập trình viên Full-Stack",
+  "bio1": "Sinh viên năm cuối ngành Công nghệ Thông tin tốt nghiệp năm 2026 tại Đại học Giao thông Vận tải TP.HCM, định hướng chuyên sâu về Phát triển Web Full-Stack. Có kinh nghiệm thực chiến với React/Next.js, TypeScript, Node.js, NestJS, Express.js và PostgreSQL, bao gồm hệ thống phân tán, xử lý đồng thời, giao tiếp thời gian thực, xác thực, kiểm thử và Docker.",
+  "bio2": "Hiện đang sinh sống tại TP. Hồ Chí Minh, tôi bàn giao các ứng dụng web cho khách hàng với vai trò freelance, đồng thời thiết kế kiến trúc hệ thống phân tán và microservices như EV Charging Orchestration Platform và StudyHub. Đang tìm kiếm vị trí Thực tập sinh / Fresher Lập trình viên Full-Stack.",
+  "available": "Sẵn sàng đón nhận cơ hội Thực tập sinh / Fresher Full-Stack",
   "pillar1_title": "Phát triển Full-Stack",
-  "pillar1_desc": "Xây dựng ứng dụng web với React, Node.js và PostgreSQL. Thiết kế RESTful API và quản lý toàn bộ vòng đời phát triển.",
-  "pillar2_title": "Hạ tầng & Hệ thống",
-  "pillar2_desc": "Container hóa ứng dụng với Docker, cấu hình API Gateway (Kong) và triển khai lên nền tảng đám mây. Kiến thức nền tảng về kiến trúc microservices.",
-  "pillar3_title": "Kỹ nghệ phần mềm",
-  "pillar3_desc": "Viết code sạch và dễ bảo trì, thực hiện kiểm thử (Jest), sử dụng Git/GitHub và tự động hóa quy trình với CI/CD."
+  "pillar1_desc": "Xây dựng ứng dụng web hiện đại với React, Next.js, TypeScript, Node.js, NestJS và PostgreSQL. Thiết kế RESTful API và cấu trúc hệ thống toàn diện.",
+  "pillar2_title": "Hệ thống phân tán & Messaging",
+  "pillar2_desc": "Kiến trúc microservices qua API Gateway (Kong), hệ thống hướng sự kiện với RabbitMQ & Transactional Outbox, bộ đệm Redis và container hóa với Docker.",
+  "pillar3_title": "Chất lượng & Độ tin cậy phần mềm",
+  "pillar3_desc": "Viết mã nguồn sạch, dễ bảo trì, kiểm soát đồng thời (pessimistic locking), kiểm thử tự động (Jest, Supertest) và quy trình CI/CD chuẩn mực."
 }

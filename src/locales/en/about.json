@@ -1,14 +1,14 @@
 {
-  "name": "Victor · Nguyễn Văn Thắng",
+  "name": "Victor · Nguyen Van Thang",
   "title": "About Me",
-  "desc": "Freelance Full-stack Developer",
-  "bio1": "I am a Full-stack Developer with 1 year of freelance experience building web applications and backend systems. I work with React, Node.js, TypeScript, and PostgreSQL to deliver end-to-end solutions — from responsive UIs to RESTful APIs and database design. Comfortable taking ownership of features and working independently.",
-  "bio2": "Based in Ho Chi Minh City, I focus on turning requirements into reliable software. I have delivered 3 freelance projects including a social learning platform, a debt management system, and a developer portfolio. Previously completed academic projects in distributed systems and software engineering.",
-  "available": "Open to new opportunities",
+  "desc": "Full-Stack Developer",
+  "bio1": "Final-year Information Technology student graduating in 2026 at HCMC University of Transport, focused on Full-Stack Web Development. Hands-on experience with React/Next.js, TypeScript, Node.js, NestJS, Express.js, and PostgreSQL, including distributed systems, concurrency, real-time communication, authentication, testing, and Docker.",
+  "bio2": "Based in Ho Chi Minh City, I deliver client-based web applications as a freelance developer, alongside architecting microservices and distributed systems like the EV Charging Orchestration Platform and StudyHub. Actively seeking a Full-Stack Developer Intern/Fresher position.",
+  "available": "Open to Full-Stack Developer Intern/Fresher opportunities",
   "pillar1_title": "Full-Stack Development",
-  "pillar1_desc": "Building responsive web applications with React, Node.js, and PostgreSQL. Designing RESTful APIs and managing the full development lifecycle.",
-  "pillar2_title": "Systems & Infrastructure",
-  "pillar2_desc": "Containerizing applications with Docker, configuring API Gateways (Kong), and deploying to cloud platforms. Foundational knowledge of microservices architecture.",
-  "pillar3_title": "Software Excellence",
-  "pillar3_desc": "Writing clean, maintainable code, conducting thorough testing (Jest), using version control (Git/GitHub), and automating workflows with CI/CD pipelines."
+  "pillar1_desc": "Building responsive, modern web applications with React, Next.js, TypeScript, Node.js, NestJS, and PostgreSQL. Designing RESTful APIs and end-to-end full-stack architectures.",
+  "pillar2_title": "Distributed Systems & Messaging",
+  "pillar2_desc": "Architecting microservices behind API Gateways (Kong), event-driven messaging with RabbitMQ & Transactional Outbox, caching with Redis, and containerization with Docker.",
+  "pillar3_title": "Software Reliability & Excellence",
+  "pillar3_desc": "Writing clean, maintainable code with strict typing, automated testing (Jest, Supertest), pessimistic concurrency locking, and automated CI/CD workflows."
 }

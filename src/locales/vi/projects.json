@@ -2,17 +2,17 @@
   "items": [
     {
       "id": "ev-charging",
-      "title": "Nền tảng điều phối trạm sạc EV",
-      "category": "Nền tảng hạ tầng",
-      "description": "Nền tảng điều phối sạc EV full-stack — 8 microservices NestJS (IAM, Trạm sạc, Đặt lịch, Thanh toán, Phân tích, Thông báo, Cổng OCPP, Telemetry), 6 cơ sở dữ liệu PostgreSQL + ClickHouse cho telemetry, RabbitMQ event-driven, Redis caching, Kong API Gateway, Socket.IO thời gian thực. Ba frontend: Dashboard Next.js 14, Kiosk PWA React + Vite và ứng dụng di động Flutter đa nền tảng (Android, iOS, Web, Windows) với Bloc state management.",
-      "techStack": "NestJS + TypeScript (8 microservices), TypeORM + PostgreSQL + ClickHouse, Next.js 14 + React 18 + Vite (Admin & Kiosk), Flutter + Bloc (Mobile), RabbitMQ + Redis + Kong, Docker + Docker Compose, Prometheus + Grafana + OpenTelemetry, VNPay, Firebase FCM."
+      "title": "EV Charging Orchestration Platform",
+      "category": "Đồ án Kỹ thuật Học thuật / Capstone",
+      "description": "Hệ thống phân tán điều phối sạc EV thời gian thực, giám sát dữ liệu đo xa (telemetry) và đặt lịch sạc. Thiết kế kiến trúc hệ thống phân tán gồm 8 dịch vụ với 104 REST endpoints (IAM, Session, Hạ tầng, Thanh toán, Telemetry, Thông báo, Phân tích, và Cổng OCPP). Triển khai cơ chế đặt chỗ đồng thời với PostgreSQL SELECT FOR UPDATE và kiểm tra xung đột khung giờ. Thiết kế RabbitMQ messaging với Transactional Outbox và xác thực idempotency-key. Xây dựng giao diện Next.js/React và tích hợp VNPay, TOTP/MFA, ClickHouse telemetry, Docker Compose, GitHub Actions, và Jest.",
+      "techStack": "React, Next.js, NestJS, TypeScript, PostgreSQL, Redis, RabbitMQ, Docker, Flutter, Jest"
     },
     {
       "id": "studyhub",
-      "title": "Nền tảng StudyHub",
-      "category": "Nền tảng học tập xã hội",
-      "description": "Nền tảng học tập xã hội theo kiến trúc microservice kết nối sinh viên chia sẻ tài liệu, tham gia nhóm học, trò chuyện thời gian thực và đánh giá tài nguyên giáo dục. Backend vận hành 7 dịch vụ Express (Auth, User, Group, Document, Chat, Notification, Gateway) với MySQL, MongoDB và RabbitMQ cho giao tiếp liên dịch vụ. Tích hợp xác thực JWT + Google OAuth, lưu trữ file/hình ảnh qua Cloudinary, nhắn tin thời gian thực với Socket.IO và frontend React + Vite với Tailwind CSS.",
-      "techStack": "Express + Node.js (7 microservices), MySQL + MongoDB, RabbitMQ, React 18 + Vite + Tailwind CSS, Socket.IO, JWT + Google OAuth, Cloudinary, Docker + Docker Compose, Kong API Gateway."
+      "title": "StudyHub — Nền tảng Học tập Xã hội Cộng tác",
+      "category": "Dự án Học thuật Full-Stack",
+      "description": "Nền tảng microservices cho các nhóm học tập, chia sẻ tài liệu và trò chuyện thời gian thực. Thiết kế 6 microservices Express.js (auth, user, group, document, chat, notification) phía sau Kong API Gateway, với ứng dụng React 18 SPA gồm 59 components/pages. Triển khai OAuth 2.0 (Google, Facebook, GitHub, LinkedIn), xoay vòng JWT access/refresh token, phân quyền 4 vai trò RBAC, tin nhắn thời gian thực Socket.IO và thông báo RabbitMQ với Transactional Outbox. Áp dụng lưu trữ đa hình với MySQL 8 cho 4 dịch vụ quan hệ và MongoDB 6 cho chat/thông báo, cùng Cloudinary và Docker Compose.",
+      "techStack": "React 18, Vite 7, Node.js, Express.js, MySQL, MongoDB, Socket.IO, RabbitMQ, Kong, Docker, Redux Toolkit, i18next, Cloudinary"
     },
     {
       "id": "customer-debt",
@@ -58,10 +58,10 @@
     },
     {
       "id": "victor-portfolio",
-      "title": "Portfolio IT Victor",
-      "category": "Phát triển web",
-      "description": "Website portfolio cá nhân hiện đại, tương thích di động giới thiệu dự án và kỹ năng IT. Xây dựng với React 19 + TypeScript, Vite, Tailwind CSS và shadcn/ui (Radix UI). Tích hợp cảnh 3D tương tác với Spline và Three.js, hiệu ứng cuộn mượt với Lenis + GSAP + Framer Motion, hỗ trợ giao diện tối/sáng, đa ngôn ngữ (EN/VI) và form liên hệ xác thực với Zod. Triển khai trên Cloudflare Pages.",
-      "techStack": "React 19 + TypeScript + Vite, Tailwind CSS + Radix UI/shadcn, Framer Motion + GSAP + Lenis, Three.js + Spline, Zod, i18next, Cloudflare Pages."
+      "title": "Victorfolio — Developer Portfolio & Real-Time Web App",
+      "category": "Dự án Cá nhân",
+      "description": "Portfolio tương tác với các tính năng kết nối người xem theo thời gian thực và các thành phần giao diện tái sử dụng. Xây dựng ứng dụng React 19/TypeScript hỗ trợ song ngữ EN/VI và các thành phần Radix UI/Tailwind tái sử dụng. Tích hợp theo dõi hiện diện của khách truy cập và đồng bộ con trỏ chuột từ xa theo thời gian thực qua Socket.IO, kết hợp hiệu ứng tương tác GSAP, Framer Motion, Three.js và triển khai trên Cloudflare Pages.",
+      "techStack": "React 19, TypeScript, Vite, Tailwind CSS, Radix UI, Socket.IO, GSAP, Framer Motion, Three.js, Cloudflare Pages"
     }
   ]
 }

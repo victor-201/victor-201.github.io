@@ -2,22 +2,22 @@
   "items": [
     {
       "id": 1,
-      "title": "Freelance Full-stack Developer",
-      "company": "Independent",
+      "title": "Freelance Full-Stack Developer",
+      "company": "Remote / Project-Based",
       "description": [
-        "Built StudyHub, a social learning platform with real-time chat, study groups, and resource sharing using Node.js, Express, PostgreSQL, and Socket.IO.",
-        "Developed an Accounts Receivable Management System (ARMS) implementing Clean Architecture to digitize SME debt tracking with React and Node.js.",
-        "Designed and deployed a personal portfolio website with React, Vite, Tailwind CSS, and Framer Motion, featuring 3D elements and real-time chat."
+        "Delivered client-based full-stack web applications from requirements through milestones within a developer group.",
+        "Built React/TypeScript interfaces and REST APIs with Node.js, Express.js, and PostgreSQL, including data modeling, validation, and JWT authentication.",
+        "Containerized environments with Docker and automated linting/testing through GitHub Actions, Jest, and Supertest."
       ]
     },
     {
       "id": 2,
-      "title": "Academic Projects",
-      "company": "University & Research",
+      "title": "Bachelor of Information Technology",
+      "company": "HCMC University of Transport",
       "description": [
-        "Contributed to an EV Charging Station Management System — a capstone microservices project with Kong API Gateway, RabbitMQ, Docker, and Postgres.",
-        "Built a Driver Drowsiness Alert System for real-time fatigue monitoring using computer vision techniques (Python, OpenCV).",
-        "Developed a web video translator with speech recognition and Vietnamese audio synthesis (React, Python backend)."
+        "Final-year student (2022–2026) with GPA: 3.36/4.0, Expected Graduation: 2026.",
+        "Architected an 8-service EV Charging Orchestration distributed system with 104 endpoints using NestJS, PostgreSQL, RabbitMQ, and ClickHouse.",
+        "Developed StudyHub, a microservices social learning platform with 6 Express services, Kong Gateway, MySQL, MongoDB, and Socket.IO."
       ]
     }
   ]

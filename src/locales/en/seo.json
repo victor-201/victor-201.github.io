@@ -1,12 +1,12 @@
 {
-  "title": "Victor | Full Stack Developer",
+  "title": "Nguyen Van Thang (Victor) | Full-Stack Developer",
   "description": {
-    "long": "Explore the portfolio of Victor (Victor-201), a Full Stack Developer specializing in web applications, EV infrastructure systems, and social platforms built with JavaScript, TypeScript, Python, and React.",
-    "short": "Discover the portfolio of Victor, a Full Stack Developer building impactful web apps, tools, and scalable platforms."
+    "long": "Explore the portfolio of Nguyen Van Thang (Victor), a Full-Stack Developer graduating in 2026 from HCMC University of Transport. Specializing in React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL, microservices, and distributed EV infrastructure.",
+    "short": "Portfolio of Nguyen Van Thang (Victor), Full-Stack Developer specializing in React, Next.js, Node.js, NestJS, and distributed systems."
   },
-  "keywords": ["Victor", "Victor-201", "portfolio", "full stack developer", "web development", "JavaScript", "TypeScript", "Python", "React", "Node.js", "EV charging system", "social network", "Docker", "PostgreSQL"],
-  "author": "Victor",
+  "keywords": ["Nguyen Van Thang", "Victor", "Victor-201", "portfolio", "full stack developer", "web development", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "NestJS", "Express.js", "PostgreSQL", "RabbitMQ", "Docker", "EV charging orchestration", "microservices", "Socket.IO"],
+  "author": "Nguyen Van Thang",
   "name": "Victor",
-  "techStackPageTitle": "Skills & Technologies — Nguyễn Văn Thắng",
+  "techStackPageTitle": "Skills & Technologies — Nguyen Van Thang",
   "techStackPageHeading": "Skills & Technologies"
 }

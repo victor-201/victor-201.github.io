@@ -3,16 +3,16 @@
     {
       "id": "ev-charging",
       "title": "EV Charging Orchestration Platform",
-      "category": "Infrastructure Platform",
-      "description": "A full-stack EV charging orchestration platform — 8 NestJS microservices (IAM, Stations, Booking, Billing, Analytics, Notifications, OCPP Gateway, Telemetry), 6 PostgreSQL databases + ClickHouse for telemetry, RabbitMQ event-driven messaging, Redis caching, Kong API Gateway, Socket.IO real-time updates. Three frontends: Next.js 14 Admin Dashboard, React + Vite Kiosk PWA (touch-screen terminal), and Flutter cross-platform mobile app (Android, iOS, Web, Windows) with Bloc state management.",
-      "techStack": "NestJS + TypeScript (8 microservices), TypeORM + PostgreSQL + ClickHouse, Next.js 14 + React 18 + Vite (Admin & Kiosk), Flutter + Bloc (Mobile), RabbitMQ + Redis + Kong, Docker + Docker Compose, Prometheus + Grafana + OpenTelemetry, VNPay, Firebase FCM."
+      "category": "Capstone / Academic Engineering Project",
+      "description": "Distributed system for real-time EV charging, telemetry, and slot booking. Architected an 8-service distributed system with 104 REST endpoints across IAM, Session, Infrastructure, Billing, Telemetry, Notification, Analytics, and OCPP Gateway. Implemented concurrent booking with PostgreSQL SELECT FOR UPDATE and time-range conflict checks to prevent overlapping allocation. Designed RabbitMQ messaging with Transactional Outbox and idempotency-key validation for reliable duplicate-event handling. Built Next.js/React interfaces and integrated VNPay, TOTP/MFA, ClickHouse telemetry, Docker Compose, GitHub Actions, and Jest.",
+      "techStack": "React, Next.js, NestJS, TypeScript, PostgreSQL, Redis, RabbitMQ, Docker, Flutter, Jest"
     },
     {
       "id": "studyhub",
-      "title": "StudyHub Platform",
-      "category": "Social Learning Platform",
-      "description": "A microservice-based social learning platform connecting students to share study materials, join study groups, chat in real-time, and rate educational resources. Backend runs 7 Express services (Auth, User, Group, Document, Chat, Notification, Gateway) with MySQL, MongoDB, and RabbitMQ for inter-service communication. Features JWT + Google OAuth authentication, Cloudinary file/image storage, Socket.IO real-time messaging, and a React + Vite frontend with Tailwind CSS.",
-      "techStack": "Express + Node.js (7 microservices), MySQL + MongoDB, RabbitMQ, React 18 + Vite + Tailwind CSS, Socket.IO, JWT + Google OAuth, Cloudinary, Docker + Docker Compose, Kong API Gateway."
+      "title": "StudyHub — Collaborative Social Learning Platform",
+      "category": "Full-Stack Academic Project",
+      "description": "Microservices platform for study groups, document sharing, and real-time chat. Architected 6 Express.js microservices for auth, user, group, document, chat, and notification behind Kong API Gateway, with a React 18 SPA of 59 components/pages. Implemented OAuth 2.0 (Google, Facebook, GitHub, LinkedIn), JWT access/refresh rotation, 4-role RBAC, Socket.IO messaging, and RabbitMQ notifications with Transactional Outbox. Applied polyglot persistence with MySQL 8 for four relational services and MongoDB 6 for chat/notifications, with Cloudinary storage and Docker Compose.",
+      "techStack": "React 18, Vite 7, Node.js, Express.js, MySQL, MongoDB, Socket.IO, RabbitMQ, Kong, Docker, Redux Toolkit, i18next, Cloudinary"
     },
     {
       "id": "customer-debt",
@@ -58,10 +58,10 @@
     },
     {
       "id": "victor-portfolio",
-      "title": "Victor IT Portfolio",
-      "category": "Web Development",
-      "description": "A modern, responsive personal portfolio website showcasing IT projects and skills. Built with React 19 + TypeScript, Vite, Tailwind CSS, and shadcn/ui (Radix UI primitives). Features interactive 3D scenes with Spline and Three.js, smooth scroll animations with Lenis + GSAP + Framer Motion, dark/light theme support, multi-language i18n (EN/VI), and a clean animated UI with Zod-validated contact forms. Deployed on Cloudflare Pages.",
-      "techStack": "React 19 + TypeScript + Vite, Tailwind CSS + Radix UI/shadcn, Framer Motion + GSAP + Lenis, Three.js + Spline, Zod, i18next, Cloudflare Pages."
+      "title": "Victorfolio — Developer Portfolio & Real-Time Web App",
+      "category": "Personal Project",
+      "description": "Interactive portfolio with real-time visitor features and reusable UI components. Built a React 19/TypeScript application with bilingual EN/VI localization and reusable Radix UI/Tailwind components. Implemented real-time visitor presence and synchronized remote cursor tracking with Socket.IO, plus GSAP, Framer Motion, and Three.js interactions with Cloudflare Pages deployment.",
+      "techStack": "React 19, TypeScript, Vite, Tailwind CSS, Radix UI, Socket.IO, GSAP, Framer Motion, Three.js, Cloudflare Pages"
     }
   ]
 }
