@@ -37,11 +37,11 @@ const Header = ({ loader }: HeaderProps) => {
 
       <motion.header
         className={cn(
-          "fixed inset-x-0 z-[1000] w-[95%] h-[var(--header-height)] mx-auto my-[15px] px-[30px] py-[15px] bg-[#D9D9D9]/20 backdrop-blur-xl [--angle:65deg] [--run:calc(var(--header-height)/tan(65deg))] [clip-path:polygon(round_12px,0_0,100%_0,calc(100%-var(--run))_100%,var(--run)_100%)] transition-colors delay-100 duration-500 ease-in",
+          "fixed inset-x-0 z-[1000] w-[95%] h-[var(--header-height)] mx-auto my-[15px] px-[30px] py-[15px] bg-[#D9D9D9]/10 backdrop-blur-3xl backdrop-saturate-[1.8] [--angle:65deg] [--run:calc(var(--header-height)/tan(65deg))] [clip-path:polygon(round_12px,0_0,100%_0,calc(100%-var(--run))_100%,var(--run)_100%)] transition-colors delay-100 duration-500 ease-in",
           isActive && "h-auto [clip-path:none] rounded-[12px]"
         )}
         style={{
-          background: isActive ? "hsl(var(--background) / .1)" : undefined,
+          background: isActive ? "hsl(var(--background) / .06)" : undefined,
         }}
         initial={{
           y: -80,
