@@ -69,6 +69,7 @@ export const projects = [
       "Implemented concurrent booking with PostgreSQL SELECT FOR UPDATE and time-range conflict checks to prevent overlapping allocation.",
       "Designed RabbitMQ messaging with Transactional Outbox and idempotency-key validation for reliable duplicate-event handling.",
       "Built Next.js/React interfaces and integrated VNPay, TOTP/MFA, ClickHouse telemetry, Docker Compose, GitHub Actions, and Jest.",
+      "Exposed services via Kong API Gateway with Redis rate limiting and auto-generated Swagger/OpenAPI docs.",
     ],
 
     tech: "React, Next.js, NestJS, TypeScript, PostgreSQL, Redis, RabbitMQ, Docker, Flutter, Jest",
@@ -190,7 +191,7 @@ export const skills: { category: string; items: string[] }[] = [
 
   {
     category: "Tools",
-    items: ["Git", "GitHub", "Postman", "Flutter"],
+    items: ["Git", "GitHub", "Postman", "VS Code", "Antigravity"],
   },
 ];
 
