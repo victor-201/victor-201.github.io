@@ -7,6 +7,9 @@
  * Pure clean typography — No emoji characters.
  */
 
+import { personal, education, freelance, cvFile } from "@/data/resume";
+import aboutVi from "@/locales/vi/about.json";
+
 export type BotMessageType = "text" | "chips" | "link-list" | "cv-download";
 
 export interface BotChip {
@@ -32,16 +35,16 @@ export interface BotMessage {
 // ─── Knowledge Base ────────────────────────────────────────────────────────
 
 export const KB = {
-  name: "Nguyen Van Thang",
+  name: personal.fullName,
   nickname: "Victor",
   birthYear: 2004,
-  role: "Full-Stack Developer (Intern / Fresher)",
-  email: "4.victor.201@gmail.com",
-  location: "Ho Chi Minh City, Vietnam",
-  github: "https://github.com/Victor-201",
-  website: "https://victorfolio.pages.dev/",
-  cvPath: "/assets/cv/Nguyen_Van_Thang.pdf",
-  cvName: "Nguyen_Van_Thang.pdf",
+  role: personal.role,
+  email: personal.email,
+  location: personal.location,
+  github: personal.github.url,
+  website: personal.website.url,
+  cvPath: cvFile.path,
+  cvName: cvFile.name,
   workingModes: "Onsite (TP. Hồ Chí Minh), Hybrid, Remote",
   employmentType: "Full-time hoặc Part-time linh hoạt, sẵn sàng bắt đầu ngay",
   english:
@@ -50,24 +53,20 @@ export const KB = {
     "Trở thành Full-Stack Software Engineer chuyên sâu về kiến trúc hệ thống phân tán, microservices và scalable web applications",
 
   education: {
-    school: "HCMC University of Transport (Đại học Giao Thông Vận Tải TP.HCM)",
-    degree: "Bachelor of Information Technology (Cử nhân Công nghệ Thông tin)",
-    period: "2022–2026",
-    gpa: "3.36 / 4.0",
-    note: "Dự kiến tốt nghiệp năm 2026 — Hiện là sinh viên năm cuối",
+    school: `${education.institution} (Đại học Giao Thông Vận Tải TP.HCM)`,
+    degree: `${education.degree} (Cử nhân Công nghệ Thông tin)`,
+    period: education.period,
+    gpa: education.gpa,
+    note: education.graduationNote,
   },
 
-  bio: "Sinh viên năm cuối ngành Công nghệ Thông tin tốt nghiệp năm 2026, định hướng Full-Stack Web Development. Đã có kinh nghiệm thực chiến với React/Next.js, TypeScript, Node.js, NestJS, Express.js và PostgreSQL — bao gồm kiến trúc hệ thống phân tán (microservices), xử lý đồng thời (concurrency), giao tiếp thời gian thực, authentication, kiểm thử tự động và Docker. Đang tìm kiếm vị trí Full-Stack Developer Intern/Fresher.",
+  bio: aboutVi.bio1,
 
   experience: {
-    title: "Freelance Full-Stack Developer",
-    period: "Jan 2025 – Hiện tại",
-    location: "Remote / Theo dự án",
-    bullets: [
-      "Bàn giao các ứng dụng web full-stack theo yêu cầu khách hàng từ khâu phân tích tính năng đến triển khai.",
-      "Xây dựng giao diện React/TypeScript và hệ thống REST APIs với Node.js, Express.js, PostgreSQL (data modeling, validation, JWT auth).",
-      "Đóng gói môi trường với Docker và thiết lập kiểm thử tự động bằng GitHub Actions, Jest và Supertest.",
-    ],
+    title: freelance.title,
+    period: freelance.period,
+    location: freelance.location,
+    bullets: freelance.bullets,
   },
 
   projects: [
