@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowDown, Send, ExternalLink, Download, Trash2, RotateCcw, X } from "lucide-react";
 import { VictorBotIcon } from "./victor-bot-icon";
 import { cn } from "@/lib/utils";
@@ -17,37 +17,61 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-// ─── Panel animation variants ──────────────────────────────────────────────
-const panelVariants = {
+// ─── Liquid Shockwave Panel Animation Variants ──────────────────────────────
+const panelVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.2,
-    y: 16,
-    filter: "blur(10px)",
+    scale: 0.82,
+    clipPath: "circle(28px at calc(100% - 28px) calc(100% - 28px))",
+    filter: "blur(12px)",
     transformOrigin: "bottom right",
   },
   visible: {
     opacity: 1,
     scale: 1,
-    y: 0,
+    clipPath: "circle(160% at calc(100% - 28px) calc(100% - 28px))",
     filter: "blur(0px)",
     transformOrigin: "bottom right",
     transition: {
-      type: "spring" as const,
-      stiffness: 380,
-      damping: 28,
-      mass: 0.8,
+      clipPath: {
+        duration: 0.58,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      },
+      scale: {
+        type: "spring",
+        stiffness: 280,
+        damping: 24,
+        mass: 0.8,
+      },
+      opacity: {
+        duration: 0.22,
+        ease: "easeOut",
+      },
+      filter: {
+        duration: 0.35,
+        ease: "easeOut",
+      },
     },
   },
   exit: {
     opacity: 0,
-    scale: 0.2,
-    y: 16,
-    filter: "blur(8px)",
+    scale: 0.82,
+    clipPath: "circle(28px at calc(100% - 28px) calc(100% - 28px))",
+    filter: "blur(10px)",
     transformOrigin: "bottom right",
     transition: {
-      duration: 0.18,
-      ease: [0.4, 0, 1, 1] as [number, number, number, number],
+      clipPath: {
+        duration: 0.32,
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
+      },
+      scale: {
+        duration: 0.28,
+        ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
+      },
+      opacity: {
+        duration: 0.2,
+        ease: "easeIn",
+      },
     },
   },
 };
@@ -412,8 +436,11 @@ export const OnlineUsers = () => {
             onClick={() => setIsOpen(true)}
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.5, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 450, damping: 28 }}
+            exit={{ scale: 1.35, opacity: 0, filter: "blur(6px)" }}
+            transition={{
+              scale: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+              opacity: { duration: 0.18, ease: "easeOut" },
+            }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             className={cn(
@@ -454,12 +481,47 @@ export const OnlineUsers = () => {
               "bg-[#05070e]/96 backdrop-blur-2xl",
               "border border-white/[0.12]",
               "shadow-[0_24px_64px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.06)]",
-              "text-zinc-200"
+              "text-zinc-200 relative"
             )}
             role="dialog"
             aria-label={t("chat", "triggerTooltip")}
             aria-modal="true"
           >
+            {/* ── Outer Shockwave Ripple Waves (Cơn sóng lan toả) ── */}
+            <motion.div
+              className="pointer-events-none absolute -bottom-6 -right-6 w-36 h-36 rounded-full -z-10"
+              initial={{ scale: 0.2, opacity: 0.95 }}
+              animate={{ scale: [0.2, 4.2], opacity: [0.95, 0] }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                background: "radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 70%)",
+                boxShadow: "0 0 45px rgba(56, 189, 248, 0.4)",
+              }}
+              aria-hidden="true"
+            />
+            <motion.div
+              className="pointer-events-none absolute -bottom-4 -right-4 w-28 h-28 rounded-full -z-10"
+              initial={{ scale: 0.3, opacity: 0.9 }}
+              animate={{ scale: [0.3, 3], opacity: [0.9, 0] }}
+              transition={{ duration: 0.6, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                border: "1.5px solid rgba(255, 255, 255, 0.7)",
+                background: "radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, transparent 70%)",
+              }}
+              aria-hidden="true"
+            />
+
+            {/* Internal expanding wave flash */}
+            <motion.div
+              className="pointer-events-none absolute inset-0 z-0 opacity-70"
+              initial={{ opacity: 0.8, scale: 0.3, transformOrigin: "bottom right" }}
+              animate={{ opacity: 0, scale: 2.2 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                background: "radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.35) 0%, rgba(56, 189, 248, 0.25) 30%, transparent 65%)",
+              }}
+              aria-hidden="true"
+            />
             {/* Stardust grid texture */}
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
