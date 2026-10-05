@@ -303,10 +303,13 @@ export const OnlineUsers = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
-  // Close on outside click
+  // Close on outside click — ignore animation overlays portalled to body
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      const target = e.target as HTMLElement;
+      // Ignore aria-hidden animation overlays
+      if (target.closest("[data-chat-overlay]") || target.getAttribute("aria-hidden") === "true") return;
+      if (wrapperRef.current && !wrapperRef.current.contains(target)) {
         setIsOpen(false);
       }
     };
@@ -434,7 +437,7 @@ export const OnlineUsers = () => {
       {/* ── Starry Night Burst (Bầu trời sao lan tỏa) ── */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div data-chat-overlay="" aria-hidden="true" className="pointer-events-none contents">
             {/* Deep nebula flash across screen */}
             <motion.div
               key="nebula-flash"
@@ -598,7 +601,7 @@ export const OnlineUsers = () => {
                 aria-hidden="true"
               />
             ))}
-          </>
+          </div>
         )}
       </AnimatePresence>
 
