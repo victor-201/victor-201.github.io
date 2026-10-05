@@ -1,0 +1,61 @@
+{
+  "triggerTooltip": "Chat with VictorBot",
+  "channelName": "ask-victor",
+  "onlineStatus": "VictorBot AI",
+  "clearChat": "Clear conversation",
+  "inputPlaceholder": "Ask anything about Victor...",
+  "sendButton": "Send message",
+  "typing": "VictorBot is thinking...",
+  "newMessages": "new messages",
+  "scrollToBottom": "Scroll to bottom",
+  "downloadCV": "Download Resume",
+  "cvFileName": "Nguyen_Van_Thang.pdf",
+  "errorNotice": "Sorry, connection interrupted. Please try again.",
+  "retry": "Retry",
+  "welcomeMessage": "Hi there! I am **VictorBot** — AI assistant for **Nguyen Van Thang (Victor)**.\n\nI can answer questions about Victor's microservices architecture, featured projects (EV Charging, StudyHub), Full-Stack skillset, academic background, or help you download his CV and schedule an interview. What would you like to know?",
+  "chips": [
+    {
+      "label": "Who is Victor & Goals?",
+      "value": "Who is Victor and what are his career goals?"
+    },
+    {
+      "label": "Featured Microservices Projects?",
+      "value": "What are Victor's most impressive projects?"
+    },
+    {
+      "label": "Full-Stack & DevOps Skills?",
+      "value": "What technical skills does Victor have?"
+    },
+    {
+      "label": "Education & GPA (3.36)?",
+      "value": "Tell me about Victor's university education and GPA."
+    },
+    {
+      "label": "Download Resume (PDF)",
+      "value": "I would like to download Victor's resume."
+    },
+    {
+      "label": "Interview & Contact Info",
+      "value": "How can I contact Victor for an interview?"
+    }
+  ],
+  "followUpChips": [
+    {
+      "label": "EV Charging Project",
+      "value": "Tell me about the EV Charging platform project."
+    },
+    {
+      "label": "Technical Skills",
+      "value": "What technologies does Victor use for backend and frontend?"
+    },
+    {
+      "label": "Download Resume",
+      "value": "Can I download Victor's CV?"
+    },
+    {
+      "label": "Contact Victor",
+      "value": "How do I contact Victor?"
+    }
+  ],
+  "fallbackAnswer": "I am **VictorBot**, official AI assistant for **Nguyen Van Thang (Victor)**.\n\nVictor is a final-year IT student graduating in 2026 from HCMC University of Transport (GPA 3.36/4.0), specialized in React/Next.js, TypeScript, Node.js, NestJS, PostgreSQL, Microservices architecture, and Docker.\n\nFeel free to ask about his projects, technical expertise, interview availability, or download his official resume below."
+}

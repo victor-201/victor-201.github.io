@@ -12,16 +12,18 @@ import enExperience from "./en/experience.json";
 import enProjects from "./en/projects.json";
 import enSeo from "./en/seo.json";
 import enAbout from "./en/about.json";
+import enChat from "./en/chat.json";
 import viCommon from "./vi/common.json";
 import viSkills from "./vi/skills.json";
 import viExperience from "./vi/experience.json";
 import viProjects from "./vi/projects.json";
 import viSeo from "./vi/seo.json";
 import viAbout from "./vi/about.json";
+import viChat from "./vi/chat.json";
 
 const translations = {
-  en: { common: enCommon, skills: enSkills, experience: enExperience, projects: enProjects, seo: enSeo, about: enAbout },
-  vi: { common: viCommon, skills: viSkills, experience: viExperience, projects: viProjects, seo: viSeo, about: viAbout },
+  en: { common: enCommon, skills: enSkills, experience: enExperience, projects: enProjects, seo: enSeo, about: enAbout, chat: enChat },
+  vi: { common: viCommon, skills: viSkills, experience: viExperience, projects: viProjects, seo: viSeo, about: viAbout, chat: viChat },
 };
 
 type Namespace = keyof (typeof translations)["en"];

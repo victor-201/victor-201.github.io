@@ -28,3 +28,4 @@ skill/
 
 # Environment variables
 .env
+.dev.vars

@@ -1,0 +1,61 @@
+{
+  "triggerTooltip": "Trò chuyện với VictorBot",
+  "channelName": "ask-victor",
+  "onlineStatus": "VictorBot AI",
+  "clearChat": "Xóa cuộc trò chuyện",
+  "inputPlaceholder": "Hỏi bất kỳ điều gì về Victor...",
+  "sendButton": "Gửi tin nhắn",
+  "typing": "VictorBot đang soạn câu trả lời...",
+  "newMessages": "tin nhắn mới",
+  "scrollToBottom": "Xuống cuối",
+  "downloadCV": "Tải CV",
+  "cvFileName": "Nguyen_Van_Thang.pdf",
+  "errorNotice": "Xin lỗi, hiện tại gặp sự cố kết nối. Bạn có thể nhấn thử lại bên dưới.",
+  "retry": "Thử lại",
+  "welcomeMessage": "Xin chào! Tôi là **VictorBot** — trợ lý AI của **Nguyễn Văn Thắng (Victor)**.\n\nTôi có thể giải đáp chi tiết về kinh nghiệm phát triển hệ thống phân tán, các dự án thực chiến (EV Charging, StudyHub), kỹ năng Full-Stack, thông tin học vấn hoặc hỗ trợ tải CV và kết nối phỏng vấn. Bạn muốn tìm hiểu về nội dung nào?",
+  "chips": [
+    {
+      "label": "Victor là ai & định hướng?",
+      "value": "Victor là ai và định hướng nghề nghiệp là gì?"
+    },
+    {
+      "label": "Dự án Microservices nổi bật?",
+      "value": "Các dự án nổi bật của Victor là gì?"
+    },
+    {
+      "label": "Kỹ năng Full-Stack & DevOps?",
+      "value": "Kỹ năng công nghệ của Victor gồm những gì?"
+    },
+    {
+      "label": "Học vấn & GPA (3.36)?",
+      "value": "Học vấn và điểm GPA của Victor như thế nào?"
+    },
+    {
+      "label": "Tải CV Nguyễn Văn Thắng (PDF)",
+      "value": "Tôi muốn tải CV của Victor"
+    },
+    {
+      "label": "Liên hệ phỏng vấn",
+      "value": "Làm sao để liên hệ phỏng vấn với Victor?"
+    }
+  ],
+  "followUpChips": [
+    {
+      "label": "Dự án EV Charging",
+      "value": "Kể cho tôi về dự án EV Charging Platform"
+    },
+    {
+      "label": "Kỹ năng kỹ thuật",
+      "value": "Victor thông thạo những công nghệ nào?"
+    },
+    {
+      "label": "Tải CV (PDF)",
+      "value": "Tôi muốn tải CV của Victor"
+    },
+    {
+      "label": "Liên hệ phỏng vấn",
+      "value": "Làm sao để liên hệ phỏng vấn với Victor?"
+    }
+  ],
+  "fallbackAnswer": "Tôi là **VictorBot** — trợ lý AI của **Nguyễn Văn Thắng (Victor)**.\n\nVictor là lập trình viên Full-Stack tốt nghiệp năm 2026 tại ĐH Giao thông Vận tải TP.HCM (GPA 3.36/4.0), có thế mạnh chuyên sâu về React/Next.js, TypeScript, Node.js, NestJS, PostgreSQL, kiến trúc Microservices và Docker.\n\nTôi có thể giải đáp chi tiết về các dự án thực chiến, năng lực công nghệ, kế hoạch phỏng vấn hoặc gửi file CV chính thức của Victor. Bạn muốn tìm hiểu nội dung nào?"
+}
