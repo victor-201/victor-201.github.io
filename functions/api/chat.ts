@@ -99,7 +99,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }));
 
   const model = env.GEMINI_MODEL ?? 'gemini-3.8-flash';
-  const geminiUrl = https://generativelanguage.googleapis.com/v1beta/models/\:streamGenerateContent?key=\&alt=sse;
+  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?key=${apiKey}&alt=sse`;
 
   const SYSTEM_PROMPT = getSystemPrompt();
 
