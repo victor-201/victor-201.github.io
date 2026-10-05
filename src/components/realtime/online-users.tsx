@@ -47,7 +47,7 @@ const panelVariants = {
     transformOrigin: "top right",
     transition: {
       duration: 0.18,
-      ease: [0.4, 0, 1, 1],
+      ease: [0.4, 0, 1, 1] as [number, number, number, number],
     },
   },
 };
