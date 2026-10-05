@@ -21,7 +21,7 @@ import remarkGfm from "remark-gfm";
 const panelVariants = {
   hidden: {
     opacity: 0,
-    scale: 0.88,
+    scale: 0.2,
     y: 16,
     filter: "blur(10px)",
     transformOrigin: "bottom right",
@@ -34,15 +34,15 @@ const panelVariants = {
     transformOrigin: "bottom right",
     transition: {
       type: "spring" as const,
-      stiffness: 360,
+      stiffness: 380,
       damping: 28,
-      mass: 0.85,
+      mass: 0.8,
     },
   },
   exit: {
     opacity: 0,
-    scale: 0.90,
-    y: 12,
+    scale: 0.2,
+    y: 16,
     filter: "blur(8px)",
     transformOrigin: "bottom right",
     transition: {
@@ -402,74 +402,44 @@ export const OnlineUsers = () => {
       ref={wrapperRef}
       className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[9999] flex flex-col items-end pointer-events-auto"
     >
-      {/* ── Floating Action Bubble (FAB) ── */}
-      <motion.button
-        type="button"
-        aria-label={t("chat", "triggerTooltip")}
-        title={t("chat", "triggerTooltip")}
-        onClick={() => setIsOpen((v) => !v)}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.94 }}
-        className={cn(
-          "w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center relative cursor-pointer",
-          "bg-[#070a14]/92 hover:bg-[#0e1428]/95 text-white",
-          "border border-white/20 hover:border-white/35 backdrop-blur-2xl",
-          "shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(255,255,255,0.06),inset_0_1px_1px_rgba(255,255,255,0.2)]",
-          "transition-colors duration-200"
-        )}
-      >
-        <AnimatePresence mode="wait" initial={false}>
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="flex items-center justify-center"
-            >
-              <X className="w-5 h-5 text-white" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="bot"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="flex items-center justify-center"
-            >
-              <VictorBotIcon size={24} className="text-zinc-100" />
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
+        {!isOpen ? (
+          <motion.button
+            key="chat-bubble"
+            type="button"
+            aria-label={t("chat", "triggerTooltip")}
+            title={t("chat", "triggerTooltip")}
+            onClick={() => setIsOpen(true)}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 450, damping: 28 }}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            className={cn(
+              "w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center relative cursor-pointer",
+              "bg-[#070a14]/92 hover:bg-[#0e1428]/95 text-white",
+              "border border-white/20 hover:border-white/35 backdrop-blur-2xl",
+              "shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(255,255,255,0.06),inset_0_1px_1px_rgba(255,255,255,0.2)]",
+              "transition-colors duration-200"
+            )}
+          >
+            <VictorBotIcon size={24} className="text-zinc-100" />
 
-        {/* Online green indicator dot */}
-        <span className="absolute top-0 right-0 flex h-3.5 w-3.5 pointer-events-none">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
-          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#070a14] shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
-        </span>
+            {/* Online green indicator dot */}
+            <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5 pointer-events-none">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#070a14] shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
+            </span>
 
-        {/* Unread badge */}
-        <AnimatePresence>
-          {!isOpen && unreads > 0 && (
-            <motion.span
-              key="badge"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              className="absolute -top-1.5 -left-1.5 flex h-5 min-w-5 px-1.5 items-center justify-center rounded-full text-[10px] font-bold bg-white text-black shadow-md border border-black/10"
-            >
-              {unreads > 9 ? "9+" : unreads}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.button>
-
-      {/* ── Chat Panel ── */}
-      <AnimatePresence>
-        {isOpen && (
+            {/* Unread badge */}
+            {unreads > 0 && (
+              <span className="absolute -top-1.5 -left-1.5 flex h-5 min-w-5 px-1.5 items-center justify-center rounded-full text-[10px] font-bold bg-white text-black shadow-md border border-black/10">
+                {unreads > 9 ? "9+" : unreads}
+              </span>
+            )}
+          </motion.button>
+        ) : (
           <motion.div
             key="chat-panel"
             variants={panelVariants}
@@ -478,13 +448,11 @@ export const OnlineUsers = () => {
             exit="exit"
             style={{ transformOrigin: "bottom right" }}
             className={cn(
-              // Position: fly up above the floating bubble, aligned to right edge
-              "absolute right-0 bottom-16 sm:bottom-[70px] z-[9999]",
               "w-[360px] sm:w-[400px] max-w-[calc(100vw-28px)]",
-              "h-[540px] max-h-[calc(100vh-100px)]",
+              "h-[540px] max-h-[calc(100vh-32px)] sm:max-h-[calc(100vh-48px)]",
               "flex flex-col rounded-2xl overflow-hidden",
               "bg-[#05070e]/96 backdrop-blur-2xl",
-              "border border-white/[0.10]",
+              "border border-white/[0.12]",
               "shadow-[0_24px_64px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.06)]",
               "text-zinc-200"
             )}
@@ -538,10 +506,11 @@ export const OnlineUsers = () => {
                 )}
                 <button
                   onClick={() => setIsOpen(false)}
+                  title={t("chat", "close") || "Close"}
                   aria-label="Close"
-                  className="w-7 h-7 rounded-lg flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
