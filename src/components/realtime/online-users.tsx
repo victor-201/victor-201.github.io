@@ -431,79 +431,173 @@ export const OnlineUsers = () => {
 
   return createPortal(
     <>
-      {/* ── Expanding Water Ripple Shockwaves (Cơn sóng lan tỏa mạnh mẽ) ── */}
+      {/* ── Starry Night Burst (Bầu trời sao lan tỏa) ── */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Full screen flash burst */}
+            {/* Deep nebula flash across screen */}
             <motion.div
-              key="screen-flash"
+              key="nebula-flash"
               className="pointer-events-none fixed inset-0 z-[99990]"
-              initial={{ opacity: 0.18 }}
+              initial={{ opacity: 0.4 }}
               animate={{ opacity: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut" }}
+              transition={{ duration: 1.0, ease: "easeOut" }}
               style={{
-                background: "radial-gradient(ellipse at 100% 100%, rgba(56,189,248,0.22) 0%, rgba(52,211,153,0.12) 30%, transparent 65%)",
+                background: "radial-gradient(ellipse at 100% 100%, rgba(109,40,217,0.38) 0%, rgba(139,92,246,0.22) 18%, rgba(30,27,75,0.18) 40%, transparent 68%)",
               }}
               aria-hidden="true"
             />
-            {/* Primary Neon Cyan Shockwave Ring — huge */}
+
+            {/* Ring 1 – starlight white (outermost, slow) */}
             <motion.div
-              key="shockwave-ring-1"
+              key="star-ring-1"
               className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
               initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
-              animate={{ scale: [0.9, 18], opacity: [1, 0.7, 0] }}
+              animate={{ scale: [0.9, 20], opacity: [1, 0.55, 0] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.85, ease: [0.12, 0.98, 0.28, 1] }}
+              transition={{ duration: 0.92, ease: [0.12, 0.98, 0.28, 1] }}
               style={{
-                border: "4px solid rgba(56, 189, 248, 1)",
-                boxShadow: "0 0 80px 12px rgba(56, 189, 248, 0.9), inset 0 0 50px rgba(56, 189, 248, 0.7)",
+                border: "1.5px solid rgba(255,255,255,0.9)",
+                boxShadow: "0 0 18px 5px rgba(255,255,255,0.7), 0 0 55px 10px rgba(167,139,250,0.45)",
               }}
               aria-hidden="true"
             />
-            {/* Secondary Emerald Ring */}
+            {/* Ring 2 – violet nebula */}
             <motion.div
-              key="shockwave-ring-2"
+              key="star-ring-2"
               className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
               initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
-              animate={{ scale: [0.9, 13], opacity: [1, 0.8, 0] }}
+              animate={{ scale: [0.9, 14], opacity: [1, 0.7, 0] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.72, delay: 0.06, ease: [0.12, 0.98, 0.28, 1] }}
+              transition={{ duration: 0.76, delay: 0.05, ease: [0.12, 0.98, 0.28, 1] }}
               style={{
-                border: "3.5px solid rgba(52, 211, 153, 1)",
-                boxShadow: "0 0 60px 8px rgba(52, 211, 153, 0.85), inset 0 0 35px rgba(52, 211, 153, 0.6)",
+                border: "2px solid rgba(167,139,250,0.95)",
+                boxShadow: "0 0 45px 8px rgba(139,92,246,0.85), inset 0 0 22px rgba(109,40,217,0.65)",
               }}
               aria-hidden="true"
             />
-            {/* Tertiary white sparkling ring */}
+            {/* Ring 3 – gold stardust */}
             <motion.div
-              key="shockwave-ring-3"
+              key="star-ring-3"
               className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
               initial={{ width: 60, height: 60, scale: 0.9, opacity: 0.95 }}
-              animate={{ scale: [0.9, 8], opacity: [0.95, 0.6, 0] }}
+              animate={{ scale: [0.9, 8], opacity: [0.95, 0.5, 0] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.55, delay: 0.12, ease: [0.12, 0.98, 0.28, 1] }}
+              transition={{ duration: 0.56, delay: 0.10, ease: [0.12, 0.98, 0.28, 1] }}
               style={{
-                border: "2.5px solid rgba(255, 255, 255, 1)",
-                boxShadow: "0 0 40px 6px rgba(255, 255, 255, 0.9)",
+                border: "2px solid rgba(251,191,36,0.9)",
+                boxShadow: "0 0 35px 5px rgba(251,191,36,0.75)",
               }}
               aria-hidden="true"
             />
-            {/* Fourth ultra-fast tight ring */}
+            {/* Ring 4 – tight white starburst */}
             <motion.div
-              key="shockwave-ring-4"
+              key="star-ring-4"
               className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
               initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
-              animate={{ scale: [0.9, 5.5], opacity: [1, 0.5, 0] }}
+              animate={{ scale: [0.9, 5], opacity: [1, 0.4, 0] }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.38, delay: 0.0, ease: [0.12, 0.98, 0.28, 1] }}
+              transition={{ duration: 0.34, ease: [0.12, 0.98, 0.28, 1] }}
               style={{
-                border: "5px solid rgba(165, 243, 252, 1)",
-                boxShadow: "0 0 30px 4px rgba(165, 243, 252, 1)",
+                border: "4px solid rgba(255,255,255,1)",
+                boxShadow: "0 0 28px 10px rgba(255,255,255,0.95)",
               }}
               aria-hidden="true"
             />
+
+            {/* Shooting star 1 – upper-left diagonal (white) */}
+            <motion.div
+              key="shooting-star-1"
+              className="pointer-events-none fixed z-[99996] rounded-full"
+              style={{ bottom: "24px", right: "24px", width: "90px", height: "2px",
+                background: "linear-gradient(to right, rgba(255,255,255,0.95), transparent)",
+                boxShadow: "0 0 8px rgba(255,255,255,0.9)",
+                rotate: "-135deg", transformOrigin: "right center" }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: -320, y: -320 }}
+              transition={{ duration: 0.62, ease: [0.12, 0.98, 0.28, 1] }}
+              aria-hidden="true"
+            />
+            {/* Shooting star 2 – mostly upward (violet) */}
+            <motion.div
+              key="shooting-star-2"
+              className="pointer-events-none fixed z-[99996] rounded-full"
+              style={{ bottom: "24px", right: "24px", width: "65px", height: "1.5px",
+                background: "linear-gradient(to right, rgba(167,139,250,0.95), transparent)",
+                boxShadow: "0 0 6px rgba(167,139,250,0.85)",
+                rotate: "-92deg", transformOrigin: "right center" }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: -20, y: -380 }}
+              transition={{ duration: 0.58, delay: 0.04, ease: [0.12, 0.98, 0.28, 1] }}
+              aria-hidden="true"
+            />
+            {/* Shooting star 3 – left (gold) */}
+            <motion.div
+              key="shooting-star-3"
+              className="pointer-events-none fixed z-[99996] rounded-full"
+              style={{ bottom: "24px", right: "24px", width: "105px", height: "1.5px",
+                background: "linear-gradient(to right, rgba(251,191,36,0.9), transparent)",
+                boxShadow: "0 0 7px rgba(251,191,36,0.75)",
+                rotate: "-178deg", transformOrigin: "right center" }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: -440, y: -15 }}
+              transition={{ duration: 0.68, delay: 0.02, ease: [0.12, 0.98, 0.28, 1] }}
+              aria-hidden="true"
+            />
+            {/* Shooting star 4 – upper-ish left (light blue) */}
+            <motion.div
+              key="shooting-star-4"
+              className="pointer-events-none fixed z-[99996] rounded-full"
+              style={{ bottom: "24px", right: "24px", width: "72px", height: "1.5px",
+                background: "linear-gradient(to right, rgba(186,230,253,0.9), transparent)",
+                boxShadow: "0 0 6px rgba(186,230,253,0.8)",
+                rotate: "-112deg", transformOrigin: "right center" }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: -110, y: -340 }}
+              transition={{ duration: 0.6, delay: 0.06, ease: [0.12, 0.98, 0.28, 1] }}
+              aria-hidden="true"
+            />
+            {/* Shooting star 5 – far upper-left (pink/mauve) */}
+            <motion.div
+              key="shooting-star-5"
+              className="pointer-events-none fixed z-[99996] rounded-full"
+              style={{ bottom: "24px", right: "24px", width: "55px", height: "1.5px",
+                background: "linear-gradient(to right, rgba(244,114,182,0.85), transparent)",
+                boxShadow: "0 0 6px rgba(244,114,182,0.7)",
+                rotate: "-155deg", transformOrigin: "right center" }}
+              initial={{ opacity: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, x: -260, y: -200 }}
+              transition={{ duration: 0.52, delay: 0.08, ease: [0.12, 0.98, 0.28, 1] }}
+              aria-hidden="true"
+            />
+
+            {/* Star particles – tiny glowing dots radiating outward */}
+            {([
+              { x: -190, y: -85,  delay: 0.03, color: "rgba(255,255,255,0.95)",   size: 4 },
+              { x: -85,  y: -230, delay: 0.05, color: "rgba(167,139,250,1)",      size: 4 },
+              { x: -310, y: -155, delay: 0.02, color: "rgba(251,191,36,0.95)",   size: 3 },
+              { x: -55,  y: -310, delay: 0.07, color: "rgba(255,255,255,0.85)",   size: 3 },
+              { x: -260, y: -260, delay: 0.04, color: "rgba(186,230,253,0.9)",    size: 3 },
+              { x: -360, y: -85,  delay: 0.06, color: "rgba(255,255,255,0.75)",   size: 2 },
+              { x: -155, y: -295, delay: 0.05, color: "rgba(244,114,182,0.85)",   size: 3 },
+              { x: -400, y: -195, delay: 0.03, color: "rgba(167,139,250,0.85)",   size: 2 },
+            ] as { x: number; y: number; delay: number; color: string; size: number }[]).map((p, i) => (
+              <motion.div
+                key={`star-particle-${i}`}
+                className="pointer-events-none fixed z-[99996] rounded-full"
+                style={{
+                  bottom: "24px", right: "24px",
+                  width: p.size, height: p.size,
+                  backgroundColor: p.color,
+                  boxShadow: `0 0 ${p.size * 3}px ${p.size}px ${p.color}`,
+                }}
+                initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                animate={{ opacity: 0, x: p.x, y: p.y, scale: 0 }}
+                transition={{ duration: 0.72, delay: p.delay, ease: [0.12, 0.98, 0.28, 1] }}
+                aria-hidden="true"
+              />
+            ))}
           </>
         )}
       </AnimatePresence>
@@ -574,50 +668,50 @@ export const OnlineUsers = () => {
               aria-label={t("chat", "triggerTooltip")}
               aria-modal="true"
             >
-              {/* Luminous wave crest ring — bright leading edge inside the box */}
+              {/* Inner starlight ring — violet nebula crest expanding inside box */}
               <motion.div
                 className="pointer-events-none absolute -bottom-8 -right-8 rounded-full z-30"
                 initial={{ width: 60, height: 60, scale: 0.5, opacity: 1 }}
-                animate={{ scale: [0.5, 18], opacity: [1, 0.85, 0] }}
-                transition={{ duration: 0.7, ease: [0.12, 0.98, 0.28, 1] }}
+                animate={{ scale: [0.5, 18], opacity: [1, 0.8, 0] }}
+                transition={{ duration: 0.72, ease: [0.12, 0.98, 0.28, 1] }}
                 style={{
-                  border: "3.5px solid rgba(56, 189, 248, 1)",
-                  boxShadow: "0 0 60px 8px rgba(56, 189, 248, 1), inset 0 0 30px rgba(52, 211, 153, 0.9)",
+                  border: "2.5px solid rgba(167,139,250,1)",
+                  boxShadow: "0 0 55px 8px rgba(139,92,246,1), inset 0 0 28px rgba(109,40,217,0.8)",
                 }}
                 aria-hidden="true"
               />
-              {/* Second internal wave ring — emerald */}
+              {/* Second inner ring — gold star */}
               <motion.div
                 className="pointer-events-none absolute -bottom-8 -right-8 rounded-full z-30"
                 initial={{ width: 60, height: 60, scale: 0.5, opacity: 1 }}
-                animate={{ scale: [0.5, 12], opacity: [1, 0.7, 0] }}
+                animate={{ scale: [0.5, 11], opacity: [1, 0.65, 0] }}
                 transition={{ duration: 0.55, delay: 0.08, ease: [0.12, 0.98, 0.28, 1] }}
                 style={{
-                  border: "2.5px solid rgba(52, 211, 153, 1)",
-                  boxShadow: "0 0 40px 6px rgba(52, 211, 153, 0.9)",
+                  border: "2px solid rgba(251,191,36,0.9)",
+                  boxShadow: "0 0 35px 5px rgba(251,191,36,0.8)",
                 }}
                 aria-hidden="true"
               />
 
-              {/* Internal expanding radial flash — bright white burst */}
+              {/* Internal nebula radial flash — deep space purple/indigo burst */}
               <motion.div
                 className="pointer-events-none absolute inset-0 z-0"
                 initial={{ opacity: 1, scale: 0.2, transformOrigin: "bottom right" }}
                 animate={{ opacity: 0, scale: 2.5 }}
-                transition={{ duration: 0.65, ease: [0.12, 0.98, 0.28, 1] }}
+                transition={{ duration: 0.68, ease: [0.12, 0.98, 0.28, 1] }}
                 style={{
-                  background: "radial-gradient(circle at 100% 100%, rgba(255,255,255,0.55) 0%, rgba(56,189,248,0.35) 25%, rgba(52,211,153,0.2) 45%, transparent 65%)",
+                  background: "radial-gradient(circle at 100% 100%, rgba(255,255,255,0.45) 0%, rgba(167,139,250,0.35) 20%, rgba(109,40,217,0.25) 40%, rgba(30,27,75,0.15) 60%, transparent 75%)",
                 }}
                 aria-hidden="true"
               />
-              {/* Second softer wave pulse */}
+              {/* Second softer nebula pulse */}
               <motion.div
                 className="pointer-events-none absolute inset-0 z-0"
-                initial={{ opacity: 0.7, scale: 0.15, transformOrigin: "bottom right" }}
+                initial={{ opacity: 0.65, scale: 0.15, transformOrigin: "bottom right" }}
                 animate={{ opacity: 0, scale: 3 }}
-                transition={{ duration: 0.8, delay: 0.05, ease: [0.12, 0.98, 0.28, 1] }}
+                transition={{ duration: 0.85, delay: 0.05, ease: [0.12, 0.98, 0.28, 1] }}
                 style={{
-                  background: "radial-gradient(circle at 100% 100%, rgba(56,189,248,0.3) 0%, rgba(52,211,153,0.15) 35%, transparent 60%)",
+                  background: "radial-gradient(circle at 100% 100%, rgba(139,92,246,0.28) 0%, rgba(251,191,36,0.12) 35%, transparent 60%)",
                 }}
                 aria-hidden="true"
               />
