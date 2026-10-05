@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowDown, Send, ExternalLink, Download, Trash2, RotateCcw, X } from "lucide-react";
@@ -21,47 +22,47 @@ import remarkGfm from "remark-gfm";
 const panelVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.82,
-    clipPath: "circle(28px at calc(100% - 28px) calc(100% - 28px))",
-    filter: "blur(12px)",
+    scale: 0.78,
+    clipPath: "circle(26px at calc(100% - 26px) calc(100% - 26px))",
+    filter: "blur(14px) brightness(1.8)",
     transformOrigin: "bottom right",
   },
   visible: {
     opacity: 1,
     scale: 1,
-    clipPath: "circle(160% at calc(100% - 28px) calc(100% - 28px))",
-    filter: "blur(0px)",
+    clipPath: "circle(180% at calc(100% - 26px) calc(100% - 26px))",
+    filter: "blur(0px) brightness(1)",
     transformOrigin: "bottom right",
     transition: {
       clipPath: {
-        duration: 0.58,
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+        duration: 0.65,
+        ease: [0.12, 0.98, 0.28, 1] as [number, number, number, number],
       },
       scale: {
         type: "spring",
-        stiffness: 280,
-        damping: 24,
-        mass: 0.8,
+        stiffness: 340,
+        damping: 22,
+        mass: 0.7,
       },
       opacity: {
-        duration: 0.22,
+        duration: 0.18,
         ease: "easeOut",
       },
       filter: {
-        duration: 0.35,
+        duration: 0.4,
         ease: "easeOut",
       },
     },
   },
   exit: {
     opacity: 0,
-    scale: 0.82,
-    clipPath: "circle(28px at calc(100% - 28px) calc(100% - 28px))",
-    filter: "blur(10px)",
+    scale: 0.8,
+    clipPath: "circle(26px at calc(100% - 26px) calc(100% - 26px))",
+    filter: "blur(12px)",
     transformOrigin: "bottom right",
     transition: {
       clipPath: {
-        duration: 0.32,
+        duration: 0.3,
         ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
       },
       scale: {
@@ -69,7 +70,7 @@ const panelVariants: Variants = {
         ease: [0.4, 0, 0.2, 1] as [number, number, number, number],
       },
       opacity: {
-        duration: 0.2,
+        duration: 0.18,
         ease: "easeIn",
       },
     },
@@ -289,6 +290,11 @@ export const OnlineUsers = () => {
   const [streamingMsgId, setStreamingMsgId] = useState<string | null>(null);
   const [unreads, setUnreads] = useState(0);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -421,107 +427,200 @@ export const OnlineUsers = () => {
   const isAwaitingFirstToken =
     isTyping && streamingMsgId && messages.find((m) => m.id === streamingMsgId)?.text === "";
 
-  return (
-    <div
-      ref={wrapperRef}
-      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[9999] flex flex-col items-end pointer-events-auto"
-    >
-      <AnimatePresence mode="wait" initial={false}>
-        {!isOpen ? (
-          <motion.button
-            key="chat-bubble"
-            type="button"
-            aria-label={t("chat", "triggerTooltip")}
-            title={t("chat", "triggerTooltip")}
-            onClick={() => setIsOpen(true)}
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 1.35, opacity: 0, filter: "blur(6px)" }}
-            transition={{
-              scale: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
-              opacity: { duration: 0.18, ease: "easeOut" },
-            }}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
-            className={cn(
-              "w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center relative cursor-pointer",
-              "bg-[#070a14]/92 hover:bg-[#0e1428]/95 text-white",
-              "border border-white/20 hover:border-white/35 backdrop-blur-2xl",
-              "shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(255,255,255,0.06),inset_0_1px_1px_rgba(255,255,255,0.2)]",
-              "transition-colors duration-200"
-            )}
-          >
-            <VictorBotIcon size={24} className="text-zinc-100" />
+  if (!mounted) return null;
 
-            {/* Online green indicator dot */}
-            <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5 pointer-events-none">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#070a14] shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
-            </span>
+  return createPortal(
+    <>
+      {/* ── Expanding Water Ripple Shockwaves (Cơn sóng lan tỏa mạnh mẽ) ── */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Full screen flash burst */}
+            <motion.div
+              key="screen-flash"
+              className="pointer-events-none fixed inset-0 z-[99990]"
+              initial={{ opacity: 0.18 }}
+              animate={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              style={{
+                background: "radial-gradient(ellipse at 100% 100%, rgba(56,189,248,0.22) 0%, rgba(52,211,153,0.12) 30%, transparent 65%)",
+              }}
+              aria-hidden="true"
+            />
+            {/* Primary Neon Cyan Shockwave Ring — huge */}
+            <motion.div
+              key="shockwave-ring-1"
+              className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
+              initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
+              animate={{ scale: [0.9, 18], opacity: [1, 0.7, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.85, ease: [0.12, 0.98, 0.28, 1] }}
+              style={{
+                border: "4px solid rgba(56, 189, 248, 1)",
+                boxShadow: "0 0 80px 12px rgba(56, 189, 248, 0.9), inset 0 0 50px rgba(56, 189, 248, 0.7)",
+              }}
+              aria-hidden="true"
+            />
+            {/* Secondary Emerald Ring */}
+            <motion.div
+              key="shockwave-ring-2"
+              className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
+              initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
+              animate={{ scale: [0.9, 13], opacity: [1, 0.8, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.72, delay: 0.06, ease: [0.12, 0.98, 0.28, 1] }}
+              style={{
+                border: "3.5px solid rgba(52, 211, 153, 1)",
+                boxShadow: "0 0 60px 8px rgba(52, 211, 153, 0.85), inset 0 0 35px rgba(52, 211, 153, 0.6)",
+              }}
+              aria-hidden="true"
+            />
+            {/* Tertiary white sparkling ring */}
+            <motion.div
+              key="shockwave-ring-3"
+              className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
+              initial={{ width: 60, height: 60, scale: 0.9, opacity: 0.95 }}
+              animate={{ scale: [0.9, 8], opacity: [0.95, 0.6, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.55, delay: 0.12, ease: [0.12, 0.98, 0.28, 1] }}
+              style={{
+                border: "2.5px solid rgba(255, 255, 255, 1)",
+                boxShadow: "0 0 40px 6px rgba(255, 255, 255, 0.9)",
+              }}
+              aria-hidden="true"
+            />
+            {/* Fourth ultra-fast tight ring */}
+            <motion.div
+              key="shockwave-ring-4"
+              className="pointer-events-none fixed bottom-5 right-5 sm:bottom-6 sm:right-6 rounded-full z-[99997]"
+              initial={{ width: 60, height: 60, scale: 0.9, opacity: 1 }}
+              animate={{ scale: [0.9, 5.5], opacity: [1, 0.5, 0] }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.38, delay: 0.0, ease: [0.12, 0.98, 0.28, 1] }}
+              style={{
+                border: "5px solid rgba(165, 243, 252, 1)",
+                boxShadow: "0 0 30px 4px rgba(165, 243, 252, 1)",
+              }}
+              aria-hidden="true"
+            />
+          </>
+        )}
+      </AnimatePresence>
 
-            {/* Unread badge */}
-            {unreads > 0 && (
-              <span className="absolute -top-1.5 -left-1.5 flex h-5 min-w-5 px-1.5 items-center justify-center rounded-full text-[10px] font-bold bg-white text-black shadow-md border border-black/10">
-                {unreads > 9 ? "9+" : unreads}
+      <div
+        ref={wrapperRef}
+        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[99999] flex flex-col items-end pointer-events-auto"
+        style={{ bottom: "20px", right: "20px" }}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {!isOpen ? (
+            <motion.button
+              key="chat-bubble"
+              type="button"
+              aria-label={t("chat", "triggerTooltip")}
+              title={t("chat", "triggerTooltip")}
+              onClick={() => setIsOpen(true)}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 1.35, opacity: 0, filter: "blur(6px)" }}
+              transition={{
+                scale: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+                opacity: { duration: 0.18, ease: "easeOut" },
+              }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              className={cn(
+                "w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center relative cursor-pointer",
+                "bg-[#070a14]/92 hover:bg-[#0e1428]/95 text-white",
+                "border border-white/20 hover:border-white/35 backdrop-blur-2xl",
+                "shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(255,255,255,0.06),inset_0_1px_1px_rgba(255,255,255,0.2)]",
+                "transition-colors duration-200"
+              )}
+            >
+              <VictorBotIcon size={24} className="text-zinc-100" />
+
+              {/* Online green indicator dot */}
+              <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5 pointer-events-none">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#070a14] shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
               </span>
-            )}
-          </motion.button>
-        ) : (
-          <motion.div
-            key="chat-panel"
-            variants={panelVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            style={{ transformOrigin: "bottom right" }}
-            className={cn(
-              "w-[360px] sm:w-[400px] max-w-[calc(100vw-28px)]",
-              "h-[540px] max-h-[calc(100vh-32px)] sm:max-h-[calc(100vh-48px)]",
-              "flex flex-col rounded-2xl overflow-hidden",
-              "bg-[#05070e]/96 backdrop-blur-2xl",
-              "border border-white/[0.12]",
-              "shadow-[0_24px_64px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.06)]",
-              "text-zinc-200 relative"
-            )}
-            role="dialog"
-            aria-label={t("chat", "triggerTooltip")}
-            aria-modal="true"
-          >
-            {/* ── Outer Shockwave Ripple Waves (Cơn sóng lan toả) ── */}
-            <motion.div
-              className="pointer-events-none absolute -bottom-6 -right-6 w-36 h-36 rounded-full -z-10"
-              initial={{ scale: 0.2, opacity: 0.95 }}
-              animate={{ scale: [0.2, 4.2], opacity: [0.95, 0] }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                background: "radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(16, 185, 129, 0.25) 45%, transparent 70%)",
-                boxShadow: "0 0 45px rgba(56, 189, 248, 0.4)",
-              }}
-              aria-hidden="true"
-            />
-            <motion.div
-              className="pointer-events-none absolute -bottom-4 -right-4 w-28 h-28 rounded-full -z-10"
-              initial={{ scale: 0.3, opacity: 0.9 }}
-              animate={{ scale: [0.3, 3], opacity: [0.9, 0] }}
-              transition={{ duration: 0.6, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                border: "1.5px solid rgba(255, 255, 255, 0.7)",
-                background: "radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, transparent 70%)",
-              }}
-              aria-hidden="true"
-            />
 
-            {/* Internal expanding wave flash */}
+              {/* Unread badge */}
+              {unreads > 0 && (
+                <span className="absolute -top-1.5 -left-1.5 flex h-5 min-w-5 px-1.5 items-center justify-center rounded-full text-[10px] font-bold bg-white text-black shadow-md border border-black/10">
+                  {unreads > 9 ? "9+" : unreads}
+                </span>
+              )}
+            </motion.button>
+          ) : (
             <motion.div
-              className="pointer-events-none absolute inset-0 z-0 opacity-70"
-              initial={{ opacity: 0.8, scale: 0.3, transformOrigin: "bottom right" }}
-              animate={{ opacity: 0, scale: 2.2 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                background: "radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.35) 0%, rgba(56, 189, 248, 0.25) 30%, transparent 65%)",
-              }}
-              aria-hidden="true"
-            />
+              key="chat-panel"
+              variants={panelVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              style={{ transformOrigin: "bottom right", maxHeight: "min(540px, calc(100dvh - 40px))" }}
+              className={cn(
+                "w-[360px] sm:w-[400px] max-w-[calc(100vw-28px)]",
+                "h-[540px]",
+                "flex flex-col rounded-2xl overflow-hidden",
+                "bg-[#05070e]/96 backdrop-blur-2xl",
+                "border border-white/[0.12]",
+                "shadow-[0_24px_64px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.06)]",
+                "text-zinc-200 relative"
+              )}
+              role="dialog"
+              aria-label={t("chat", "triggerTooltip")}
+              aria-modal="true"
+            >
+              {/* Luminous wave crest ring — bright leading edge inside the box */}
+              <motion.div
+                className="pointer-events-none absolute -bottom-8 -right-8 rounded-full z-30"
+                initial={{ width: 60, height: 60, scale: 0.5, opacity: 1 }}
+                animate={{ scale: [0.5, 18], opacity: [1, 0.85, 0] }}
+                transition={{ duration: 0.7, ease: [0.12, 0.98, 0.28, 1] }}
+                style={{
+                  border: "3.5px solid rgba(56, 189, 248, 1)",
+                  boxShadow: "0 0 60px 8px rgba(56, 189, 248, 1), inset 0 0 30px rgba(52, 211, 153, 0.9)",
+                }}
+                aria-hidden="true"
+              />
+              {/* Second internal wave ring — emerald */}
+              <motion.div
+                className="pointer-events-none absolute -bottom-8 -right-8 rounded-full z-30"
+                initial={{ width: 60, height: 60, scale: 0.5, opacity: 1 }}
+                animate={{ scale: [0.5, 12], opacity: [1, 0.7, 0] }}
+                transition={{ duration: 0.55, delay: 0.08, ease: [0.12, 0.98, 0.28, 1] }}
+                style={{
+                  border: "2.5px solid rgba(52, 211, 153, 1)",
+                  boxShadow: "0 0 40px 6px rgba(52, 211, 153, 0.9)",
+                }}
+                aria-hidden="true"
+              />
+
+              {/* Internal expanding radial flash — bright white burst */}
+              <motion.div
+                className="pointer-events-none absolute inset-0 z-0"
+                initial={{ opacity: 1, scale: 0.2, transformOrigin: "bottom right" }}
+                animate={{ opacity: 0, scale: 2.5 }}
+                transition={{ duration: 0.65, ease: [0.12, 0.98, 0.28, 1] }}
+                style={{
+                  background: "radial-gradient(circle at 100% 100%, rgba(255,255,255,0.55) 0%, rgba(56,189,248,0.35) 25%, rgba(52,211,153,0.2) 45%, transparent 65%)",
+                }}
+                aria-hidden="true"
+              />
+              {/* Second softer wave pulse */}
+              <motion.div
+                className="pointer-events-none absolute inset-0 z-0"
+                initial={{ opacity: 0.7, scale: 0.15, transformOrigin: "bottom right" }}
+                animate={{ opacity: 0, scale: 3 }}
+                transition={{ duration: 0.8, delay: 0.05, ease: [0.12, 0.98, 0.28, 1] }}
+                style={{
+                  background: "radial-gradient(circle at 100% 100%, rgba(56,189,248,0.3) 0%, rgba(52,211,153,0.15) 35%, transparent 60%)",
+                }}
+                aria-hidden="true"
+              />
             {/* Stardust grid texture */}
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
@@ -657,6 +756,8 @@ export const OnlineUsers = () => {
         )}
       </AnimatePresence>
     </div>
+    </>,
+    document.body
   );
 };
 
