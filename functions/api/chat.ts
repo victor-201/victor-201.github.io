@@ -217,7 +217,7 @@ function getSystemPrompt(): string {
   ].join('\n');
 }
 
-const KNOWLEDGE_BASE = 
+const KNOWLEDGE_BASE = `
 # KNOWLEDGE BASE - Nguyen Van Thang (Victor)
 
 ## Gioi thieu ca nhan
@@ -288,4 +288,5 @@ const KNOWLEDGE_BASE =
 - Muc luong? Thuong luong tuy moi truong va co hoi mentoring. Lien he truc tiep.
 - Khi nao bat dau duoc? Som nhat co the. Email de confirm lich.
 - Trinh do tieng Anh? Doc/viet ky thuat thanh thao; giao tiep co ban den lam viec duoc.
-;
+`;
+
