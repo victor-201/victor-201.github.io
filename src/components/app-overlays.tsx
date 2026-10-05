@@ -6,6 +6,7 @@ import RemoteCursors from "@/components/realtime/remote-cursors";
 import EasterEggs from "@/components/easter-eggs";
 import ElasticCursor from "@/components/ui/ElasticCursor";
 import RadialMenu from "@/components/radial-menu/index";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 export default function AppOverlays() {
   const { pathname } = useLocation();
@@ -21,6 +22,7 @@ export default function AppOverlays() {
       {isHome && <EasterEggs />}
       <ElasticCursor />
       {isHome && <RadialMenu />}
+      <ChatWidget />
     </>
   );
 }

@@ -8,7 +8,6 @@ import FunnyThemeToggle from "../theme/funny-theme-toggle";
 import { Button } from "../ui/button";
 import { config } from "@/lib/app-config";
 import { useLocale } from "@/locales/use-locale";
-import OnlineUsers from "../realtime/online-users";
 import { GitHubStarsButton } from "../ui/shadcn-io/github-stars-button";
 import LocaleToggle from "../locale-toggle";
 
@@ -63,8 +62,6 @@ const Header = ({ loader }: HeaderProps) => {
 
           <div className="flex items-center gap-4">
             <FunnyThemeToggle className="h-10 w-[calc(var(--header-height)*1.25)] md:flex" />
-
-            <OnlineUsers />
 
             {config.githubUsername && (
               <GitHubStarsButton
